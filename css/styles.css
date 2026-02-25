@@ -2172,11 +2172,14 @@ button, input, select, textarea { font-family: inherit; }
 .pilotCard__pilot{
   position: absolute;
   right: 12px;
-  bottom: -158px;
-  height: 450px;
+  bottom: -138px;
+  height: 400px;
   width: auto;
   filter: drop-shadow(0 22px 40px rgba(0,0,0,.35));
   pointer-events: none;
+}
+element.style {
+  color: e6be58;
 }
 
 /* ===== Responsive ===== */
@@ -3366,3 +3369,77 @@ transition: transform 0.12s linear;
     margin-left: auto;
     margin-right: auto;
   }
+
+  /* =========================
+   Make gwHours box smaller + tighter
+   ========================= */
+
+.gwHours{
+  display: inline-grid;              /* shrink to content */
+  grid-template-columns: auto;       /* remove wide columns */
+  padding: 10px 16px;                /* smaller padding */
+  border-radius: 10px;               /* slightly tighter */
+  box-shadow: 0 10px 24px rgba(0,0,0,.25); /* softer shadow */
+  width: auto;                       /* don't stretch */
+
+}
+
+.gwHours__col{
+  text-align: left;
+}
+
+.gwHours__label{
+  font-size: 11px;
+}
+
+.gwHours__time{
+  font-size: 12px;
+}
+
+/* ✅ Footer logo + socials: pin to bottom of left column */
+.gwFooter__brand{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.gwFooter__brandBottom{
+  margin-top: auto; /* pushes logo+socials to bottom */
+}
+
+/* ✅ Move the hours box slightly to the right + align right */
+.gwFooter__right{
+  display: inline;
+  flex-direction: column;
+  align-items: flex-end; /* aligns the hours card to right */
+}
+
+.gwHours{
+  margin-left: 0; /* reset if needed */
+  transform: translateX(16px); /* adjust: 10px–24px */
+}
+/* Fix footer right column alignment */
+.gwFooter__right{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* aligns to top */
+  align-items: flex-end;        /* aligns to right */
+}
+
+/* Fine tune hours box position */
+.gwHours{
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+/* Fix footer right column vertical alignment */
+.gwFooter__right{
+  display: inline;
+  flex-direction: column;
+  align-items: flex-end;   /* keep right aligned */
+  justify-content: center; /* vertically center content */
+}
+
+/* Add breathing room above hours */
+.gwHours{
+  margin-bottom: 24px;
+}

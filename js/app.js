@@ -122,7 +122,7 @@
   
       const p = clamp((-rect.top) / h, 0, 1);
   
-      const translateY = -p * 420;
+      const translateY = -p * 260;
       const scale      = 1 + p * 0.28;
       const rotate     = -p * 6;
       const fade       = 1 - p * 0.12;
