@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DGCA Ground School | Horizon</title>
+
+  <!-- Global (your fonts + base vars live here) -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="dgca.css" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navwrap">
+      <div class="nav-clouds" aria-hidden="true"></div>
+  
+      <div class="navinner">
+        <!-- LOGO LEFT -->
+        <a class="brand" href="#top">
+          <img class="brand__logo" src="assets/logo.png" alt="Horizon" />
+        </a>
+  
+        <!-- MOBILE BURGER -->
+        <button class="burger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+  
+        <!-- NAV RIGHT -->
+        <nav class="nav" aria-label="Primary navigation">
+          <ul class="menu" id="menu">
+            <li><a class="link is-active" href="#dgca">DGCA Ground School</a></li>
+            <li><a class="link" href="#sim">In-house Simulator</a></li>
+            <li><a class="link" href="courses.html">Courses</a></li>
+  
+            <!-- PILOT TRAINING DROPDOWN -->
+            <li class="dd">
+              <button class="link dd__btn" type="button" aria-expanded="false">
+                Pilot Training <span class="caret">▾</span>
+              </button>
+  
+              <div class="dd__menu" role="menu">
+                <a href="#type-rating" role="menuitem">Type Rating</a>
+                <a href="#atr" role="menuitem">ATR</a>
+                <a href="#boeing" role="menuitem">Boeing</a>
+              </div>
+            </li>
+  
+            <li><a class="link" href="#become-pilot">Become a Pilot</a></li>
+            <li><a class="link" href="#contact">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+  
+      <!-- ROUTE STRIP -->
+      <div class="route">
+        <div class="route__line"></div>
+        <div class="route__plane" id="plane" aria-hidden="true">
+          <img src="assets/plane.png" alt="" />
+        </div>
+      </div>
+    </header>
+  
+
+  <main class="dgcaPage" id="top">
+
+    <!-- =======================
+         MODERN HERO (NEW)
+         ======================= -->
+    <section class="section section--topHero">
+      <div class="wrap topHero">
+        <div class="topHero__copy" data-reveal>
+          <span class="kicker">DGCA GROUND SCHOOL</span>
+          <h1 class="topHero__title">
+            Become exam-ready with a clean plan, real mentorship, and cockpit-level confidence.
+          </h1>
+          <p class="p topHero__sub">
+            Lufthansa-style clarity: structured teaching, strong practice, and support that actually follows through.
+          </p>
+
+          <div class="topHero__actions">
+            <a class="btn btn--solid" href="contact.html#enroll">Enroll Now <span class="btnArrow" aria-hidden="true">›</span></a>
+            <a class="btn btn--outline" href="#syllabus">View Syllabus <span class="btnArrow" aria-hidden="true">›</span></a>
+          </div>
+
+          <div class="topHero__mini">
+            <div class="miniChip">Online + Offline</div>
+            <div class="miniChip">Limited seats per batch</div>
+            <div class="miniChip">DGCA + eGCA support</div>
+          </div>
+        </div>
+
+        <div class="topHero__visual" data-reveal>
+          <div class="glassCard">
+            <div class="glassCard__bg"></div>
+            <div class="glassCard__content">
+              <div class="glassTitle">Next Batch</div>
+              <div class="glassBig">February 2026</div>
+              <div class="glassSub">Seats: Limited (16 per batch)</div>
+              <div class="glassDivider"></div>
+              <div class="glassRow">
+                <span class="dot"></span>
+                <span>Ground school + strategy + mocks</span>
+              </div>
+              <div class="glassRow">
+                <span class="dot"></span>
+                <span>Process help for Computer Number</span>
+              </div>
+              <div class="glassRow">
+                <span class="dot"></span>
+                <span>Optional simulator orientation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="floatBadge" aria-hidden="true">
+            <span>DGCA READY</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scrollHint" aria-hidden="true">
+        <span class="scrollDot"></span>
+      </div>
+    </section>
+
+    <!-- =======================
+         COURSE OVERVIEW
+         ======================= -->
+    <section class="section section--hero">
+      <div class="wrap heroGrid">
+        <div class="heroTop">
+          <span class="kicker">COURSE OVERVIEW</span>
+        </div>
+
+        <div class="heroTitle">
+          <h2 class="h1">
+            GetWings’ DGCA Ground School provide aspiring pilots with essential knowledge and confidence to excel in their DGCA Pilot Exam.
+          </h2>
+        </div>
+
+        <div class="heroCard" data-reveal>
+          <div class="heroCard__media boxParallax" data-parallax>
+            <!-- replace with your real classroom image -->
+            <img src="assets/dgca-classroom.jpg" alt="DGCA classroom session" />
+          </div>
+
+          <div class="heroCard__content">
+            <p class="p">
+              We combine comprehensive group ground classes and one-on-one tuition sessions — so you learn every subject in depth,
+              and get personalised help wherever you need it. Your journey to the skies deserves this level of support.
+            </p>
+
+            <div class="pillRow">
+              <span class="pill">
+                <span class="pillDot" aria-hidden="true"></span>
+                ONLINE &amp; OFFLINE BATCHES AVAILABLE
+              </span>
+            </div>
+
+            <div class="statsRow">
+              <div class="stat">
+                <div class="statNum" data-count="4.9">0</div>
+                <div class="statLabel">Students Reviews</div>
+              </div>
+              <div class="stat">
+                <div class="statNum" data-count="350">0</div>
+                <div class="statLabel">Students Enrolled</div>
+              </div>
+              <div class="stat">
+                <div class="statNum" data-count="60">0</div>
+                <div class="statLabel">Success Stories</div>
+              </div>
+            </div>
+
+            <div class="btnRow">
+              <a class="btn btn--outline" href="contact.html#enroll">
+                ENROLL NOW <span class="btnArrow" aria-hidden="true">›</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================
+         THEORY SUBJECTS
+         ======================= -->
+    <section class="section">
+      <div class="wrap center">
+        <span class="kicker kicker--center">THEORY SUBJECTS</span>
+        <h2 class="h2">What DGCA Ground School Subject includes</h2>
+
+        <div class="subjectRow" data-reveal>
+          <button class="subjectCard" type="button" data-toast="Air Navigation">
+            <span class="subjectIcon" aria-hidden="true">🧭</span>
+            <span class="subjectName">Air Navigation</span>
+          </button>
+
+          <button class="subjectCard" type="button" data-toast="Air Regulation">
+            <span class="subjectIcon" aria-hidden="true">📜</span>
+            <span class="subjectName">Air Regulation</span>
+          </button>
+
+          <button class="subjectCard" type="button" data-toast="Aviation Meteorology">
+            <span class="subjectIcon" aria-hidden="true">🌦️</span>
+            <span class="subjectName">Aviation Meteorology</span>
+          </button>
+
+          <button class="subjectCard" type="button" data-toast="Aircraft Technical General">
+            <span class="subjectIcon" aria-hidden="true">🛠️</span>
+            <span class="subjectName">Aircraft Technical General</span>
+          </button>
+
+          <button class="subjectCard" type="button" data-toast="Radio Telephony (RTR)">
+            <span class="subjectIcon" aria-hidden="true">📻</span>
+            <span class="subjectName">Radio Telephony</span>
+          </button>
+        </div>
+
+        <p class="microNote">Tap any subject — quick toast confirmation (tiny but premium).</p>
+      </div>
+    </section>
+
+    <!-- =======================
+         WHAT YOU GET
+         ======================= -->
+    <section class="section section--soft">
+      <div class="wrap center">
+        <span class="kicker kicker--center">PACKAGE INCLUSIONS</span>
+        <h2 class="h2">What You Get</h2>
+
+        <div class="grid4" data-reveal>
+          <div class="infoCard"><div class="infoIcon">📚</div><div class="infoTitle">Study Kit &amp; Books</div><div class="infoSub">Complete study kit and books</div></div>
+          <div class="infoCard"><div class="infoIcon">🧮</div><div class="infoTitle">CX3 flight computer</div><div class="infoSub">Will get Scientific calculator also</div></div>
+          <div class="infoCard"><div class="infoIcon">🛫</div><div class="infoTitle">C172 Simulator Checklist</div><div class="infoSub">Printed checklist for our C172 G1000 sim</div></div>
+          <div class="infoCard"><div class="infoIcon">📝</div><div class="infoTitle">DGCA Test Series</div><div class="infoSub">Test series &amp; chapter-wise Question Banks</div></div>
+
+          <div class="infoCard"><div class="infoIcon">🎒</div><div class="infoTitle">Getwings Merchandise</div><div class="infoSub">Official Getwings goodies</div></div>
+          <div class="infoCard"><div class="infoIcon">🧑‍✈️</div><div class="infoTitle">Pilot Uniform</div><div class="infoSub">Shirt, tie, epaulettes, wings badge</div></div>
+          <div class="infoCard"><div class="infoIcon">🧾</div><div class="infoTitle">DGCA &amp; eGCA Support</div><div class="infoSub">Computer number, Medicals and eGCA account</div></div>
+          <div class="infoCard"><div class="infoIcon">🏅</div><div class="infoTitle">Completion Certificate</div><div class="infoSub">Ground Class &amp; Simulator completion certificate</div></div>
+        </div>
+
+        <div class="center" style="margin-top:18px">
+          <a class="btn btn--outline" href="contact.html#enroll">ENROLL NOW <span class="btnArrow" aria-hidden="true">›</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         SYLLABUS
+         ======================= -->
+    <section class="section" id="syllabus">
+      <div class="wrap">
+        <h2 class="h2 center">Subject Syllabus</h2>
+
+        <div class="tabs" data-reveal>
+          <div class="tabBar" role="tablist" aria-label="Syllabus tabs">
+            <button class="tab is-active" role="tab" aria-selected="true" data-tab="met">Air Metrology</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="nav">Air Navigations</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="reg">Air Regulations</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="tech">Technical General</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="rtr">RTR</button>
+          </div>
+
+          <div class="tabPanel is-active" role="tabpanel" data-panel="met">
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="Air Metrology syllabus">
+                <thead>
+                  <tr><th>Sr. No.</th><th>Topic Name</th><th>Sr. No.</th><th>Topic Name</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Atmosphere</td><td>13</td><td>Thunderstorm</td></tr>
+                  <tr><td>2</td><td>Atmospheric Pressure</td><td>14</td><td>Air Masses Fronts and Western Disturbances</td></tr>
+                  <tr><td>3</td><td>Temperature</td><td>15</td><td>Jet Streams</td></tr>
+                  <tr><td>4</td><td>Air Density</td><td>16</td><td>Clear Air Turbulence</td></tr>
+                  <tr><td>5</td><td>Humidity</td><td>17</td><td>Mountain Waves</td></tr>
+                  <tr><td>6</td><td>Winds</td><td>18</td><td>Tropical Systems</td></tr>
+                  <tr><td>7</td><td>Visibility and Fog</td><td>19</td><td>Climatology of India</td></tr>
+                  <tr><td>8</td><td>Vertical Motion and Clouds</td><td>20</td><td>General Circulation</td></tr>
+                  <tr><td>9</td><td>Stability and Instability of Atmosphere</td><td>21</td><td>Meteorological Services for Aviation</td></tr>
+                  <tr><td>10</td><td>Optical Phenomena</td><td>24</td><td>Station Model</td></tr>
+                  <tr><td>11</td><td>Precipitation</td><td>25</td><td>Aerodrome Met Reports and Codes of METAR, SPECI and TREND</td></tr>
+                  <tr><td>12</td><td>Ice Accretion</td><td>26</td><td>Aviation Weather Forecasts (Codes of TAF, ARFOR, ROFOR)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tabPanel" role="tabpanel" data-panel="nav">
+            <div class="panelCopy">
+              <p><b>Air Navigation</b> covers chart reading, instruments, flight planning, dead reckoning, radio navigation basics, and exam patterns.</p>
+              <ul class="bullet"><li>Maps + projections</li><li>Time/speed/distance</li><li>Radio nav basics</li><li>Flight planning</li></ul>
+            </div>
+          </div>
+
+          <div class="tabPanel" role="tabpanel" data-panel="reg">
+            <div class="panelCopy">
+              <p><b>Air Regulations</b> focuses on DGCA rules, ICAO basics, licensing, airspace, operational requirements.</p>
+              <ul class="bullet"><li>Airspace &amp; right-of-way</li><li>Licensing + docs</li><li>Operational procedures</li><li>Human performance overview</li></ul>
+            </div>
+          </div>
+
+          <div class="tabPanel" role="tabpanel" data-panel="tech">
+            <div class="panelCopy">
+              <p><b>Technical General</b> covers aircraft systems and fundamentals.</p>
+              <ul class="bullet"><li>Engines + fuel</li><li>Electrical + instruments</li><li>Flight controls</li><li>Performance</li></ul>
+            </div>
+          </div>
+
+          <div class="tabPanel" role="tabpanel" data-panel="rtr">
+            <div class="panelCopy">
+              <p><b>RTR</b> focuses on radio communication knowledge and procedures.</p>
+              <ul class="bullet"><li>RT phraseology</li><li>Emergency calls</li><li>Procedures</li><li>Speaking confidence</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         ✅ DGCA FLYING REQUIREMENTS (NEW - RIGHT AFTER SYLLABUS)
+         ======================= -->
+    <section class="section section--reqStrip">
+      <div class="wrap reqStrip">
+        <div class="reqStrip__head" data-reveal>
+          <div>
+            <h2 class="reqStrip__title">DGCA</h2>
+            <div class="reqStrip__sub">Flying Requirements</div>
+          </div>
+          <p class="reqStrip__desc">
+            In order to be eligible for the DGCA CPL, it is extremely important to comply with the requirements.
+            You need to be aware of the civil aviation regulations, safety and procedures.
+          </p>
+        </div>
+
+        <div class="reqStrip__grid" data-reveal>
+          <div class="reqPill">
+            <span class="reqPill__text">100 HOURS PILOT IN COMMAND (PIC)</span>
+            <span class="reqPill__icon" aria-hidden="true">🧑‍✈️</span>
+          </div>
+
+          <div class="reqPill">
+            <span class="reqPill__text">250 NAUTICAL MILES (NM) CHECK</span>
+            <span class="reqPill__icon" aria-hidden="true">🧭</span>
+          </div>
+
+          <div class="reqPill">
+            <span class="reqPill__text">INSTRUMENT FLIGHT TIME 40 HRS</span>
+            <span class="reqPill__icon" aria-hidden="true">🕹️</span>
+          </div>
+
+          <div class="reqPill">
+            <span class="reqPill__text">50 HOURS SOLO CROSS COUNTRY EACH LEG (100NM)</span>
+            <span class="reqPill__icon" aria-hidden="true">🗺️</span>
+          </div>
+
+          <div class="reqPill">
+            <span class="reqPill__text">5 HRS NIGHT PIC WITH 10 LANDINGS/TAKE-OFFS</span>
+            <span class="reqPill__icon" aria-hidden="true">🌙</span>
+          </div>
+
+          <div class="reqPill">
+            <span class="reqPill__text">120 NAUTICAL MILES (NM) CHECK</span>
+            <span class="reqPill__icon" aria-hidden="true">✈️</span>
+          </div>
+
+          <div class="reqPill">
+            <span class="reqPill__text">300 NAUTICAL MILES (NM) CHECK</span>
+            <span class="reqPill__icon" aria-hidden="true">🧭</span>
+          </div>
+
+          <div class="reqPill">
+            <span class="reqPill__text">MULTI ENGINE (10HRS DGCA) OR (15HRS AIRBUS)</span>
+            <span class="reqPill__icon" aria-hidden="true">⚙️</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         DGCA EXAM REQUIREMENTS (RED PLANE REVEAL)
+         ======================= -->
+    <section class="section section--soft">
+      <div class="wrap">
+        <h2 class="h2">DGCA Exam Requirements</h2>
+
+        <div class="reqCard boxParallax" data-reveal data-parallax>
+          <div class="reqCard__bg">
+            <img src="assets/dgca-airplane.jpg" alt="" aria-hidden="true" />
+          </div>
+
+          <div class="reqCols">
+            <div class="reqCol">
+              <h3>Flight Training in India</h3>
+              <ul class="reqList">
+                <li>Navigation</li><li>Meteorology</li><li>Air Regulations</li><li>Technical General</li><li>Technical Specific</li><li>RTR</li>
+              </ul>
+            </div>
+
+            <div class="reqCol">
+              <h3>Flight Training Abroad</h3>
+              <div class="miniCols">
+                <div class="miniCol">
+                  <h4>Commonwealth countries - New Zealand, Canada etc</h4>
+                  <ul class="reqList"><li>Navigation</li><li>Meteorology</li><li>Air Regulations</li></ul>
+                </div>
+
+                <div class="miniCol">
+                  <h4>Non Commonwealth countries - USA</h4>
+                  <ul class="reqList"><li>Navigation</li><li>Meteorology</li><li>Air Regulations</li><li>RTR</li></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================
+         DGCA COMPUTER NUMBER PROCESS
+         ======================= -->
+    <section class="section">
+      <div class="wrap processGrid" data-reveal>
+        <div class="processMedia boxParallax" data-parallax>
+          <img src="assets/dgca-computer-number.png" alt="DGCA computer number screenshots" />
+        </div>
+
+        <div class="processCopy">
+          <h2 class="h2" style="text-align:left;margin:0 0 10px">DGCA Computer<br/>Number Process</h2>
+          <p class="p">
+            To become a pilot, obtaining a DGCA Computer Number is essential. This unique ID is required for all DGCA exams,
+            enabling you to track your application status and exam results — and it’s crucial for your pilot license.
+          </p>
+          <p class="p">
+            The application involves filling out a form on the DGCA website and submitting the necessary documents.
+            We guide you through every step — so you don’t waste time guessing.
+          </p>
+
+          <a class="btn btn--solid" href="contact.html#dgca-help">
+            GET HELP NOW <span class="btnArrow" aria-hidden="true">›</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         NEXT BATCH + PREREQS + DGCA LINKS
+         ======================= -->
+    <section class="section section--soft">
+      <div class="wrap">
+
+        <div class="batchRow" data-reveal>
+          <div class="stamp" aria-hidden="true">
+            <div class="stamp__inner">ENROLL NOW • BOOK YOUR SLOT • ENROLL NOW • BOOK YOUR SLOT •</div>
+          </div>
+
+          <div class="batchCard boxParallax" data-parallax>
+            <div class="batchCard__bg">
+              <img src="assets/dgca-batch-bg.jpg" alt="" aria-hidden="true" />
+            </div>
+            <div class="batchCard__content">
+              <h3>Next Batch: February 2026</h3>
+              <p>Seats Available: Limited (16 per batch)</p>
+              <a class="btn btn--light" href="contact.html#reserve">
+                ENROLL EARLY TO RESERVE YOUR SLOT <span class="btnArrow" aria-hidden="true">›</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="h2 center" style="margin-top:34px">DGCA Prerequisite stages</h2>
+
+        <div class="grid3" data-reveal>
+          <div class="stageCard"><div class="stageIcon">🧾</div><div class="stageTitle">DGCA Computer Number</div><div class="stageSub">Document prep, verification, shortfall handling.</div></div>
+          <div class="stageCard"><div class="stageIcon">🩺</div><div class="stageTitle">Pilot Medical Examinations</div><div class="stageSub">Class 1 / Class 2 process guidance &amp; bookings.</div></div>
+          <div class="stageCard"><div class="stageIcon">🗂️</div><div class="stageTitle">eGCA Support</div><div class="stageSub">Uploading, shortfall replies, tracking — end to end.</div></div>
+        </div>
+
+        <div class="linksCard" data-reveal>
+          <div class="linksLeft">
+            <h3>DGCA Important Links</h3>
+            <div class="logoStub" aria-hidden="true">DIRECTORATE GENERAL OF CIVIL AVIATION</div>
+          </div>
+
+          <div class="linksRight">
+            <div class="linkCol">
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/" target="_blank" rel="noopener">DGCA (Main Portal)</a>
+              <a class="miniLink" href="https://pariksha.dgca.gov.in/" target="_blank" rel="noopener">DGCA Exam Portal (Pariksha)</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?dynamicPage=examinationSyllabusReq%2F12%2F0%2FviewDynamicServicesReq" target="_blank" rel="noopener">DGCA Exam Syllabus</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?page=publicNotices" target="_blank" rel="noopener">Pilot Notice Board / Public Notices</a>
+            </div>
+
+            <div class="linkCol">
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?page=4334%2F4234%2Fservicename" target="_blank" rel="noopener">Medical (Class 1/2/3 Examiners)</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/" target="_blank" rel="noopener">DGCA CPL Requirements</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?page=4334%2F4234%2Fservicename" target="_blank" rel="noopener">Class 1 Medical</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?page=4334%2F4234%2Fservicename" target="_blank" rel="noopener">Class 2 Medical</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+<!-- FULL FOOTER (GetWings-style) -->
+<footer class="gwFooter" id="gwFooter">
+  <!-- Big plane image (scroll anim target) -->
+  <img
+    src="assets/footer-plane.png"
+    alt=""
+    class="gwFooter__plane"
+    id="gwFooterPlane"
+    aria-hidden="true"
+  />
+
+  <div class="gwFooter__inner">
+    <!-- LEFT: Brand -->
+    <div class="gwFooter__brand">
+      <img class="gwFooter__logo" src="assets/logo.png" alt="Horizon" />
+
+      <p class="gwFooter__desc">
+        Your trusted partner in DGCA CPL Ground School and flight training.
+        Clear structure, real mentorship — built for cockpit-ready careers.
+      </p>
+
+      <div class="gwFooter__socials" aria-label="Social links">
+        <a href="#" class="gwSocial" aria-label="Instagram">◎</a>
+        <a href="#" class="gwSocial" aria-label="Twitter">𝕏</a>
+        <a href="#" class="gwSocial" aria-label="Facebook">f</a>
+      </div>
+    </div>
+
+    <!-- MIDDLE: Columns -->
+    <div class="gwFooter__cols">
+      <div class="gwCol">
+        <h4>Courses</h4>
+        <a href="#">DGCA Ground Classes</a>
+        <a href="#">Simulator Sessions</a>
+        <a href="#">Private Pilot License (PPL)</a>
+        <a href="#">Night Rating</a>
+        <a href="#">Instrument Rating (IR)</a>
+        <a href="#">Multi-Engine Rating</a>
+        <a href="#">Commercial Pilot License</a>
+        <a href="#">Flight Instructor Rating</a>
+        <a href="#">Diploma in Aviation</a>
+        <a href="#">Type Rating</a>
+      </div>
+
+      <div class="gwCol">
+        <h4>DGCA Links</h4>
+        <a href="#">DGCA</a>
+        <a href="#">DGCA Exam Portal</a>
+        <a href="#">DGCA Exam Syllabus</a>
+        <a href="#">Pilot Notice Board</a>
+        <a href="#">DGCA Approved Aircrafts</a>
+        <a href="#">DGCA CPL Requirements</a>
+        <a href="#">Class 1 Medical</a>
+        <a href="#">Class 2 Medical</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Hours + Contact -->
+    <div class="gwFooter__right">
+      <div class="gwHours">
+        <div class="gwHours__col">
+          <p class="gwHours__label">Monday–Friday:</p>
+          <p class="gwHours__time">10:30am–6:30pm</p>
+        </div>
+        <div class="gwHours__divider"></div>
+        <div class="gwHours__col">
+          <p class="gwHours__label">Saturday:</p>
+          <p class="gwHours__time">10:30am–2:00pm</p>
+        </div>
+      </div>
+
+      <div class="gwContact">
+        <div class="gwRow">
+          <span class="gwDot" aria-hidden="true">⌁</span>
+          <p>1st Floor, 9/6A, Devki Nandan Marg, Tilak Nagar, New Delhi 110018</p>
+        </div>
+
+        <div class="gwRow">
+          <span class="gwDot" aria-hidden="true">✆</span>
+          <p>+91 7000000000<br/>+91 8000000000</p>
+        </div>
+
+        <div class="gwRow">
+          <span class="gwDot" aria-hidden="true">✉</span>
+          <p>info@horizonaviation.in<br/>admissions@horizonaviation.in</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- FOOTER goes right after this -->
+
+  <!-- bottom bar -->
+  <div class="gwFooter__bottom">
+    <div class="gwFooter__bottomInner">
+      <span>Copyright 2026 Horizon Aviation Pvt. Ltd.</span>
+      <a href="#" class="gwFooter__policy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+  <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="dgca.js" defer></script>
+</body>
+</html>

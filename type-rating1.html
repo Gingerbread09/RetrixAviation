@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Horizon</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/type-rating.css" />
+</head>
+
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="topbar">
+    <div class="topbar__marquee">
+      <div class="topbar__msg">
+        <span>Admissions Open</span>
+        <span class="dot">•</span>
+        <span>DGCA Ground Classes Open</span>
+        <span class="dot">•</span>
+        <a href="contact.html#book" class="topbar__link">Book your slot</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navwrap">
+    <div class="nav-clouds" aria-hidden="true"></div>
+
+    <div class="navinner">
+      <a class="brand" href="index.html#top">
+        <img class="brand__logo" src="assets/logo.png" alt="Horizon" />
+      </a>
+
+      <button class="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <ul class="menu" id="menu">
+          <li><a class="link" href="dgca.html">DGCA Ground School</a></li>
+          <li><a class="link" href="simulator.html">In-house Simulator</a></li>
+          <li><a class="link" href="courses.html">Courses</a></li>
+
+          <!-- PILOT TRAINING DROPDOWN -->
+          <li class="dd">
+            <a class="link dd__btn is-active" href="pilot-training.html" aria-expanded="false">
+              Pilot Training <span class="caret">▾</span>
+            </a>
+
+            <div class="dd__menu" role="menu" aria-label="Pilot Training submenu">
+              <a href="type-rating.html" role="menuitem">Type Rating</a>
+            </div>
+          </li>
+
+          <li><a class="link" href="become-a-pilot.html">Become a Pilot</a></li>
+          <li><a class="link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- ROUTE STRIP -->
+    <div class="route">
+      <div class="route__line"></div>
+      <div class="route__plane" id="plane" aria-hidden="true">
+        <img src="assets/plane.png" alt="" />
+      </div>
+    </div>
+  </header>
+
+  <!-- TYPE RATING HERO -->
+  <section class="typeHero" id="top">
+    <div class="typeHero__inner">
+
+      <div class="typeHero__copy">
+        <p class="typeHero__kicker">PILOT TRAINING</p>
+        <h1 class="typeHero__title">Type Rating</h1>
+        <p class="typeHero__sub">
+          A Type Rating is an additional qualification that allows a pilot to operate a specific aircraft type
+          (usually large or complex aircraft). It’s aircraft-specific training focused on systems, procedures,
+          simulator sessions, and operational standards.
+        </p>
+
+        <div class="typeHero__bullets">
+          <div class="pill">Aircraft systems</div>
+          <div class="pill">Simulator sessions</div>
+          <div class="pill">SOPs + procedures</div>
+          <div class="pill">Airline readiness</div>
+        </div>
+      </div>
+
+      <div class="typeHero__visual">
+        <!-- IMPORTANT: stage has NO <img> inside; JS spawns it -->
+        <div class="aircraftStage" id="aircraftStage" aria-label="Aircraft preview">
+          <div class="aircraftGlow" aria-hidden="true"></div>
+        </div>
+
+        <div class="aircraftTabs" role="tablist" aria-label="Aircraft selection">
+          <button class="airTab is-active" type="button" role="tab" aria-selected="true" data-aircraft="airbus">
+            ✈︎ Airbus
+          </button>
+          <button class="airTab" type="button" role="tab" aria-selected="false" data-aircraft="boeing">
+            ✈︎ Boeing
+          </button>
+          <button class="airTab" type="button" role="tab" aria-selected="false" data-aircraft="atr">
+            ✈︎ ATR
+          </button>
+        </div>
+
+        <p class="aircraftNote" id="aircraftNote">
+          Airbus A320 family — one of the most common airline fleets.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="js/app.js"></script>
+  <script src="js/type-rating.js"></script>
+</body>
+</html>

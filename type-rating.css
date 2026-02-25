@@ -1,0 +1,165 @@
+/* =========================
+   TYPE RATING PAGE ONLY
+   Aircraft spawn animation (like your video)
+   ========================= */
+
+   .typeHero{
+    padding: 110px 20px 70px;
+  }
+  
+  .typeHero__inner{
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 34px;
+    align-items: center;
+  }
+  
+  @media (max-width: 920px){
+    .typeHero__inner{ grid-template-columns: 1fr; }
+  }
+  
+  .typeHero__kicker{
+    letter-spacing: .18em;
+    opacity: .8;
+    font-size: 12px;
+  }
+  
+  .typeHero__title{
+    font-size: clamp(40px, 6vw, 66px);
+    line-height: .95;
+    margin: 10px 0 14px;
+  }
+  
+  .typeHero__sub{
+    opacity: .92;
+    max-width: 560px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .typeHero__bullets{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  
+  .pill{
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.06);
+    padding: 10px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+  }
+  
+  .typeHero__visual{
+    display: grid;
+    gap: 14px;
+    justify-items: center;
+  }
+  
+  /* Stage */
+  .aircraftStage{
+    position: relative;
+    width: min(520px, 92vw);
+    height: 320px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: radial-gradient(120% 120% at 40% 30%, rgba(255,255,255,0.12), rgba(255,255,255,0.03));
+    overflow: hidden;
+  }
+  
+  .aircraftGlow{
+    position: absolute;
+    inset: -45%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12), transparent 62%);
+    filter: blur(12px);
+    pointer-events: none;
+  }
+  
+  /* Planes are absolutely positioned so we can overlap (old + new) */
+  .aircraftStage img.aircraftImg{
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    width: 94%;
+    max-width: 520px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    will-change: transform, opacity, filter;
+    pointer-events: none;
+  }
+  
+  /* Incoming plane (the vibe you want) */
+  .aircraftImg.is-enter{
+    animation: planeIn .72s cubic-bezier(.16, .9, .22, 1) both;
+  }
+  
+  /* Outgoing plane (subtle, not dramatic) */
+  .aircraftImg.is-exit{
+    animation: planeOut .45s ease-in both;
+  }
+  
+  @keyframes planeIn{
+    0%{
+      opacity: 0;
+      filter: blur(3px);
+      transform: translate(-140%, -52%) scale(.96) rotate(-1.5deg);
+    }
+    65%{
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate(-46%, -52%) scale(1.01) rotate(.2deg); /* tiny overshoot */
+    }
+    100%{
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate(-50%, -52%) scale(1) rotate(0deg);
+    }
+  }
+  
+  @keyframes planeOut{
+    from{
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate(-50%, -52%) scale(1);
+    }
+    to{
+      opacity: 0;
+      filter: blur(2px);
+      transform: translate(-35%, -52%) scale(.985); /* drift a bit */
+    }
+  }
+  
+  /* Tabs */
+  .aircraftTabs{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .airTab{
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .airTab.is-active{
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.30);
+  }
+  
+  .aircraftNote{
+    opacity: .85;
+    font-size: 14px;
+    text-align: center;
+    max-width: 460px;
+  }
+  

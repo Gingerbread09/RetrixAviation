@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulator Experience | Horizon Aviation</title>
+
+  <!-- global -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- page specific -->
+  <link rel="stylesheet" href="simulator.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR (same classes) -->
+  <header class="navwrap" id="top">
+    <div class="nav-clouds" aria-hidden="true"></div>
+
+    <div class="navinner">
+      <a class="brand" href="index.html">
+        <img class="brand__logo" src="assets/logo.png" alt="Horizon" />
+      </a>
+
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav" aria-label="Primary navigation">
+        <ul class="menu" id="menu">
+          <li><a class="link" href="index.html#dgca">DGCA Ground School</a></li>
+          <li><a class="link" href="index.html#sim">In-house Simulator</a></li>
+          <li><a class="link" href="courses.html">Courses</a></li>
+
+          <li class="dd" id="ddPilot">
+            <button class="link dd__btn" type="button" aria-expanded="false">
+              Pilot Training <span class="caret">▾</span>
+            </button>
+
+            <div class="dd__menu" role="menu">
+              <a href="pilot-training.html#type-rating" role="menuitem">Type Rating</a>
+              <a href="pilot-training.html#atr" role="menuitem">ATR</a>
+              <a href="pilot-training.html#boeing" role="menuitem">Boeing</a>
+            </div>
+          </li>
+
+          <li><a class="link" href="become-a-pilot.html">Become a Pilot</a></li>
+          <li><a class="link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- ROUTE STRIP -->
+    <div class="route" aria-hidden="true">
+      <div class="route__line"></div>
+      <div class="route__plane" id="plane">
+        <img src="assets/plane.png" alt="" />
+      </div>
+    </div>
+  </header>
+
+  <main class="simPage">
+
+    <!-- FULLSCREEN VIDEO HERO -->
+    <section class="simHero" aria-label="Simulator experience hero">
+      <video class="simHero__video" autoplay muted loop playsinline>
+        <source src="assets/simulator.mp4" type="video/mp4" />
+      </video>
+      <div class="simHero__overlay" aria-hidden="true"></div>
+
+      <div class="simHero__inner">
+        <p class="simHero__eyebrow">Single-engine simulator</p>
+        <h1 class="simHero__title">Basic Simulator Experience</h1>
+        <p class="simHero__sub">
+          We offer beginner-friendly flying lessons with a single-engine simulator setup —
+          a solid first step if you’re planning to start flight training abroad.
+        </p>
+
+        <div class="simHero__actions">
+          <a class="heroBtn" href="contact.html#brochure">Request Brochure</a>
+          <a class="heroBtn heroBtn--ghost" href="https://wa.me/" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
+          <a class="heroBtn heroBtn--ghost" href="contact.html#visit">Book a Visit</a>
+        </div>
+
+        <div class="simHero__chips" aria-label="Quick highlights">
+          <span class="chip">3 screens</span>
+          <span class="chip">Joystick + Thrust lever</span>
+          <span class="chip">Beginner friendly</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="simSection" id="details">
+      <div class="simSection__inner">
+
+        <div class="simGrid">
+          <div class="simCard simCard--white">
+            <h2 class="simCard__title">What you’ll experience</h2>
+            <ul class="simList">
+              <li><strong>3-screen</strong> visual setup for an immersive cockpit view</li>
+              <li><strong>Joystick</strong> control + <strong>thrust lever</strong> for power management</li>
+              <li><strong>Basic flying lessons</strong> to help you get familiar with handling</li>
+            </ul>
+
+            <div class="simCallout">
+              <p class="simCallout__title">Good for students flying abroad</p>
+              <p class="simCallout__text">
+                If you’re planning to start flight training abroad, this simulator experience helps you build
+                early confidence and get comfortable with fundamentals.
+              </p>
+            </div>
+          </div>
+
+          <div class="simCard simCard--dark">
+            <h2 class="simCard__title">Simulator image</h2>
+
+            <!-- swap this for real photo later -->
+            <div class="simImagePlaceholder">
+              <p><strong>Photo coming soon.</strong><br/>We’ll upload the academy simulator photo once installed.</p>
+            </div>
+
+            <p class="simTiny">
+              (If needed, we can use a similar AI image temporarily — but real photo is always better.)
+            </p>
+          </div>
+        </div>
+
+        <div class="simStepsWrap">
+          <h2 class="simStepsTitle">How it works</h2>
+          <div class="simSteps">
+            <article class="howCard">
+              <h3>1) Enquire</h3>
+              <p>Message us on WhatsApp or request the brochure to get the details.</p>
+            </article>
+            <article class="howCard">
+              <h3>2) Book a visit</h3>
+              <p>Visit the academy, see the setup, and understand what you’ll practice.</p>
+            </article>
+            <article class="howCard">
+              <h3>3) Take your session</h3>
+              <p>Start with basic handling and guided exercises (beginner-friendly).</p>
+            </article>
+          </div>
+
+          <div class="simCtaRow">
+            <a class="ctaBtn" href="contact.html#brochure">View Detailed Brochure</a>
+            <a class="ctaBtn ctaBtn--ghost" href="https://wa.me/" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FULL FOOTER (same classes) -->
+  <footer class="gwFooter" id="gwFooter">
+    <img
+      src="assets/footer-plane.png"
+      alt=""
+      class="gwFooter__plane"
+      id="gwFooterPlane"
+      aria-hidden="true"
+    />
+
+    <div class="gwFooter__inner">
+      <div class="gwFooter__brand">
+        <img class="gwFooter__logo" src="assets/logo.png" alt="Horizon" />
+
+        <p class="gwFooter__desc">
+          Your trusted partner in DGCA CPL Ground School and flight training.
+          Clear structure, real mentorship — built for cockpit-ready careers.
+        </p>
+
+        <div class="gwFooter__socials" aria-label="Social links">
+          <a href="#" class="gwSocial" aria-label="Instagram">◎</a>
+          <a href="#" class="gwSocial" aria-label="Twitter">𝕏</a>
+          <a href="#" class="gwSocial" aria-label="Facebook">f</a>
+        </div>
+      </div>
+
+      <div class="gwFooter__cols">
+        <div class="gwCol">
+          <h4>Courses</h4>
+          <a href="#">DGCA Ground Classes</a>
+          <a href="#">Simulator Sessions</a>
+          <a href="#">Private Pilot License (PPL)</a>
+          <a href="#">Night Rating</a>
+          <a href="#">Instrument Rating (IR)</a>
+          <a href="#">Multi-Engine Rating</a>
+          <a href="#">Commercial Pilot License</a>
+          <a href="#">Flight Instructor Rating</a>
+          <a href="#">Diploma in Aviation</a>
+          <a href="#">Type Rating</a>
+        </div>
+
+        <div class="gwCol">
+          <h4>DGCA Links</h4>
+          <a href="#">DGCA</a>
+          <a href="#">DGCA Exam Portal</a>
+          <a href="#">DGCA Exam Syllabus</a>
+          <a href="#">Pilot Notice Board</a>
+          <a href="#">DGCA Approved Aircrafts</a>
+          <a href="#">DGCA CPL Requirements</a>
+          <a href="#">Class 1 Medical</a>
+          <a href="#">Class 2 Medical</a>
+        </div>
+      </div>
+
+      <div class="gwFooter__right">
+        <div class="gwHours">
+          <div class="gwHours__col">
+            <p class="gwHours__label">Monday–Friday:</p>
+            <p class="gwHours__time">10:30am–6:30pm</p>
+          </div>
+          <div class="gwHours__divider"></div>
+          <div class="gwHours__col">
+            <p class="gwHours__label">Saturday:</p>
+            <p class="gwHours__time">10:30am–2:00pm</p>
+          </div>
+        </div>
+
+        <div class="gwContact">
+          <div class="gwRow">
+            <span class="gwDot" aria-hidden="true">⌁</span>
+            <p>1st Floor, 9/6A, Devki Nandan Marg, Tilak Nagar, New Delhi 110018</p>
+          </div>
+
+          <div class="gwRow">
+            <span class="gwDot" aria-hidden="true">✆</span>
+            <p>+91 7000000000<br/>+91 8000000000</p>
+          </div>
+
+          <div class="gwRow">
+            <span class="gwDot" aria-hidden="true">✉</span>
+            <p>info@horizonaviation.in<br/>admissions@horizonaviation.in</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gwFooter__bottom">
+      <div class="gwFooter__bottomInner">
+        <span>Copyright 2026 Horizon Aviation Pvt. Ltd.</span>
+        <a href="#" class="gwFooter__policy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
+    burger?.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Mobile dropdown toggle for Pilot Training
+    const dd = document.getElementById('ddPilot');
+    const ddBtn = dd?.querySelector('.dd__btn');
+    ddBtn?.addEventListener('click', () => {
+      // only matters on mobile where menu is inline
+      dd.classList.toggle('is-open');
+      ddBtn.setAttribute('aria-expanded', dd.classList.contains('is-open') ? 'true' : 'false');
+    });
+  </script>
+
+</body>
+</html>

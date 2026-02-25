@@ -1,0 +1,194 @@
+/* =========================================
+   RESOURCES PAGE
+   ========================================= */
+
+/* ---------- HERO OVERRIDE ---------- */
+
+.resourcesHero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 6vw 80px;
+    background:
+      linear-gradient(180deg,
+        rgba(6,18,32,.75) 0%,
+        rgba(6,18,32,.92) 60%,
+        rgba(6,18,32,1) 100%
+      ),
+      url("../assets/runway.png");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+  }
+  
+  .resourcesHero__inner {
+    max-width: 1100px;
+  }
+  
+  .resourcesHero__kicker {
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-size: 13px;
+    color: var(--gold2);
+    margin-bottom: 14px;
+  }
+  
+  .resourcesHero__title {
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.05;
+    margin: 0 0 18px;
+  }
+  
+  .resourcesHero__sub {
+    max-width: 70ch;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(233,238,252,.85);
+  }
+  
+  
+  /* ---------- MAIN CONTENT SECTION ---------- */
+  
+  .resourcesSection {
+    background: #ffffff;
+    color: #0b1220;
+    padding: 90px 6vw;
+  }
+  
+  .resourcesSection__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .resourcesBlock {
+    margin-bottom: 70px;
+  }
+  
+  .resourcesBlock__title {
+    font-size: 28px;
+    margin-bottom: 18px;
+    position: relative;
+  }
+  
+  .resourcesBlock__title::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    margin-top: 8px;
+    background: linear-gradient(90deg, var(--gold2), var(--gold));
+    border-radius: 999px;
+  }
+  
+  .resourcesBlock__text {
+    line-height: 1.8;
+    color: rgba(11,18,32,.75);
+    margin-bottom: 14px;
+    font-size: 15px;
+  }
+  
+  .resourcesList {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+  }
+  
+  .resourcesList li {
+    padding-left: 22px;
+    margin-bottom: 10px;
+    position: relative;
+    font-size: 15px;
+    color: rgba(11,18,32,.75);
+  }
+  
+  .resourcesList li::before {
+    content: "✈";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--gold);
+    font-size: 14px;
+  }
+  
+  
+  /* ---------- KEYWORD GRID ---------- */
+  
+  .resourcesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  
+  .resourceCard {
+    border: 1px solid rgba(11,18,32,.08);
+    border-radius: 18px;
+    padding: 22px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(0,0,0,.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  
+  .resourceCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  }
+  
+  .resourceCard__title {
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  
+  .resourceCard__text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(11,18,32,.7);
+  }
+  
+  
+  /* ---------- CTA STRIP ---------- */
+  
+  .resourcesCTA {
+    background: #061220;
+    color: #fff;
+    padding: 70px 6vw;
+    text-align: center;
+  }
+  
+  .resourcesCTA h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  
+  .resourcesCTA p {
+    max-width: 60ch;
+    margin: 0 auto 26px;
+    color: rgba(233,238,252,.8);
+    line-height: 1.7;
+  }
+  
+  .resourcesCTA .btn {
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+  
+  
+  /* ---------- RESPONSIVE ---------- */
+  
+  @media (max-width: 768px) {
+    .resourcesHero {
+      padding: 100px 6vw 60px;
+    }
+  
+    .resourcesHero__title {
+      font-size: 36px;
+    }
+  
+    .resourcesSection {
+      padding: 70px 6vw;
+    }
+  }
+  

@@ -1,0 +1,3319 @@
+@font-face {
+  font-family: "HorizonFont";
+  src: url("../assets/fonts/ZalandoSansExpanded-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root{
+  --navy:#0b1220;
+  --navy2:#101c34;
+  --gold:#d6a82a;
+  --gold2:#f0c55a;
+  --text:#e9eefc;
+  --muted:#a8b3cf;
+  --stroke: rgba(255,255,255,.08);
+  --shadow: 0 16px 40px rgba(0,0,0,.35);
+
+  --topbarH: 38px;
+  --navRowH: 97px;   /* tweak if logo row height changes */
+  --routeH: 40px;
+}
+main{
+  margin-top: calc(-1 * (var(--navRowH) + var(--routeH)));
+  padding-top: calc(var(--navRowH) + var(--routeH));
+}
+*{ box-sizing:border-box; }
+html, body{
+  margin: 0;
+}
+
+body{
+  margin:0;
+  font-family: "HorizonFont", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+button, input, select, textarea { font-family: inherit; }
+
+/* ================= TOPBAR ================= */
+.topbar{
+  width:100%;
+  background: linear-gradient(90deg, #0b1c2d, #0f2a44);
+  color:#fff;
+  overflow:hidden;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.topbar__marquee{
+  position: relative;
+  height: var(--topbarH);
+  display:flex;
+  align-items:center;
+}
+
+.topbar__msg{
+  position: absolute;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  padding-left: 18px;
+  transform: translateX(-110%);
+  animation: marqueeLTR 12s linear infinite;
+}
+
+.topbar .dot{ opacity:.6; }
+
+.topbar__link{
+  color:#f0c55a;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.topbar__link:hover{ text-decoration: underline; }
+
+@keyframes marqueeLTR{
+  0%   { transform: translateX(-110%); }
+  100% { transform: translateX(110vw); }
+}
+
+/* ================= NAVBAR ================= */
+.navwrap{
+  position: fixed;               /* was sticky */
+  top: var(--topbarH);
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  overflow: visible;
+}
+.navinner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 18px;
+  display:flex;
+  align-items:center;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.brand{ display:flex; align-items:center; text-decoration:none; }
+.brand__logo{ height: 100px; width:auto; display:block; }
+
+.nav{ margin-left: auto; display:flex; align-items:center; }
+
+.menu{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  align-items:center;
+  gap: 14px;
+}
+
+.link{
+  color: var(--navy);
+  font-size: 14px;
+  text-decoration:none;
+  padding: 10px 10px;
+  border-radius: 12px;
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  background: transparent;
+  border:none;
+  cursor:pointer;
+  white-space: nowrap;
+}
+
+.link:hover{ background: rgba(255,255,255,.06); }
+
+.link.is-active{
+  background: rgba(214,168,42,.12);
+  box-shadow: inset 0 0 0 1px rgba(214,168,42,.22);
+}
+
+.caret{ color: var(--muted); font-size: 12px; }
+
+/* Dropdown */
+.dd{ position:relative; }
+.dd__menu{
+  position:absolute;
+  top: 46px;
+  left: 0;
+  min-width: 220px;
+  padding: 8px;
+  background: rgba(16,28,52,.98);
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  display:none;
+  z-index: 9999;
+}
+
+.dd__menu a{
+  display:block;
+  padding: 10px 10px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration:none;
+  font-size: 13px;
+}
+.dd__menu a:hover{ background: rgba(255,255,255,.06); }
+.dd:hover .dd__menu{ display:block; }
+
+/* MOBILE NAV */
+.burger{
+  display:none;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.03);
+  cursor:pointer;
+  margin-left: auto;
+}
+
+.burger span{
+  display:block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  margin: 6px auto;
+  border-radius: 999px;
+}
+
+@media (max-width: 980px){
+  .burger{ display:block; }
+  .nav{ display:none; width:100%; }
+  .nav.is-open{ display:block; }
+
+  .navinner{
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .brand{ flex: 0 0 auto; }
+  .burger{ flex: 0 0 auto; }
+
+  .menu{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-top: 10px;
+  }
+  .link{ justify-content: space-between; width: 100%; }
+}
+
+/* ================= ROUTE STRIP ================= */
+.route{
+  position: relative;
+  width: 100%;
+  height: var(--routeH);
+  overflow: visible;
+  background: transparent;
+  z-index: 1;
+}
+
+.route__line{
+  position: absolute;
+  top: 46%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,.85) 0 10px,
+    rgba(255,255,255,0) 10px 18px
+  );
+  animation: runwayGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes runwayGlow{
+  0%,100%{
+    opacity:.75;
+    box-shadow:
+      0 0 6px rgba(255,255,255,.35),
+      0 0 12px rgba(255,255,255,.2);
+  }
+  50%{
+    opacity:1;
+    box-shadow:
+      0 0 8px rgba(255,255,255,.5),
+      0 0 16px rgba(255,255,255,.3);
+  }
+}
+
+.route__plane{
+  --x: 18px;
+  --rot: 0deg;
+  position: absolute;
+  top: 46%;
+  left: 0;
+  transform: translateX(var(--x)) translateY(-50%) rotate(var(--rot));
+  transform-origin: center;
+  transition: transform .45s cubic-bezier(.2,.9,.2,1);
+  will-change: transform;
+}
+
+.route__plane img{
+  height: 30px;
+  width: auto;
+  display: block;
+  filter:
+    drop-shadow(0 0 4px rgba(240,197,90,.6))
+    drop-shadow(0 0 8px rgba(240,197,90,.35));
+}
+
+/* ================= HERO ================= */
+.heroTakeoff {
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  padding-top: calc(var(--navRowH) + var(--routeH) + 24px);
+  padding-bottom: 80px;
+  min-height: calc(100vh - var(--topbarH));
+  
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  overflow: hidden;
+
+    background-image: url("../assets/runway.png");
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+
+/* smooth blend into next section */
+.heroTakeoff::before{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height: 220px;
+  pointer-events:none;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(6,18,32,0) 0%,
+    rgba(6,18,32,.55) 45%,
+    rgba(6,18,32,.92) 100%
+  );
+}
+
+.heroText,
+.heroPlaneWrap{
+  position: relative;
+  z-index: 4;
+}
+
+/* FIX: right text cutting on desktop */
+@media (min-width: 981px){
+  .heroTakeoff{ column-gap: 28px; }
+  .heroText.right{ padding-right: 24px; }
+}
+
+/* clouds */
+.cloud{
+  position: absolute;
+  left: 0;
+  width: 2200px;
+  height: 320px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: .20;
+  mix-blend-mode: screen;
+
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+
+  will-change: transform;
+  animation-fill-mode: both;
+}
+
+.cloud--a{
+  top: 10%;
+  background-image: url("../assets/cloud.png");
+  animation: cloudLTR 55s linear infinite;
+  animation-delay: -18s;
+}
+
+.cloud--b{
+  top: 22%;
+  opacity: .14;
+  background-image: url("../assets/cloud2.png");
+  animation: cloudRTL 70s linear infinite;
+  animation-delay: -26s;
+}
+
+@keyframes cloudLTR{
+  from { transform: translate3d(-35%, 0, 0); }
+  to   { transform: translate3d(100vw, 0, 0); }
+}
+@keyframes cloudRTL{
+  from { transform: translate3d(100vw, 0, 0); }
+  to   { transform: translate3d(-45%, 0, 0); }
+}
+
+/* hero text */
+.heroText{
+  color: white;
+  opacity: .92;
+}
+.heroText.left{ text-align: left; }
+.heroText.right{ text-align: right; }
+
+.heroKicker{
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  opacity: .85;
+  margin: 0 0 14px;
+}
+
+.heroText h1{
+  font-size: clamp(38px, 5vw, 70px);
+  line-height: 1.02;
+  margin: 0 0 12px;
+}
+
+.heroText h2{
+  font-size: clamp(26px, 3.5vw, 46px);
+  line-height: 1.08;
+  margin: 0 0 12px;
+  opacity: .95;
+}
+
+.heroSub{
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.82);
+  max-width: 52ch;
+}
+
+.heroBtns{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 12px 16px;
+  border-radius: 999px;
+  text-decoration:none;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.btn.primary{
+  background: linear-gradient(180deg, var(--gold2), var(--gold));
+  color: #071a2e;
+  box-shadow: 0 10px 25px rgba(214,168,42,.22);
+}
+
+.btn.ghost{
+  border: 1px solid rgba(255,255,255,.22);
+  color: white;
+  backdrop-filter: blur(8px);
+}
+
+.heroPlaneWrap{
+  position: sticky;
+  top: 35vh;
+  z-index: 4;
+}
+
+.heroPlaneWrap img{
+  width: min(720px, 60vw);
+  transform-origin: center;
+  will-change: transform;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,.45));
+}
+
+.heroFade{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 220px;
+  pointer-events:none;
+}
+
+/* MOBILE HERO LAYOUT */
+@media (max-width: 980px){
+  .heroTakeoff{
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .heroText.left,
+  .heroText.right{
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .heroSub{ margin-left:auto; margin-right:auto; }
+
+  .heroPlaneWrap{
+    position: relative;
+    top: auto;
+  }
+
+  .heroPlaneWrap img{
+    width: min(520px, 88vw);
+  }
+
+  .cloud{
+    height: 220px;
+    opacity: .16;
+  }
+
+  .cloud--a{ top: 8%; }
+  .cloud--b{ top: 18%; }
+}
+
+/* iPad ONLY: center plane + center buttons */
+@media (min-width: 768px) and (max-width: 1024px){
+  .heroPlaneWrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    justify-self: center;
+  }
+  .heroPlaneWrap img{
+    display: block;
+    margin: 0 auto;
+  }
+  .heroBtns{ justify-content: center; }
+}
+
+/* Mobile ONLY: stack buttons centered */
+@media (max-width: 767px) {
+  .heroBtns{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .heroBtns .btn{
+    width: 100%;
+    max-width: 260px;
+    text-align: center;
+  }
+}
+
+/* =========================
+   CONTENT
+   ========================= */
+.content{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 18px;
+  color: white;
+}
+
+/* =========================
+   PERKS SECTION (modern + aviation)
+   ========================= */
+
+.perks{
+  position: relative;
+  padding: 96px 0;
+  overflow: hidden;
+  background: radial-gradient(900px 520px at 70% 20%, rgba(240, 197, 90, .18), transparent 60%), radial-gradient(780px 520px at 18% 40%, rgba(120, 200, 255, .16), transparent 60%), linear-gradient(180deg, rgba(235, 231, 232, 1) 0%, rgba(210, 220, 235, 1) 100%);
+}
+/* keep your divider as-is (you said you like it) */
+.perks::before{
+  content:"";
+  position:absolute;
+  left: 50%;
+  top: 0;
+  width: min(1040px, 94vw);
+  height: 2px;
+  transform: translateX(-50%);
+  pointer-events:none;
+  z-index: 2;
+  background: linear-gradient(90deg, transparent, rgba(240,197,90,.22), transparent);
+  opacity: .75;
+}
+
+.perks__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.perks__head{
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.perks__eyebrow{
+  margin: 0 0 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(240,197,90,.9);
+}
+
+.perks__title{
+  margin: 0 0 6px;
+  color: rgb(11 18 32 / 87%);
+  font-weight: 700;}
+
+.perks__sub{
+  margin: 0 0 20px;
+  line-height: 1.7;
+  color: rgb(11 18 32 / 62%);;
+}
+
+.perks__grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+/* =========================
+   PERK CARD (HUD / cockpit)
+   ========================= */
+
+.perkCard{
+  /* per-card “randomness” knobs */
+  --hud: rgba(255,255,255,.06);
+  --routeC: rgba(255,255,255,.52);
+  --blipC: rgba(240,197,90,.9);
+  --routeX: 18px;
+  --routeAng: 3deg;
+  --routeSpeed: 4.2s;
+
+  position: relative;
+  border-radius: 22px;
+  padding: 18px 18px 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(8, 24, 44, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 44px rgba(0,0,0,.35);
+  transform: translateZ(0);
+  isolation: isolate;
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+/* animated sheen bg */
+.perkCard__bg{
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  opacity: .9;
+  pointer-events: none;
+  background:
+    radial-gradient(680px 280px at 15% 20%, rgba(240,197,90,.14), transparent 55%),
+    radial-gradient(520px 260px at 90% 30%, rgba(120,200,255,.12), transparent 60%),
+    linear-gradient(120deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+}
+
+/* HUD overlay: scanlines + subtle grid + tiny grain */
+.perkCard::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index: 0;
+  pointer-events:none;
+  opacity: .75;
+
+  background:
+    /* scanlines */
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.03) 0 1px,
+      rgba(255,255,255,0) 1px 6px
+    ),
+    /* hud grid */
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px) 0 0 / 44px 44px,
+    linear-gradient(0deg, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 44px 44px,
+    /* subtle cockpit tint */
+    radial-gradient(900px 420px at 30% 0%, rgba(240,197,90,.08), transparent 60%);
+
+  mix-blend-mode: screen;
+  filter: blur(.2px);
+}
+
+/* Corner brackets (cockpit frame) */
+.perkCard .hudCorners{
+  position:absolute;
+  inset: 12px;
+  z-index: 1;
+  pointer-events:none;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.perkCard .hudCorners::before,
+.perkCard .hudCorners::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(var(--hud), var(--hud)) left top / 16px 2px no-repeat,
+    linear-gradient(var(--hud), var(--hud)) left top / 2px 16px no-repeat,
+
+    linear-gradient(var(--hud), var(--hud)) right top / 16px 2px no-repeat,
+    linear-gradient(var(--hud), var(--hud)) right top / 2px 16px no-repeat,
+
+    linear-gradient(var(--hud), var(--hud)) left bottom / 16px 2px no-repeat,
+    linear-gradient(var(--hud), var(--hud)) left bottom / 2px 16px no-repeat,
+
+    linear-gradient(var(--hud), var(--hud)) right bottom / 16px 2px no-repeat,
+    linear-gradient(var(--hud), var(--hud)) right bottom / 2px 16px no-repeat;
+}
+
+.perkCard:hover .hudCorners{ opacity: .95; }
+
+/* Route telemetry line (vertical-ish, but angled per card) */
+.perkCard::after{
+  content:"";
+  position:absolute;
+  top: -18%;
+  left: var(--routeX);
+  width: 2px;
+  height: 140%;
+  z-index: 1;
+  pointer-events: none;
+
+  opacity: 0;
+
+  background:
+    /* main dashed route */
+    repeating-linear-gradient(
+      to bottom,
+      var(--routeC) 0 10px,
+      rgba(255,255,255,0) 10px 22px
+    );
+
+  transform-origin: center;
+  transform: rotate(var(--routeAng)) translate3d(0, -10px, 0);
+  transition: opacity .35s ease;
+  filter:
+    drop-shadow(0 0 6px rgba(255,255,255,.14))
+    drop-shadow(0 0 12px rgba(240,197,90,.10));
+}
+
+/* Blip + tick marks riding the route (cockpit feel) */
+.perkCard .routeBlip{
+  position:absolute;
+  top: -10%;
+  left: calc(var(--routeX) - 6px);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events:none;
+
+  opacity: 0;
+
+  background:
+    radial-gradient(circle, var(--blipC) 0 3px, rgba(240,197,90,0) 7px);
+
+  filter:
+    drop-shadow(0 0 10px rgba(240,197,90,.35))
+    drop-shadow(0 0 14px rgba(255,255,255,.12));
+
+  transform: rotate(var(--routeAng));
+}
+
+/* tiny tick marks perpendicular to route */
+.perkCard .routeTicks{
+  position:absolute;
+  top: -18%;
+  left: calc(var(--routeX) - 14px);
+  width: 32px;
+  height: 140%;
+  z-index: 1;
+  pointer-events:none;
+
+  opacity: 0;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.16) 0 1px,
+      rgba(255,255,255,0) 1px 14px
+    );
+
+  transform-origin: center;
+  transform: rotate(var(--routeAng));
+  filter: drop-shadow(0 0 8px rgba(255,255,255,.08));
+}
+
+/* animate ONLY on hover (so it stays clean) */
+.perkCard:hover::after,
+.perkCard:hover .routeBlip,
+.perkCard:hover .routeTicks{
+  opacity: .9;
+}
+
+.perkCard:hover::after{
+  animation: routeDrift var(--routeSpeed) linear infinite;
+}
+
+.perkCard:hover .routeBlip{
+  animation: blipTravel var(--routeSpeed) linear infinite;
+}
+
+.perkCard:hover .routeTicks{
+  animation: ticksDrift calc(var(--routeSpeed) * 1.1) linear infinite;
+}
+
+@keyframes routeDrift{
+  0%   { transform: rotate(var(--routeAng)) translate3d(0, -10px, 0); }
+  50%  { transform: rotate(var(--routeAng)) translate3d(0, 6px, 0); }
+  100% { transform: rotate(var(--routeAng)) translate3d(0, -10px, 0); }
+}
+
+@keyframes blipTravel{
+  0%   { transform: rotate(var(--routeAng)) translate3d(0, 0, 0); top: -10%; }
+  100% { transform: rotate(var(--routeAng)) translate3d(0, 0, 0); top: 92%; }
+}
+
+@keyframes ticksDrift{
+  0%   { transform: rotate(var(--routeAng)) translate3d(0, -8px, 0); }
+  100% { transform: rotate(var(--routeAng)) translate3d(0, 10px, 0); }
+}
+
+/* hover lift */
+.perkCard:hover{
+  transform: translateY(-6px);
+  border-color: rgba(240,197,90,.22);
+  box-shadow: 0 24px 60px rgba(0,0,0,.46);
+}
+
+/* top row */
+.perkCard__top{
+  position: relative;
+  z-index: 3;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.perkIcon{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  color: rgba(233,238,252,.92);
+}
+
+.perkIcon svg{
+  width: 22px;
+  height: 22px;
+  color: currentColor;
+}
+
+.perkTag{
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: rgba(233,238,252,.85);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
+}
+
+/* TAG COLORS */
+.perkCard[data-accent="gold"]{
+  --routeC: rgba(240,197,90,.55);
+  --blipC: rgba(240,197,90,.95);
+  --hud: rgba(240,197,90,.10);
+}
+.perkCard[data-accent="ice"]{
+  --routeC: rgba(170,225,255,.55);
+  --blipC: rgba(170,225,255,.9);
+  --hud: rgba(170,225,255,.09);
+}
+.perkCard[data-accent="lime"]{
+  --routeC: rgba(170,255,220,.50);
+  --blipC: rgba(170,255,220,.88);
+  --hud: rgba(170,255,220,.08);
+}
+
+.perkCard[data-accent="gold"] .perkTag{
+  background: rgba(240,197,90,.16);
+  border-color: rgba(240,197,90,.35);
+  color: rgba(240,197,90,.95);
+  box-shadow: 0 0 0 1px rgba(240,197,90,.10) inset, 0 10px 22px rgba(240,197,90,.10);
+}
+.perkCard[data-accent="ice"] .perkTag{
+  background: rgba(120,200,255,.14);
+  border-color: rgba(120,200,255,.32);
+  color: rgba(170,225,255,.95);
+  box-shadow: 0 0 0 1px rgba(120,200,255,.10) inset, 0 10px 22px rgba(120,200,255,.08);
+}
+.perkCard[data-accent="lime"] .perkTag{
+  background: rgba(120,255,200,.12);
+  border-color: rgba(120,255,200,.28);
+  color: rgba(170,255,220,.95);
+  box-shadow: 0 0 0 1px rgba(120,255,200,.10) inset, 0 10px 22px rgba(120,255,200,.08);
+}
+
+/* RANDOM route placement per card (different side + angle + speed) */
+.perkCard:nth-child(1){
+  --routeX: 18px;     /* left */
+  --routeAng: 4deg;
+  --routeSpeed: 4.2s;
+}
+.perkCard:nth-child(2){
+  --routeX: calc(100% - 22px); /* right */
+  --routeAng: -6deg;
+  --routeSpeed: 5.4s;
+}
+.perkCard:nth-child(3){
+  --routeX: 56%;      /* center-ish */
+  --routeAng: 9deg;
+  --routeSpeed: 3.8s;
+}
+
+/* icon match */
+.perkCard[data-accent="gold"] .perkIcon{ color: rgba(240,197,90,.95); }
+.perkCard[data-accent="ice"]  .perkIcon{ color: rgba(170,225,255,.95); }
+.perkCard[data-accent="lime"] .perkIcon{ color: rgba(170,255,220,.95); }
+
+/* title + text */
+.perkCard__title{
+  position: relative;
+  z-index: 3;
+  font-size: 18px;
+  line-height: 1.25;
+  margin: 0 0 6px;
+  color: rgba(11, 18, 32, 0.913);
+  font-weight: 700;
+}
+
+.perkCard__text{
+  position: relative;
+  z-index: 3;
+  margin: 0 0 20px;
+  line-height: 1.7;
+  color: rgba(11, 18, 32, 0.657);
+}
+
+.perkCard__meta{
+  position: relative;
+  z-index: 3;
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+
+.perkMeta{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(233,238,252,.72);
+}
+
+.perkMeta .dot{
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(240,197,90,.85);
+  box-shadow: 0 0 14px rgba(240,197,90,.35);
+}
+
+/* Perks responsiveness */
+@media (max-width: 980px){
+  .perks__grid{
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+/* =========================
+   ABOUT (circle + scroll plane)
+   ========================= */
+
+   .aboutCircle{
+    position: relative;
+    overflow: hidden;
+    padding: 110px 0;
+    background:
+      radial-gradient(1200px 520px at 50% 0%, rgba(240,197,90,.06), transparent 60%),
+      linear-gradient(180deg, rgba(6,18,32,.98) 0%, rgba(6,18,32,1) 100%);
+    color: var(--text);
+  }
+  
+  .aboutCircle__inner{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 18px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 34px;
+    align-items: center;
+  }
+  
+  /* LEFT */
+  .aboutCircle__visual{
+    position: relative;
+    min-height: 420px;
+  }
+  
+/* The circle that holds clouds */
+.aboutCircle__orb{
+  position: absolute;
+  left: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(460px, 62vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  overflow: hidden;
+  z-index: 1;
+
+  /* STATIC background image — NO manipulation */
+  background-image: url("../assets/cloud-noise.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* subtle depth only (does NOT alter image) */
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.55),
+    inset 0 0 0 1px rgba(255,255,255,.10);
+}
+
+
+/* optional: dark vignette so the plane pops */
+.aboutCircle__orb::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: radial-gradient(circle at center,
+    rgba(255,255,255,0) 35%,
+    rgba(6,18,32,.35) 70%,
+    rgba(6,18,32,.72) 100%
+  );
+}
+
+  /* atmospheric texture */
+.aboutCircle__orb::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    url("../assets/cloud-noise.png"); /* optional, see note below */
+  background-size: cover;
+  opacity: .08;
+  mix-blend-mode: screen;
+  pointer-events:none;
+}
+
+  .aboutCircle__plane{
+    position: absolute;
+    left: 0;
+    top: 52%;
+    transform: translate3d(0, -50%, 0);
+    width: min(620px, 78vw);
+    z-index: 2;
+  
+    /* START STATE (inside the circle) */
+    --x: -120px;      /* behind circle */
+    --y: 0px;
+    --r: -2deg;
+    --s: 1;
+  
+    transform:
+      translate3d(var(--x), calc(-50% + var(--y)), 0)
+      rotate(var(--r))
+      scale(var(--s));
+  
+    will-change: transform;
+    filter: drop-shadow(0 18px 46px rgba(0,0,0,.45));
+  }
+  
+  /* RIGHT */
+  .aboutCircle__copy{
+    position: relative;
+    z-index: 3;
+  }
+  
+  .aboutCircle__eyebrow{
+    margin: 0 0 12px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: rgba(240,197,90,.90);
+  }
+  
+  .aboutCircle__kicker{
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: rgba(233,238,252,.78);
+  }
+  
+  .aboutCircle__title{
+    margin: 0 0 12px;
+    font-size: clamp(34px, 3.4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  
+  .aboutCircle__p{
+    margin: 0 0 12px;
+    line-height: 1.75;
+    color: rgba(233,238,252,.72);
+    max-width: 62ch;
+  }
+  
+  .aboutCircle__btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+    color: #071a2e;
+    background: linear-gradient(180deg, var(--gold2), var(--gold));
+    box-shadow: 0 12px 28px rgba(214,168,42,.18);
+  }
+  
+  .aboutCircle__btnDot{
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: rgba(7,26,46,.16);
+  }
+  
+  /* Responsive */
+  @media (max-width: 980px){
+    .aboutCircle{
+      padding: 86px 0;
+    }
+  
+    .aboutCircle__inner{
+      grid-template-columns: 1fr;
+      gap: 22px;
+      text-align: center;
+    }
+  
+    .aboutCircle__visual{
+      min-height: 340px;
+    }
+  
+    .aboutCircle__orb{
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+    .aboutCircle__plane{
+      left: 50%;
+      transform:
+        translate3d(calc(-50% + var(--x)), calc(-50% + var(--y)), 0)
+        rotate(var(--r))
+        scale(var(--s));
+    }
+  
+    .aboutCircle__p{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  @keyframes orbDrift{
+    0%   { transform: translateY(-50%) translateX(0); }
+    50%  { transform: translateY(-50%) translateX(-6px); }
+    100% { transform: translateY(-50%) translateX(0); }
+  }
+  
+  .aboutCircle__orb{
+    animation: orbDrift 18s ease-in-out infinite;
+  }
+ /* ===== NON-DESKTOP CENTERING FIX ===== */
+@media (max-width: 1024px){
+
+  /* This wrapper becomes the centering engine */
+  .aboutCircle{
+    position: relative;
+    width: 100%;
+    display: grid;
+    place-items: center;     /* centers children */
+  }
+
+  /* The circle becomes normal flow and centered */
+  .aboutCircle__orb{
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    width: min(420px, 82vw);
+    margin: 0 auto;
+  }
+
+  /* Plane centered relative to the circle */
+  .aboutCircle__plane{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* exact center */
+
+    width: min(280px, 58vw);          /* tweak */
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+ /* =========================
+   iPad + Mobile: bigger plane
+   ========================= */
+
+/* iPad (portrait + landscape) */
+@media (min-width: 768px) and (max-width: 1024px){
+  .aboutCircle__plane{
+    width: min(320px, 68vw); /* increase size */
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px){
+  .aboutCircle__plane{
+    width: min(380px, 88vw); /* slightly bigger on phones */
+  }
+}
+
+/* =========================
+   COURSES RAIL (AUTO SCROLL + HOVER ELIGIBILITY)
+   ========================= */
+
+   .courses{
+    padding: 76px 0 44px;
+    position: relative;
+    padding: 96px 0;
+    overflow: hidden;
+    background:linear-gradient(180deg, rgb(243 249 255) 0%, rgb(251 248 240 / 95%) 100%);
+  }
+  
+  .courses__inner{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 18px;
+  }
+  
+  .courses__head{ margin-bottom: 18px; }
+  
+  .courses__eyebrow{
+    margin: 0 0 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: rgba(240,197,90,.9);
+  }
+  
+  .courses__title{
+    margin: 0 0 6px;
+    color: rgb(11 18 32 / 87%);
+    font-weight: 700;
+  }
+  
+  .courses__sub{
+    position: relative;
+    z-index: 3;
+    margin: 0 0 20px;
+    line-height: 1.7;
+    color: rgba(11, 18, 32, 0.657);;
+  }
+  
+  /* wrapper */
+  .coursesRail{ position: relative; margin-top: 18px; }
+  
+  .railViewport{
+    overflow: hidden;
+    border-radius: 24px;
+    position: relative;
+  }
+  
+  /* track = the moving belt */
+  .railTrack{
+    display: flex;
+    gap: 16px;
+    padding: 10px 8px 18px;
+    will-change: transform;
+    transform: translate3d(0,0,0);
+  }
+  
+  /* cards */
+  .courseCard{
+    flex: 0 0 auto;
+    width: clamp(260px, 28vw, 330px);
+    height: 285px;
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+    cursor: pointer;
+  
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(8,24,44,.40);
+    box-shadow: 0 18px 44px rgba(0,0,0,.35);
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  
+  .courseCard::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: var(--bg) center / cover no-repeat;
+    z-index: 0;
+  }
+  
+  .courseShade{
+    position:absolute;
+    inset:0;
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(6,18,32,.10) 0%, rgba(6,18,32,.72) 62%, rgba(6,18,32,.92) 100%);
+  }
+  
+  .courseTop{
+    position: relative;
+    z-index: 3;
+    padding: 14px 14px 0;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .courseNum{
+    font-weight: 800;
+    letter-spacing: .06em;
+    color: rgba(233,238,252,.92);
+    font-size: 28px;
+    opacity: .92;
+  }
+  
+  .coursePill{
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    color: rgba(233,238,252,.86);
+  }
+  
+  .coursePill--gold{
+    border-color: rgba(240,197,90,.35);
+    background: rgba(240,197,90,.14);
+    color: rgba(240,197,90,.96);
+  }
+  .coursePill--ice{
+    border-color: rgba(120,200,255,.32);
+    background: rgba(120,200,255,.12);
+    color: rgba(170,225,255,.96);
+  }
+  .coursePill--lime{
+    border-color: rgba(120,255,200,.28);
+    background: rgba(120,255,200,.10);
+    color: rgba(170,255,220,.96);
+  }
+  
+  .courseTitle{
+    position: relative;
+    z-index: 3;
+    margin: 12px 14px 6px;
+    color: var(--text);
+    font-size: 20px;
+    line-height: 1.15;
+    max-width: 22ch;
+  }
+  
+  .courseMini{
+    position: relative;
+    z-index: 3;
+    margin: 0 14px;
+    color: rgba(233,238,252,.72);
+    font-size: 13px;
+  }
+  
+  /* hover panel */
+  .courseHover{
+    position:absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 4;
+  
+    padding: 12px 12px 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(8,24,44,.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  
+    transform: translateY(12px);
+    opacity: 0;
+    transition: opacity .22s ease, transform .22s ease;
+  }
+  
+  .hoverTitle{
+    margin: 0 0 8px;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(233,238,252,.85);
+  }
+  
+  .hoverList{
+    margin: 0;
+    padding-left: 16px;
+    color: rgba(233,238,252,.75);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  
+  .enrollBtn{
+    margin-top: 10px;
+    display: inline-flex;
+    align-items:center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 13px;
+  
+    background: linear-gradient(180deg, var(--gold2), var(--gold));
+    color: #071a2e;
+    box-shadow: 0 10px 22px rgba(214,168,42,.18);
+  }
+  
+  /* hover/focus */
+  .courseCard:hover{
+    transform: translateY(-6px);
+    border-color: rgba(240,197,90,.22);
+    box-shadow: 0 26px 64px rgba(0,0,0,.44);
+  }
+  .courseCard:hover .courseHover{ opacity: 1; transform: translateY(0); }
+  
+  .courseCard:focus-visible{
+    outline: 2px solid rgba(240,197,90,.45);
+    outline-offset: 4px;
+  }
+  .courseCard:focus-visible .courseHover{ opacity: 1; transform: translateY(0); }
+  
+  /* mobile tap open */
+  .courseCard.is-open .courseHover{ opacity: 1; transform: translateY(0); }
+  
+  /* arrows */
+  .railBtn{
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(8,24,44,.50);
+    color: rgba(233,238,252,.9);
+    cursor:pointer;
+    display:grid;
+    place-items:center;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .railBtn--left{ left: -6px; }
+  .railBtn--right{ right: -6px; }
+  
+  @media (max-width: 980px){
+    .railBtn{ display:none; }
+    .courses__head{ text-align: center; }
+    .courses__sub{ margin-left:auto; margin-right:auto; }
+    .courseCard{ width: min(86vw, 360px); }
+  }
+
+/* =========================
+   FOUNDATION (DGCA Ground School & Tuitions)
+   ========================= */
+   .foundation{
+    padding: 92px 0;
+    background:
+      radial-gradient(900px 520px at 15% 20%, rgba(120,200,255,.10), transparent 55%),
+      radial-gradient(900px 520px at 85% 30%, rgba(240,197,90,.08), transparent 58%),
+      linear-gradient(180deg, rgba(6,18,32,1) 0%, rgba(6,18,32,1) 100%);
+  }
+  
+  .foundation__inner{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 18px;
+  
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 26px;
+    align-items: center;
+  }
+  
+  /* LEFT image block */
+  .foundationMedia{
+    position: relative;
+    border-radius: 26px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(8,24,44,.40);
+    box-shadow: 0 26px 70px rgba(0,0,0,.40);
+  }
+  
+  .foundationMedia::before{
+    display: none;
+  }
+  
+  .foundationMedia img{
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+  }
+  
+  /* RIGHT copy */
+  .foundationCopy{
+    color: var(--text);
+  }
+  
+  .foundationKicker{
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: rgba(233,238,252,.72);
+    letter-spacing: .03em;
+  }
+  
+  .foundationTitle{
+    margin: 0 0 14px;
+    font-size: clamp(30px, 3.2vw, 46px);
+    line-height: 1.1;
+    color: var(--text);
+  }
+  
+  .foundationP{
+    margin: 0 0 12px;
+    color: rgba(233,238,252,.72);
+    line-height: 1.7;
+    max-width: 60ch;
+  }
+  
+  /* CTA */
+  .foundationBtn{
+    margin-top: 14px;
+    display: inline-flex;
+    align-items:center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    text-decoration:none;
+    font-weight: 800;
+    font-size: 14px;
+  
+    border: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.06);
+    color: rgba(233,238,252,.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+  }
+  
+  .foundationBtn__dot{
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    display:grid;
+    place-items:center;
+  
+    background: linear-gradient(180deg, var(--gold2), var(--gold));
+    color: #071a2e;
+    box-shadow: 0 10px 22px rgba(214,168,42,.18);
+  }
+  
+  .foundationBtn:hover{
+    transform: translateY(-2px);
+    border-color: rgba(240,197,90,.22);
+    background: rgba(255,255,255,.08);
+  }
+  
+  /* Responsive */
+  @media (max-width: 980px){
+    .foundation__inner{
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+  
+    .foundationMedia img{
+      height: 380px;
+    }
+  
+    .foundationCopy{
+      text-align: center;
+    }
+  
+    .foundationP{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .foundationBtn{
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 540px){
+    .foundation{
+      padding: 70px 0;
+    }
+    .foundationMedia img{
+      height: 320px;
+    }
+  }
+/* =========================
+   SUBJECTS (clean grid + dividers)
+   ========================= */
+   .subjects2{
+    padding: 92px 0;
+    background: linear-gradient(180deg, rgb(255 253 248 / 95%) 0%, rgb(233 238 247) 100%);
+  }
+  
+  .subjects2__inner{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 18px;
+  }
+  
+  .subjects2__head{
+    text-align: center;
+    margin-bottom: 34px;
+  }
+  
+  .subjects2__eyebrow{
+    margin: 0 0 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: rgba(240,197,90,.9);
+  }
+  
+  .subjects2__title{
+    margin: 0 0 6px;
+    color: rgb(11 18 32 / 87%);
+    font-weight: 700;
+  }
+  
+  /* grid */
+  .subjects2__grid{
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0; /* dividers handle separation */
+    border-top: 1px solid rgba(255,255,255,.08);
+    border-left: 1px solid rgba(255,255,255,.08);
+  }
+  
+  /* item */
+.subItem{
+  padding: 26px 22px 24px;
+  border-right: 1px solid rgb(9 0 0 / 8%);
+  border-bottom: 1px solid rgb(0 0 0 / 8%);
+  background: rgb(240 197 90 / 7%);
+  transition: background .25s ease, transform .25s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers horizontally */
+  text-align: center;    /* centers text */
+}
+
+  
+  .subItem:hover{
+    background: rgba(240,197,90,.05);
+    transform: translateY(-2px);
+  }
+  
+  /* icon */
+  .subItem__icon{
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 16px;
+  
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.10);
+  }
+  
+  /* Image inside icon box */
+  .subItem__icon img{
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+  }  
+  
+  /* title + text */
+  .subItem__title{
+    position: relative;
+    z-index: 3;
+    margin: 0 0 20px;
+    line-height: 1.7;
+    color: rgba(11, 18, 32, 0.764);
+  }
+  
+  .subItem__text{
+    position: relative;
+    z-index: 3;
+    margin: 0 0 20px;
+    line-height: 1.7;
+    color: rgba(11, 18, 32, 0.657);
+    font-size: 14px;
+    max-width: 44ch;
+  }
+  
+  /* responsive */
+  @media (max-width: 980px){
+    .subjects2__grid{
+      grid-template-columns: 1fr;
+    }
+  }
+  
+/* =========================
+   AIRCRAFT RATING (scroll motion)
+   ========================= */
+
+   .rating{
+    position: relative;
+    padding: 96px 0;
+    overflow: hidden;
+  
+    /* clean, premium light section */
+    background:
+      radial-gradient(900px 520px at 70% 20%, rgba(240,197,90,.18), transparent 60%),
+      radial-gradient(780px 520px at 18% 40%, rgba(120,200,255,.16), transparent 60%),
+      linear-gradient(180deg, rgba(235,231,232,1) 0%, rgba(210,220,235,1) 100%);
+  }
+  
+  .rating__inner{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 18px;
+  }
+  
+  .rating__grid{
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 42px;
+    align-items: center;
+  }
+  
+  /* LEFT VISUAL */
+  .ratingVisual{
+    position: relative;
+    min-height: 320px;
+    display: grid;
+    place-items: center;
+  }
+  
+  .ratingCircle{
+    position: relative;
+    width: min(520px, 74vw);
+    aspect-ratio: 1/1;
+    border-radius: 999px;
+    overflow: hidden;
+  
+    box-shadow:
+      0 28px 70px rgba(0,0,0,.22),
+      inset 0 0 0 1px rgba(255,255,255,.55);
+  
+    /* base circle tint so it’s never empty */
+    background:
+      radial-gradient(circle at 30% 25%, rgba(255,255,255,.55), transparent 55%),
+      linear-gradient(180deg, rgba(16,28,52,.18), rgba(7,20,38,.10));
+  }
+  
+  /* optional bg image inside the circle */
+  .ratingCircle__bg{
+    position: absolute;
+    inset: 0;
+    background-image: url("assets/cloud-noise.png"); /* your static image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: .95;
+  }
+  
+  /* THE PLANE */
+  .ratingPlane{
+    position: absolute;
+    width: min(680px, 88vw);
+    max-width: 680px;
+    height: auto;
+    z-index: 2;
+  
+    /* default resting pose (JS will animate) */
+    transform: translate3d(-80px, 8px, 0) scale(1.02);
+    filter: drop-shadow(0 26px 40px rgba(0,0,0,.25));
+    will-change: transform, opacity;
+    opacity: 0;
+  }
+  
+  /* RIGHT COPY */
+  .ratingCopy{
+    color: #0b1220;
+    max-width: 44ch;
+  }
+  
+  .ratingTitle{
+    margin: 0 0 10px;
+    font-size: clamp(34px, 4vw, 54px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+  }
+  .ratingTitle span{
+    font-weight: 700;
+  }
+  
+  .ratingModel{
+    margin: 8px 0 14px;
+    font-weight: 800;
+    letter-spacing: .02em;
+    color: rgba(214,168,42,.95);
+  }
+  
+  .ratingText{
+    margin: 0 0 20px;
+    line-height: 1.7;
+    color: rgba(11,18,32,.70);
+  }
+  
+  .ratingBtn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 14px;
+  
+    background: rgba(255,255,255,.55);
+    border: 1px solid rgba(11,18,32,.16);
+    color: #0b1220;
+  
+    box-shadow: 0 18px 40px rgba(0,0,0,.10);
+    backdrop-filter: blur(10px);
+  }
+  
+  .ratingBtn__dot{
+    display: inline-grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: rgba(240,197,90,.95);
+    color: #071a2e;
+  }
+  
+  /* TABS */
+  .ratingTabs{
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  
+  .ratingTab{
+    border: none;
+    cursor: pointer;
+  
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  
+    padding: 12px 18px;
+    border-radius: 14px;
+  
+    background: rgba(11,18,32,.10);
+    color: rgba(11,18,32,.78);
+    font-weight: 900;
+    letter-spacing: .01em;
+  
+    box-shadow: inset 0 0 0 1px rgba(11,18,32,.12);
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  
+  .ratingTab:hover{
+    transform: translateY(-2px);
+    background: rgba(255,255,255,.55);
+    box-shadow:
+      inset 0 0 0 1px rgba(11,18,32,.14),
+      0 18px 34px rgba(0,0,0,.10);
+  }
+  
+  .ratingTab__icon{
+    opacity: .9;
+  }
+  
+  .ratingTab.is-active{
+    background: rgba(11,18,32,.92);
+    color: rgba(233,238,252,.96);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.14),
+      0 18px 34px rgba(0,0,0,.16);
+  }
+  
+  /* =========================
+     RESPONSIVE
+     ========================= */
+  @media (max-width: 980px){
+    .rating__grid{
+      grid-template-columns: 1fr;
+      gap: 22px;
+      text-align: center;
+    }
+  
+    .ratingCopy{
+      margin: 0 auto;
+    }
+  
+    .ratingVisual{
+      min-height: 300px;
+    }
+  
+    /* center circle + plane on non-desktop */
+    .ratingPlane{
+      width: min(740px, 96vw);
+    }
+  
+    .ratingBtn{
+      margin: 0 auto;
+    }
+  }
+  
+  /* iPad-ish: make plane a little bigger without touching desktop */
+  @media (min-width: 768px) and (max-width: 1024px){
+    .ratingPlane{
+      width: min(780px, 94vw);
+    }
+  }
+  
+  /* mobile: even bigger plane */
+  @media (max-width: 767px){
+    .ratingPlane{
+      width: min(820px, 102vw);
+    }
+  }
+  
+/* ===== HOW TO BECOME A PILOT ===== */
+
+.pilotPath{
+  padding: 86px 0 110px;
+  background: linear-gradient(180deg, #e9e6ea 0%, #cfd7e6 100%);
+}
+
+.pilotPath__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+/* top row layout */
+.pilotPath__top{
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 34px;
+}
+
+.pilotPath__kicker{
+  margin: 0 0 6px;
+  color: rgba(11,18,32,.70);
+  font-weight: 700;
+}
+
+.pilotPath__title{
+  margin: 0;
+  font-size: clamp(46px, 5vw, 78px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: rgba(11,18,32,.92);
+}
+
+.pilotPath__text{
+  margin: 6px 0 18px;
+  max-width: 62ch;
+  color: rgba(11,18,32,.68);
+  line-height: 1.75;
+  font-size: 14.5px;
+}
+
+.pilotPath__btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 14px;
+
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(11,18,32,.16);
+  color: rgba(11,18,32,.92);
+
+  box-shadow: 0 16px 34px rgba(0,0,0,.10);
+  backdrop-filter: blur(10px);
+}
+
+.pilotPath__btnDot{
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(240,197,90,.95);
+  color: #071a2e;
+}
+
+/* ===== BIG BOX (proper proportions) ===== */
+.pilotCard{
+  position: relative;
+  width: min(980px, 100%);
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 28px 70px rgba(0,0,0,.18);
+
+  display: grid;
+  grid-template-columns: 1.25fr .75fr; /* left content + right pilot space */
+  min-height: 280px;                  /* ✅ fixes the “too tall” look */
+}
+
+/* background of the box (swap this freely) */
+.pilotCard__bg{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  /* Change this to any image later */
+  background-image:
+    radial-gradient(900px 520px at 20% 20%, rgba(240,197,90,.14), transparent 60%),
+    radial-gradient(700px 420px at 90% 25%, rgba(120,200,255,.12), transparent 55%),
+    linear-gradient(135deg, rgba(6,18,32,.96), rgba(8,28,52,.92));
+
+  /* If you want an actual photo background later, use this:
+  background-image:
+    linear-gradient(90deg, rgba(6,18,32,.96) 0%, rgba(6,18,32,.70) 55%, rgba(6,18,32,.35) 100%),
+    url("assets/step-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  */
+}
+/* === Pilot image: half-out modern overflow === */
+.pilotCard{
+  position: relative;          /* anchor for absolute children */
+  overflow: visible;           /* allow image to spill out */
+}
+
+.pilotCard__pilotWrap{
+  position: absolute;
+  right: 18px;                 /* tweak */
+  bottom: 0;                   /* anchor at bottom */
+  width: min(260px, 34%);      /* responsive */
+  pointer-events: none;
+  z-index: 3;                  /* above bg */
+}
+
+.pilotCard__pilot{
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: translateY(-35%); /* THIS makes top half stick out */
+  filter: drop-shadow(0 18px 28px rgba(0,0,0,0.35));
+}
+
+/* make sure text doesn't collide with the image */
+.pilotCard__content{
+  position: relative;
+  z-index: 2;
+  padding-right: clamp(140px, 30vw, 280px);
+}
+
+/* optional: on small screens keep it cleaner */
+@media (max-width: 720px){
+  .pilotCard__pilotWrap{
+    right: 10px;
+    width: 180px;
+  }
+  .pilotCard__pilot{
+    transform: translateY(-25%);
+  }
+  .pilotCard__content{
+    padding-right: 170px;
+  }
+}
+
+@media (max-width: 520px){
+  /* if it feels cramped, stop the overlap and keep it inside */
+  .pilotCard__pilotWrap{
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 180px;
+    margin: 10px 0 0 auto;
+  }
+  .pilotCard__pilot{
+    transform: none;
+  }
+  .pilotCard__content{
+    padding-right: 0;
+  }
+}
+/* content column */
+.pilotCard__content{
+  position: relative;
+  z-index: 1;
+  padding: 38px 42px;
+  max-width: 560px;
+}
+
+.pilotCard__title{
+  margin: 0 0 10px;
+  font-size: 28px;
+  color: rgba(233,238,252,.97);
+  letter-spacing: -0.01em;
+}
+
+.pilotCard__sub{
+  margin: 0 0 18px;
+  color: rgba(233,238,252,.72);
+  line-height: 1.7;
+  font-size: 13.7px;
+}
+
+.pilotCard__list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.pilotCard__list li{
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 10px;
+  align-items: start;
+  color: rgba(233,238,252,.84);
+  font-size: 13.8px;
+}
+
+.pilotCard__list .dot{
+  width: 6px;
+  height: 6px;
+  margin-top: 7px;
+  border-radius: 999px;
+  background: rgba(240,197,90,.95);
+  box-shadow: 0 0 16px rgba(240,197,90,.28);
+}
+
+/* reserved pilot space */
+.pilotCard__slot{
+  position: relative;
+  z-index: 1;
+
+  /* keeps the right side “lighter” so pilot pops */
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.06) 100%);
+}
+
+/* When you add pilot later, use this */
+.pilotCard__pilot{
+  position: absolute;
+  right: 12px;
+  bottom: -158px;
+  height: 450px;
+  width: auto;
+  filter: drop-shadow(0 22px 40px rgba(0,0,0,.35));
+  pointer-events: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 980px){
+  .pilotPath__top{
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .pilotPath__text{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pilotCard{
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  /* keep a reserved area for pilot below */
+  .pilotCard__content{
+    max-width: none;
+    padding: 30px 20px 22px;
+  }
+
+  .pilotCard__slot{
+    height: 240px; /* reserved pilot zone */
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.08) 100%);
+  }
+
+  .pilotCard__pilot{
+    right: 50%;
+    transform: translateX(50%);
+    height: 300px;
+    bottom: -10px;
+  }
+}
+
+@media (max-width: 520px){
+  .pilotCard__slot{ height: 260px; }
+  .pilotCard__pilot{ height: 290px; }
+}
+
+/* =========================
+   DGCA REQUIREMENTS SECTION
+   ========================= */
+
+   .dgcaReq{
+    padding: 88px 0 96px;
+    background:
+      radial-gradient(900px 520px at 80% 10%, rgba(255,255,255,.18), transparent 55%),
+      linear-gradient(180deg, #b8c1cf 0%, #a9b2c1 100%);
+  }
+  
+  .dgcaReq__inner{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 18px;
+  }
+  
+  .dgcaReq__head{
+    text-align: center;
+    margin-bottom: 34px;
+  }
+  
+  .dgcaReq__title{
+    margin: 0;
+    font-size: clamp(34px, 4vw, 54px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: rgba(11,18,32,.88);
+  }
+  
+  .dgcaReq__subtitle{
+    margin: 10px 0 10px;
+    font-weight: 800;
+    color: rgba(11,18,32,.72);
+  }
+  
+  .dgcaReq__desc{
+    margin: 0 auto;
+    max-width: 80ch;
+    color: rgba(11,18,32,.60);
+    line-height: 1.6;
+    font-size: 13.5px;
+  }
+  
+  /* grid */
+  .dgcaReq__grid{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+  }
+  
+  /* card */
+  .reqCard{
+    position: relative;
+    border-radius: 10px;
+    background: rgba(255,255,255,.92);
+    box-shadow: 0 18px 40px rgba(0,0,0,.10);
+    border: 1px solid rgba(11,18,32,.06);
+    min-height: 78px;
+  
+    /* space for icon puck */
+    padding-right: 56px;
+  
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  
+  .reqCard:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 24px 52px rgba(0,0,0,.14);
+  }
+  
+  .reqCard__body{
+    padding: 18px 18px 16px;
+    display: grid;
+    align-content: center;
+    height: 100%;
+  }
+  
+  .reqCard__text{
+    margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: 11px;
+    line-height: 1.2;
+    color: rgba(11,18,32,.84);
+  }
+  
+  /* icon puck */
+  .reqCard__icon{
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    background: #0b1220;
+    border: 3px solid rgba(255,255,255,.95);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 12px 28px rgba(0,0,0,.16);
+  }
+  
+  .reqCard__icon svg{
+    width: 22px;
+    height: 22px;
+    color: rgba(233,238,252,.95);
+  }
+  
+  /* responsive */
+  @media (max-width: 1024px){
+    .dgcaReq__grid{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 560px){
+    .dgcaReq{
+      padding: 70px 0 78px;
+    }
+  
+    .dgcaReq__grid{
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  
+    .reqCard{
+      padding-right: 62px;
+    }
+  }
+  
+/* =========================
+   END FOOTER – PLANE LANDING
+   ========================= */
+
+   .landingFooter{
+    position: relative;
+    height: 220px;
+    background: linear-gradient(
+      180deg,
+      rgba(6,18,32,0) 0%,
+      rgba(6,18,32,.85) 45%,
+      rgba(6,18,32,1) 100%
+    );
+    overflow: hidden;
+  }
+  
+  /* subtle runway glow */
+  .landingFooter__runway{
+    position: absolute;
+    left: 50%;
+    bottom: 38px;
+    transform: translateX(-50%);
+    width: min(1100px, 92vw);
+    height: 2px;
+  
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.65) 0 14px,
+      rgba(255,255,255,0) 14px 26px
+    );
+  
+    filter:
+      drop-shadow(0 0 8px rgba(255,255,255,.35))
+      drop-shadow(0 0 14px rgba(240,197,90,.25));
+  
+    opacity: .9;
+  }
+  
+  /* plane */
+  .landingFooter__plane{
+    position: absolute;
+    bottom: 26px;
+    left: -220px; /* start off screen */
+    height: 58px;
+    width: auto;
+  
+    transform: translateX(0);
+    transition: transform .2s linear;
+  
+    filter:
+      drop-shadow(0 10px 24px rgba(0,0,0,.55))
+      drop-shadow(0 0 14px rgba(240,197,90,.35));
+  }
+  
+  /* mobile tweaks */
+  @media (max-width: 768px){
+    .landingFooter{
+      height: 180px;
+    }
+  
+    .landingFooter__plane{
+      height: 46px;
+    }
+  }
+  
+/* =========================
+   FULL GETWINGS-STYLE FOOTER
+   ========================= */
+
+   .gwFooter{
+    position: relative;
+    overflow: visible; /* CHANGED: allow plane overflow */
+    color: rgba(233,238,252,.85);
+  
+    /* keep your gradients but put them on the overlay layer instead */
+    background: none;
+  }
+  
+  /* NEW: background image layer behind everything */
+  .gwFooter::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  
+    background:
+      radial-gradient(1200px 520px at 60% 20%, rgba(240,197,90,.10), transparent 60%),
+      linear-gradient(180deg, rgba(6,18,32,.82) 0%, rgba(6,18,32,.96) 55%, rgba(6,18,32,1) 100%),
+      url("assets/footer-bg.jpg"); /* <-- put your footer bg image here */
+  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* giant plane image */
+  .gwFooter__plane{
+    position: absolute;
+  
+    /* CHANGED: make it spill out */
+    top: -140px;
+    right: 570px;   /* move to right for premium "overhang" */
+    left: auto;
+  
+    width: min(980px, 78vw);
+    height: auto;
+  
+    z-index: 3;     /* ABOVE content now */
+    opacity: .97;
+  
+    filter:
+      drop-shadow(0 30px 60px rgba(0,0,0,.55))
+      drop-shadow(0 0 22px rgba(255,255,255,.10));
+  
+transition: transform 0.12s linear;
+    will-change: transform;
+    pointer-events: none;
+  }
+  
+  /* inner grid */
+  .gwFooter__inner{
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 180px 18px 48px;
+  
+    display: grid;
+    grid-template-columns: 1.1fr 1.4fr 1.1fr;
+    gap: 48px;
+  }
+  
+  /* brand */
+  .gwFooter__logo{
+    height: 66px;
+    width: auto;
+    display: block;
+    margin-bottom: 14px;
+  }
+  
+  .gwFooter__desc{
+    margin: 0 0 18px;
+    color: rgba(233,238,252,.70);
+    line-height: 1.6;
+    max-width: 34ch;
+  }
+  
+  /* socials */
+  .gwFooter__socials{
+    display: flex;
+    gap: 10px;
+  }
+  
+  .gwSocial{
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+  
+    background: rgba(240,197,90,.10);
+    border: 1px solid rgba(240,197,90,.25);
+    color: rgba(240,197,90,.95);
+    font-weight: 800;
+  }
+  
+  .gwSocial:hover{
+    background: rgba(240,197,90,.18);
+    border-color: rgba(240,197,90,.35);
+  }
+  
+  /* columns */
+  .gwFooter__cols{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  
+  .gwCol h4{
+    margin: 0 0 14px;
+    font-size: 14px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(240,197,90,.95);
+  }
+  
+  .gwCol a{
+    display: block;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: rgba(233,238,252,.72);
+  }
+  
+  .gwCol a:hover{
+    color: #fff;
+  }
+  
+  /* hours card */
+  .gwHours{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  
+    background: rgba(255,255,255,.92);
+    color: rgba(8,24,44,.95);
+    border-radius: 12px;
+    padding: 14px 14px;
+    box-shadow: 0 18px 44px rgba(0,0,0,.35);
+    margin-bottom: 16px;
+  }
+  
+  .gwHours__divider{
+    width: 1px;
+    height: 44px;
+    background: rgba(8,24,44,.18);
+    margin: 0 12px;
+  }
+  
+  .gwHours__label{
+    margin: 0 0 6px;
+    font-size: 12px;
+    color: rgba(8,24,44,.75);
+  }
+  
+  .gwHours__time{
+    margin: 0;
+    font-weight: 800;
+    font-size: 12px;
+  }
+  
+  /* contact rows */
+  .gwContact{
+    display: grid;
+    gap: 14px;
+    margin-top: 6px;
+  }
+  
+  .gwRow{
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    align-items: start;
+    gap: 10px;
+  }
+  
+  .gwRow p{
+    margin: 0;
+    color: rgba(233,238,252,.72);
+    line-height: 1.5;
+    font-size: 13px;
+  }
+  
+  .gwDot{
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+  
+    background: rgba(240,197,90,.92);
+    color: rgba(8,24,44,.95);
+    font-weight: 900;
+    box-shadow: 0 10px 24px rgba(240,197,90,.18);
+  }
+  
+  /* bottom bar */
+  .gwFooter__bottom{
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding: 16px 18px;
+    z-index: 2;
+  }
+  
+  .gwFooter__bottomInner{
+    max-width: 1200px;
+    margin: 0 auto;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    color: rgba(233,238,252,.55);
+    font-size: 12px;
+  }
+  
+  .gwFooter__policy{
+    color: rgba(233,238,252,.65);
+    text-decoration: none;
+  }
+  .gwFooter__policy:hover{ color: #fff; }
+  
+  /* =========================
+     RESPONSIVE
+     ========================= */
+  
+  @media (max-width: 980px){
+    .gwFooter__inner{
+      grid-template-columns: 1fr;
+      padding-top: 160px;
+      gap: 32px;
+    }
+  
+    .gwFooter__cols{
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .gwFooter__plane{
+      top: 0px;
+      right: 10px;
+      left: auto;
+      width: min(400px, 100vw);
+      opacity: .92;
+    }
+    
+  }
+  
+  @media (max-width: 640px){
+    .gwFooter__cols{
+      grid-template-columns: 1fr;
+    }
+  
+    .gwFooter__bottomInner{
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .gwHours{
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  
+    .gwHours__divider{
+      display: none;
+    }
+  }
+  /* Lower footer plane on tablet + mobile */
+@media (max-width: 1024px){
+  .gwFooter__plane{
+    bottom: 10px;   /* was probably 40px */
+  }
+}
+/* =========================
+   COURSES — TABLET & MOBILE
+   ========================= */
+
+   @media (max-width: 1024px) {
+
+    .courses {
+      padding: 64px 0;
+      overflow: hidden;
+    }
+  
+    /* turn horizontal rail into swipe-friendly row */
+    .coursesTrack {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0 16px 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    .coursesTrack::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .courseCard {
+      flex: 0 0 85%;
+      max-width: 85%;
+      scroll-snap-align: center;
+      border-radius: 20px;
+    }
+  }
+  
+
+
+/* =========================
+   CONTACT PAGE (ALT: NAVY → WHITE)
+   ========================= */
+.contact{
+  background: #f4f8fc;;
+  color: var(--text);
+}
+
+/* HERO stays dark */
+.contactHero{
+  position: relative;
+  min-height: 72vh;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(6,18,32,.55), rgba(6,18,32,.92));
+}
+
+.contactHero__video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.contactHero__overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.contactHero__inner{
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 84px 18px;
+}
+
+.contactHero__eyebrow{
+  margin: 0 0 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(240,197,90,.92);
+}
+
+.contactHero__title{
+  margin: 0 0 12px;
+  font-size: clamp(34px, 4.2vw, 62px);
+  line-height: 1.05;
+}
+
+.contactHero__sub{
+  margin: 0 0 18px;
+  max-width: 62ch;
+  color: rgba(233,238,252,.78);
+  line-height: 1.7;
+}
+
+.contactHero__cta{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 14px;
+  color: #071a2e;
+  background: linear-gradient(180deg, var(--gold2), var(--gold));
+  box-shadow: 0 12px 28px rgba(214,168,42,.18);
+}
+
+/* WHITE body section */
+.contact__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 18px 92px;
+  background: #ffffff;
+  color: #0b1220;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  margin-top: -34px;
+  box-shadow: 0 -18px 60px rgba(0,0,0,.25);
+}
+
+.contactGrid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.contactCard{
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(11,18,32,.10);
+  box-shadow: 0 18px 44px rgba(0,0,0,.10);
+  padding: 18px;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  justify-content: flex-start; /* IMPORTANT: not centered */
+  height: 100%;    
+}
+
+
+.contactCard::before{
+  content:"";
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:6px;
+  background: linear-gradient(180deg, var(--gold2), var(--gold));
+}
+
+.contactCard:nth-child(even)::before{
+  background: linear-gradient(180deg, #1e3a66, #0f2a44);
+}
+
+
+.contactCard__icon{
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.contactCard__icon img{
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+}
+.contactCard__icon{
+  background: transparent;
+  border: none;
+}
+
+.contactCard:hover .contactCard__icon{
+  transform: none;
+  box-shadow: none;
+}
+
+.contactCard:hover .contactCard__icon{
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 14px 28px rgba(0,0,0,.12);
+}
+
+.contactCard__title{
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: #0b1220;
+}
+
+.contactCard__text{
+  margin: 0 0 10px;
+  color: rgba(11,18,32,.72);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.contactCard__text a{
+  color: #0f2a44;
+  font-weight: 700;
+  text-decoration: none;
+}
+.contactCard__text a:hover{
+  text-decoration: underline;
+}
+
+.contactCard__hint{
+ margin-top: auto;  /* IMPORTANT */
+  font-size: 12px;
+  color: rgba(11,18,32,.55);
+}
+
+/* =========================
+   WHITE FORM (real card)
+   ========================= */
+.brochure{
+  margin-top: 26px;
+  border-radius: 26px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+  display: grid;
+    justify-items: center;
+    text-align: center;
+}
+
+/* keep head readable on white section */
+.brochure__head{
+  padding: 26px 0 14px;
+}
+
+.brochure__eyebrow{
+  margin: 0 0 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(214,168,42,.95);
+}
+
+.brochure__title{
+  margin: 0 0 8px;
+  font-size: 26px;
+  color: #0b1220;
+}
+
+.brochure__sub{
+  margin: 0 0 18px;
+  color: rgba(11,18,32,.70);
+  line-height: 1.6;
+}
+
+/* form card */
+.brochureForm{
+  background: rgba(255,255,255,.98);
+  border-radius: 22px;
+  border: 1px solid rgba(11,18,32,.10);
+  box-shadow: 0 26px 70px rgba(0,0,0,.12);
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle aviation accent */
+.brochureForm::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(700px 260px at 15% 0%, rgba(214,168,42,.10), transparent 55%),
+    radial-gradient(780px 320px at 90% 20%, rgba(15,42,68,.08), transparent 60%);
+}
+
+.brochureForm__grid{
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.field{
+  display: grid;
+  gap: 8px;
+}
+
+.field__label{
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(11,18,32,.65);
+}
+
+.field__input{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(11,18,32,.14);
+  background: rgba(11,18,32,.03);
+  color: rgba(11,18,32,.88);
+  outline: none;
+  transition: border .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.field__input::placeholder{
+  color: rgba(11,18,32,.45);
+}
+
+.field__input:focus{
+  border-color: rgba(214,168,42,.55);
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 0 0 3px rgba(240,197,90,.22);
+}
+
+.field--full{ grid-column: 1 / -1; }
+.field__textarea{ resize: vertical; min-height: 110px; }
+
+.brochureForm__actions{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.brochureBtn{
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: 14px;
+  color: #071a2e;
+  background: linear-gradient(180deg, var(--gold2), var(--gold));
+  box-shadow: 0 14px 30px rgba(214,168,42,.22);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.brochureBtn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(214,168,42,.26);
+}
+
+.brochureBtn__dot{
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(7,26,46,.14);
+}
+
+.brochureForm__note{
+  margin: 0;
+  font-size: 12px;
+  color: rgba(11,18,32,.55);
+}
+
+/* responsive */
+@media (max-width: 980px){
+  .contactGrid{ grid-template-columns: 1fr; }
+  .brochureForm__grid{ grid-template-columns: 1fr; }
+  .contactHero__inner{ text-align: center; }
+  .contactHero__sub{ margin-left: auto; margin-right: auto; }
+  .brochureForm{ padding: 18px; }
+}
+/* =========================================
+   CONTACT — CENTER THE BROCHURE HEADER + CTA
+   ========================================= */
+
+
+/* keep the header centered and not too wide */
+.brochure__head{
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* center the form card too (button lives inside it) */
+.brochureForm{
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* center the button + note row */
+.brochureForm__actions{
+  justify-content: center;
+  text-align: center;
+}
+
+/* optional: make note sit under button on small screens */
+@media (max-width: 980px){
+  .brochureForm__actions{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.typeHero{
+  padding: 110px 20px 70px;
+}
+
+.typeHero__inner{
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 34px;
+  align-items: center;
+}
+
+.typeHero__kicker{
+  letter-spacing: .18em;
+  opacity: .8;
+  font-size: 12px;
+}
+
+.typeHero__title{
+  font-size: clamp(40px, 6vw, 66px);
+  line-height: 0.95;
+  margin: 10px 0 14px;
+}
+
+.typeHero__sub{
+  opacity: .92;
+  max-width: 560px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.typeHero__bullets{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.pill{
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.06);
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.typeHero__visual{
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.aircraftStage{
+  position: relative;
+  width: min(440px, 92vw);
+  height: 300px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: radial-gradient(120% 120% at 40% 30%, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+  overflow: hidden;
+}
+
+.aircraftGlow{
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.10), transparent 60%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.aircraftImg{
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: 92%;
+  max-width: 420px;
+  height: auto;
+  will-change: transform, opacity;
+}
+
+/* Spawn-from-left animation */
+.aircraftImg.is-enter{
+  animation: spawnLeft .55s cubic-bezier(.2,.9,.2,1) both;
+}
+
+@keyframes spawnLeft{
+  from{
+    transform: translate(-120%, -50%) scale(.98);
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to{
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+.aircraftTabs{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.airTab{
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.airTab.is-active{
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.28);
+}
+
+.aircraftNote{
+  opacity: .85;
+  font-size: 14px;
+  text-align: center;
+  max-width: 420px;
+}
+
+@media (max-width: 920px){
+  .typeHero__inner{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= LOCATION MAP ================= */
+
+.locationMap{
+  padding: 90px 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f6fb 100%);
+}
+
+.locationMap__inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 18px;
+  text-align: center;
+}
+
+.locationMap__title{
+  margin: 0 0 8px;
+  font-size: clamp(28px, 3vw, 40px);
+  color: #0b1220;
+}
+
+.locationMap__sub{
+  margin: 0 0 28px;
+  color: rgba(11,18,32,.65);
+  font-size: 14.5px;
+}
+
+.mapWrap{
+  width: 100%;
+  height: 420px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(0,0,0,.12);
+  border: 1px solid rgba(11,18,32,.08);
+}
+
+/* mobile */
+@media (max-width: 768px){
+  .mapWrap{
+    height: 320px;
+  }
+}
+/* ===== Glass background ONLY for heroSub ===== */
+
+.heroSub{
+  position: relative;
+  z-index: 2;
+
+  display: inline-block;          /* shrink to text width */
+  padding: 14px 18px;
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+}
+.dd{ 
+  position: relative; 
+  z-index: 2500;
+}
+
+/* Hide pilot image on tablet (iPad) + mobile */
+@media (max-width: 1024px){
+  .pilotCard__pilotWrap,
+  .pilotCard__pilot{
+    display: none !important;
+  }
+
+  /* Optional: let content take full width nicely */
+  .pilotCard__content{
+    width: 100%;
+  }
+}

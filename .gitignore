@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.psd
+*.ai
+*.zip
+*.mp4
+*.mov
+*.log

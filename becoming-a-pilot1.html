@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>How To Become A Pilot?</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="become-a-pilot.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+    <!-- NAVBAR -->
+    <header class="navwrap">
+      <div class="nav-clouds" aria-hidden="true"></div>
+  
+      <div class="navinner">
+        <!-- LOGO LEFT -->
+        <a class="brand" href="#top">
+          <img class="brand__logo" src="assets/logo.png" alt="Horizon" />
+        </a>
+  
+        <!-- MOBILE BURGER -->
+        <button class="burger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+  
+        <!-- NAV RIGHT -->
+        <nav class="nav" aria-label="Primary navigation">
+          <ul class="menu" id="menu">
+            <li><a class="link is-active" href="#dgca">DGCA Ground School</a></li>
+            <li><a class="link" href="#sim">In-house Simulator</a></li>
+            <li><a class="link" href="courses.html">Courses</a></li>
+  
+            <!-- PILOT TRAINING DROPDOWN -->
+            <li class="dd">
+              <button class="link dd__btn" type="button" aria-expanded="false">
+                Pilot Training <span class="caret">▾</span>
+              </button>
+  
+              <div class="dd__menu" role="menu">
+                <a href="#type-rating" role="menuitem">Type Rating</a>
+                <a href="#atr" role="menuitem">ATR</a>
+                <a href="#boeing" role="menuitem">Boeing</a>
+              </div>
+            </li>
+  
+            <li><a class="link" href="#become-pilot">Become a Pilot</a></li>
+            <li><a class="link" href="#contact">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+  
+      <!-- ROUTE STRIP -->
+      <div class="route">
+        <div class="route__line"></div>
+        <div class="route__plane" id="plane" aria-hidden="true">
+          <img src="assets/plane.png" alt="" />
+        </div>
+      </div>
+    </header>
+
+  <main class="pilotPage" id="top">
+
+    <!-- HERO -->
+    <header class="pilotHero">
+
+      <!-- FULLSCREEN BACKGROUND VIDEO -->
+      <video
+        class="pilotHero__video"
+        src="assets/become-pilot.mp4"
+        autoplay
+        muted
+        loop
+        playsinline>
+      </video>
+    
+      <!-- DARK OVERLAY FOR READABILITY -->
+      <div class="pilotHero__overlay"></div>
+    
+      <div class="pilotHero__inner">
+        <p class="pilotHero__eyebrow">Step-by-step guide</p>
+        <h1 class="pilotHero__title">How To Become A Pilot?</h1>
+        <p class="pilotHero__sub">
+          Tap each step to expand, check them off, and track progress. No boredom allowed.
+        </p>
+    
+        <div class="pilotHero__progress">
+          <div class="progressMeta">
+            <span id="progressText">0/13 completed</span>
+            <button class="resetBtn" id="resetSteps" type="button">Reset</button>
+          </div>
+          <div class="progressBar">
+            <div class="progressFill" id="progressFill"></div>
+          </div>
+        </div>
+      </div>
+    
+    </header>
+    
+
+    <!-- STEPS -->
+    <section class="pilotSteps" aria-label="13 steps to become a pilot">
+      <div class="pilotSteps__inner">
+
+        <div class="stepsHeader">
+          <h2 class="stepsTitle">Your 13-Step Roadmap</h2>
+          <p class="stepsSub">Click a step → read → check it off. Simple.</p>
+        </div>
+
+        <div class="stepsGrid" id="stepsGrid">
+
+          <!-- STEP 1 -->
+          <article class="stepCard" data-step="1">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">1</span>
+                <span class="stepName">Meet the Age Requirement</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">The minimum age requirement for pilot training must be 17 years old.</p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 2 -->
+          <article class="stepCard" data-step="2">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">2</span>
+                <span class="stepName">Academic Qualifications</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">You must have completed your 12th grade with Physics and Mathematics.</p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 3 -->
+          <article class="stepCard" data-step="3">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">3</span>
+                <span class="stepName">Budget for CPL Flying Training</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  The budget for a Commercial Pilot License (CPL) training is between 30 to 65 lakhs INR.
+                  Always plan finances properly before enrolling.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 4 -->
+          <article class="stepCard" data-step="4">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">4</span>
+                <span class="stepName">CPL Flight Training Duration</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  The average duration to complete CPL training is between 12 to 24 months.
+                  This can vary depending on the flight school and your progress.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 5 -->
+          <article class="stepCard" data-step="5">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">5</span>
+                <span class="stepName">DGCA Pilot Medicals</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  You must take DGCA Class 1 and Class 2 medical examinations and be certified medically fit.
+                  Your medical history plays a major role in your aviation career.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 6 -->
+          <article class="stepCard" data-step="6">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">6</span>
+                <span class="stepName">DGCA Computer Number Registration</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  Register and obtain a DGCA Computer Number. This unique number is required for DGCA exams
+                  and training records.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 7 -->
+          <article class="stepCard" data-step="7">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">7</span>
+                <span class="stepName">Getwings’ DGCA Pilot Ground Classes</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  Join Getwings’ DGCA Ground Classes to master theoretical knowledge for DGCA exams.
+                  We also offer sessions in our in-house G-1000 C172 simulator to apply concepts practically.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 8 -->
+          <article class="stepCard" data-step="8">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">8</span>
+                <span class="stepName">Ace the DGCA Exams</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  DGCA exams cover subjects like Air Navigation, Aviation Meteorology, Air Regulations,
+                  Aircraft Technical General, Aircraft Technical Specific, and more. Prepare well and score high.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 9 -->
+          <article class="stepCard" data-step="9">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">9</span>
+                <span class="stepName">Complete Flight Training Abroad</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  Depending on your plan, complete your flight training abroad while adhering to DGCA requirements.
+                  This provides hands-on experience and required flying hours.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 10 -->
+          <article class="stepCard" data-step="10">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">10</span>
+                <span class="stepName">License Conversion</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  Convert your international pilot license into an Indian DGCA-recognized license.
+                  You may need around 8 flight hours and pass two DGCA exams if not completed earlier.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 11 -->
+          <article class="stepCard" data-step="11">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">11</span>
+                <span class="stepName">Type-Rating Certification</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  Get your type-rating certification to qualify you to operate specific aircraft types.
+                  This is a major milestone towards your airline career.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 12 -->
+          <article class="stepCard" data-step="12">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">12</span>
+                <span class="stepName">Airline Preparation</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  Transitioning to an airline career requires technical expertise, hours building, certifications
+                  (IR/ME), and strong interview preparation. Stay disciplined and keep learning continuously.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+          <!-- STEP 13 -->
+          <article class="stepCard" data-step="13">
+            <details class="stepDetails">
+              <summary class="stepSummary">
+                <span class="stepBadge">13</span>
+                <span class="stepName">Join Indian Airlines</span>
+
+                <label class="stepCheck" onclick="event.stopPropagation()">
+                  <input type="checkbox" class="stepBox" />
+                  <span>Done</span>
+                </label>
+              </summary>
+
+              <div class="stepBody">
+                <p class="stepText">
+                  With your pilot license, medicals, type-rating, and preparation complete — you’re ready to join an Indian airline
+                  and build your aviation career.
+                </p>
+                <div class="stepActions">
+                  <button class="miniBtn" type="button" data-action="openOnly">Open only this</button>
+                  <button class="miniBtn" type="button" data-action="next">Next step</button>
+                </div>
+              </div>
+            </details>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pilotCta">
+      <div class="pilotCta__inner">
+        <h3 class="pilotCta__title">Want the full brochure + eligibility checklist?</h3>
+        <p class="pilotCta__sub">Get the details in one shot.</p>
+        <div class="pilotCta__actions">
+          <a class="ctaBtn" href="contact.html#brochure">View Detailed Brochure</a>
+          <a class="ctaBtn ctaBtn--ghost" href="https://wa.me/" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FULL FOOTER (unchanged) -->
+  <footer class="gwFooter" id="gwFooter">
+    <img
+      src="assets/footer-plane.png"
+      alt=""
+      class="gwFooter__plane"
+      id="gwFooterPlane"
+      aria-hidden="true"
+    />
+
+    <div class="gwFooter__inner">
+      <div class="gwFooter__brand">
+        <img class="gwFooter__logo" src="assets/logo.png" alt="Horizon" />
+        <p class="gwFooter__desc">
+          Your trusted partner in DGCA CPL Ground School and flight training.
+          Clear structure, real mentorship — built for cockpit-ready careers.
+        </p>
+
+        <div class="gwFooter__socials" aria-label="Social links">
+          <a href="#" class="gwSocial" aria-label="Instagram">◎</a>
+          <a href="#" class="gwSocial" aria-label="Twitter">𝕏</a>
+          <a href="#" class="gwSocial" aria-label="Facebook">f</a>
+        </div>
+      </div>
+
+      <div class="gwFooter__cols">
+        <div class="gwCol">
+          <h4>Courses</h4>
+          <a href="#">DGCA Ground Classes</a>
+          <a href="#">Simulator Sessions</a>
+          <a href="#">Private Pilot License (PPL)</a>
+          <a href="#">Night Rating</a>
+          <a href="#">Instrument Rating (IR)</a>
+          <a href="#">Multi-Engine Rating</a>
+          <a href="#">Commercial Pilot License</a>
+          <a href="#">Flight Instructor Rating</a>
+          <a href="#">Diploma in Aviation</a>
+          <a href="#">Type Rating</a>
+        </div>
+
+        <div class="gwCol">
+          <h4>DGCA Links</h4>
+          <a href="#">DGCA</a>
+          <a href="#">DGCA Exam Portal</a>
+          <a href="#">DGCA Exam Syllabus</a>
+          <a href="#">Pilot Notice Board</a>
+          <a href="#">DGCA Approved Aircrafts</a>
+          <a href="#">DGCA CPL Requirements</a>
+          <a href="#">Class 1 Medical</a>
+          <a href="#">Class 2 Medical</a>
+        </div>
+      </div>
+
+      <div class="gwFooter__right">
+        <div class="gwHours">
+          <div class="gwHours__col">
+            <p class="gwHours__label">Monday–Friday:</p>
+            <p class="gwHours__time">10:30am–6:30pm</p>
+          </div>
+          <div class="gwHours__divider"></div>
+          <div class="gwHours__col">
+            <p class="gwHours__label">Saturday:</p>
+            <p class="gwHours__time">10:30am–2:00pm</p>
+          </div>
+        </div>
+
+        <div class="gwContact">
+          <div class="gwRow">
+            <span class="gwDot" aria-hidden="true">⌁</span>
+            <p>1st Floor, 9/6A, Devki Nandan Marg, Tilak Nagar, New Delhi 110018</p>
+          </div>
+
+          <div class="gwRow">
+            <span class="gwDot" aria-hidden="true">✆</span>
+            <p>+91 7000000000<br/>+91 8000000000</p>
+          </div>
+
+          <div class="gwRow">
+            <span class="gwDot" aria-hidden="true">✉</span>
+            <p>info@horizonaviation.in<br/>admissions@horizonaviation.in</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gwFooter__bottom">
+      <div class="gwFooter__bottomInner">
+        <span>Copyright 2026 Horizon Aviation Pvt. Ltd.</span>
+        <a href="#" class="gwFooter__policy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="become-a-pilot.js" defer></script>
+</body>
+</html>
