@@ -287,446 +287,162 @@
   window.addEventListener("resize", update);
   window.addEventListener("load", update);
 })();
+
 /* =========================
-   COURSES AUTO-SCROLL RAIL
+   COURSES MARQUEE v3 (BUTTERY SMOOTH, TRANSFORM-BASED)
+   Paste at very end of app.js
    ========================= */
-   (() => {
+   document.addEventListener("DOMContentLoaded", () => {
     const viewport = document.getElementById("courseViewport");
     const track = document.getElementById("courseTrack");
-    if (!viewport || !track) return;
-  
     const leftBtn = document.querySelector(".railBtn--left");
     const rightBtn = document.querySelector(".railBtn--right");
   
-    // Respect reduced motion
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!viewport || !track) return;
   
-    // Seamless loop: clone once
-    const original = track.innerHTML;
-    track.insertAdjacentHTML("beforeend", original);
+    // Reduced motion respect
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   
-    // Auto scroll state
-    let x = 0;
-    let rafId = null;
-    let paused = false;
+    // Stop any previous course rail (if you pasted older versions)
+    if (window.__RETRIX_COURSES_STOP__) window.__RETRIX_COURSES_STOP__();
   
-    // speed (px per frame-ish; tuned for smooth)
-    const SPEED = 0.45;
+    // Ensure viewport is not being scrolled by other code
+    viewport.scrollLeft = 0;
   
-    // measure half width (original content)
-    const getHalfWidth = () => {
-      // total width of half the children (first set)
-      const children = [...track.children];
-      const halfCount = children.length / 2;
+    // ------- CONFIG -------
+    const SPEED_PX_PER_SEC = 140; // bump to 160/180 for faster
+    const GAP_FALLBACK = 16;
+  
+    let raf = null;
+    let last = 0;
+    let x = 0; // current translateX (negative = moving left)
+    let loopWidth = 0;
+    let pausedUntil = 0;
+  
+    const pause = (ms = 1200) => (pausedUntil = Date.now() + ms);
+    const paused = () => Date.now() < pausedUntil;
+  
+    // Read actual gap from CSS (flex/grid gap)
+    function getGapPx() {
+      const s = getComputedStyle(track);
+      const g = parseFloat(s.gap || s.columnGap || "0");
+      return Number.isFinite(g) && g > 0 ? g : GAP_FALLBACK;
+    }
+  
+    // Duplicate content once for seamless loop
+    function ensureClone() {
+      if (track.dataset.cloned === "1") return;
+      track.insertAdjacentHTML("beforeend", track.innerHTML);
+      track.dataset.cloned = "1";
+    }
+  
+    // Measure width of the ORIGINAL set (half of children after clone)
+    function measureLoopWidth() {
+      const kids = Array.from(track.children);
+      if (!kids.length) return 0;
+  
+      const half = Math.floor(kids.length / 2);
+      const gap = getGapPx();
+  
       let w = 0;
-      for (let i = 0; i < halfCount; i++) {
-        w += children[i].getBoundingClientRect().width;
-        if (i !== halfCount - 1) w += 16; // gap
+      for (let i = 0; i < half; i++) {
+        w += kids[i].getBoundingClientRect().width;
+        if (i !== half - 1) w += gap;
       }
       return w;
-    };
+    }
   
-    let halfWidth = 0;
+    function apply() {
+      track.style.transform = `translate3d(${x}px, 0, 0)`;
+    }
   
-    function tick(){
-      if (!paused && !reduceMotion) {
-        x += SPEED;
-        if (x >= halfWidth) x = 0;
-        viewport.scrollLeft = x;
+    // Smooth tween for arrow clicks (no scrollBy bugs)
+    function tweenTo(targetX, ms = 520) {
+      pause(ms + 500);
+      const startX = x;
+      const diff = targetX - startX;
+      const start = performance.now();
+  
+      function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  
+      function step(now) {
+        const t = Math.min(1, (now - start) / ms);
+        x = startX + diff * easeOutCubic(t);
+        normalize(); // keep it in loop range
+        apply();
+        if (t < 1) requestAnimationFrame(step);
       }
-      rafId = requestAnimationFrame(tick);
+      requestAnimationFrame(step);
     }
   
-    function start(){
-      cancelAnimationFrame(rafId);
-      halfWidth = getHalfWidth();
-      rafId = requestAnimationFrame(tick);
+    function normalize() {
+      if (!loopWidth) return;
+      // Keep x in [-loopWidth, 0)
+      while (x <= -loopWidth) x += loopWidth;
+      while (x > 0) x -= loopWidth;
     }
   
-    function pause(){ paused = true; }
-    function resume(){ paused = false; }
-  
-    // pause on hover / focus / touch
-    viewport.addEventListener("mouseenter", pause);
-    viewport.addEventListener("mouseleave", resume);
-    viewport.addEventListener("focusin", pause);
-    viewport.addEventListener("focusout", resume);
-    viewport.addEventListener("touchstart", pause, { passive: true });
-    viewport.addEventListener("touchend", resume, { passive: true });
-  
-    // arrow buttons (manual bump)
-    const scrollStep = () => {
-      const card = track.querySelector(".courseCard");
-      if (!card) return 320;
-      return card.getBoundingClientRect().width + 16;
-    };
-  
-    leftBtn?.addEventListener("click", () => {
-      pause();
-      viewport.scrollBy({ left: -scrollStep(), behavior: "smooth" });
-      setTimeout(resume, 900);
-    });
-    rightBtn?.addEventListener("click", () => {
-      pause();
-      viewport.scrollBy({ left: scrollStep(), behavior: "smooth" });
-      setTimeout(resume, 900);
-    });
-  
-    // mobile tap open (hover replacement)
-    const cards = track.querySelectorAll(".courseCard");
-    cards.forEach(card => {
-      card.addEventListener("click", () => {
-        if (window.matchMedia("(hover: hover)").matches) return;
-        cards.forEach(c => { if (c !== card) c.classList.remove("is-open"); });
-        card.classList.toggle("is-open");
-      });
-    });
-  
-    window.addEventListener("resize", start);
-    window.addEventListener("load", start);
-  
-    start();
-  })();
-  
-  (() => {
-    const section = document.querySelector(".rating");
-    const plane   = document.getElementById("ratingPlane");
-    const model   = document.getElementById("ratingModel");
-    const text    = document.getElementById("ratingText");
-    const tabs    = document.querySelectorAll(".ratingTab");
-  
-    if (!section || !plane || !model || !text) return;
-  
-    const DATA = {
-      airbus: {
-        img: "assets/AIRBUS.png",
-        model: "Airbus A320",
-        text:
-          "Airbus is one of the most preferred choices of travelers. Type rating training for this can unlock more airline-ready opportunities."
-      },
-      boeing: {
-        img: "assets/BOEING.png",
-        model: "Boeing 737",
-        text:
-          "Boeing type ratings are iconic for airline pathways. Train smarter with structured prep, cockpit flows, and scenario practice."
-      },
-      atr: {
-        img: "assets/ATR.png",
-        model: "ATR 72",
-        text:
-          "ATR ratings are strong for regional airline ops. Build confidence with practical procedures, decision-making, and consistency."
-      }
-    };
-  
-    // tab switching
-    function setActive(key){
-      const d = DATA[key];
-      if (!d) return;
-  
-      tabs.forEach(t => {
-        const active = t.dataset.aircraft === key;
-        t.classList.toggle("is-active", active);
-        t.setAttribute("aria-selected", active ? "true" : "false");
-      });
-  
-      // quick swap (no flicker)
-      plane.style.opacity = "0";
-      setTimeout(() => {
-        plane.src = d.img;
-        model.textContent = d.model;
-        text.textContent = d.text;
-        plane.style.opacity = "1";
-      }, 120);
-    }
-  
-    tabs.forEach(btn => {
-      btn.addEventListener("click", () => setActive(btn.dataset.aircraft));
-    });
-  
-    // scroll motion (plane slides out of circle + glides right)
-    const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
-    let ticking = false;
-  
-    function animate(){
-      ticking = false;
-  
-      const r = section.getBoundingClientRect();
-      const vh = window.innerHeight || 800;
-  
-      // progress: 0 when section just enters, 1 when it passes
-      const raw = (vh - r.top) / (vh + r.height);
-      const p = clamp(raw, 0, 1);
-  
-      // plane motion: from left-ish inside circle -> moving right + slight lift
-      const x = (-140 + p * 260);     // slide right
-      const y = (18 - p * 40);        // slight lift
-      const rot = (-2 + p * 3);       // tiny rotate
-      const sc = (1.02 + p * 0.04);   // slight scale
-      const op = clamp(p * 1.2, 0, 1);
-  
-      plane.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg) scale(${sc})`;
-      plane.style.opacity = String(op);
-  
-      // optional: nudge the copy for that premium parallax
-      const copy = section.querySelector(".ratingCopy");
-      if (copy){
-        const copyY = (18 - p * 18);
-        copy.style.transform = `translate3d(0, ${copyY}px, 0)`;
-        copy.style.opacity = String(clamp(0.65 + p * 0.35, 0, 1));
-      }
-    }
-  
-    function onScroll(){
-      if (!ticking){
-        ticking = true;
-        requestAnimationFrame(animate);
-      }
-    }
-  
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", animate);
-    window.addEventListener("load", animate);
-  
-    // set default
-    setActive("airbus");
-    animate();
-  })();
-  
-
-  
-/* =========================
-   GW FOOTER PLANE (left → smooth drift)
-   ========================= */
-   (() => {
-    const plane = document.getElementById("gwFooterPlane");
-    const footer = document.getElementById("gwFooter");
-    if (!plane || !footer) return;
-  
-    const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
-  
-    let current = 0;
-    let target = 0;
-  
-    function updateTarget(){
-      const r = footer.getBoundingClientRect();
-      const vh = window.innerHeight;
-  
-      const pRaw = (vh - r.top) / (vh + r.height);
-      const p = clamp(pRaw, 0, 1);
-  
-      // smoothstep easing
-      const eased = p * p * (3 - 2 * p);
-  
-      // only drift 1/4 screen
-      target = window.innerWidth * 0.25 * eased;
-    }
-  
-    function animate(){
-      current += (target - current) * 0.06; // smaller = smoother
-      plane.style.transform = `translate3d(${current}px, 0, 0)`;
-      requestAnimationFrame(animate);
-    }
-  
-    window.addEventListener("scroll", updateTarget, { passive: true });
-    window.addEventListener("resize", updateTarget);
-    window.addEventListener("load", updateTarget);
-  
-    updateTarget();
-    animate();
-  })();
-/* =========================
-   COURSES RAIL: arrows + auto-scroll + hover pause
-   ========================= */
-   (() => {
-    const viewport = document.getElementById("courseViewport");
-    const track = document.getElementById("courseTrack");
-    if (!viewport || !track) return;
-  
-    const leftBtn = document.querySelector(".railBtn--left");
-    const rightBtn = document.querySelector(".railBtn--right");
-  
-    // scroll by ~1 card
-    function cardStep() {
+    function cardStepPx() {
       const first = track.querySelector(".courseCard");
       if (!first) return 320;
-      const styles = getComputedStyle(track);
-      const gap = parseFloat(styles.columnGap || styles.gap || "16") || 16;
-      return first.getBoundingClientRect().width + gap;
+      return first.getBoundingClientRect().width + getGapPx();
     }
   
-    function scrollByDir(dir) {
-      viewport.scrollBy({ left: dir * cardStep(), behavior: "smooth" });
-    }
+    // Main animation loop (GPU smooth)
+    function tick(ts) {
+      if (!last) last = ts;
+      const dt = (ts - last) / 1000;
+      last = ts;
   
-    leftBtn?.addEventListener("click", () => scrollByDir(-1));
-    rightBtn?.addEventListener("click", () => scrollByDir(1));
-  
-    // Auto-scroll loop (stops on hover/touch/interaction)
-    let paused = false;
-    let rafId = null;
-    const speed = 0.45; // px per frame-ish
-  
-    function tick() {
-      if (!paused) {
-        viewport.scrollLeft += speed;
-  
-        // loop back when nearing end
-        const max = viewport.scrollWidth - viewport.clientWidth;
-        if (viewport.scrollLeft >= max - 2) viewport.scrollLeft = 0;
+      if (!paused()) {
+        x -= SPEED_PX_PER_SEC * dt; // move left
+        normalize();
+        apply();
       }
-      rafId = requestAnimationFrame(tick);
+  
+      raf = requestAnimationFrame(tick);
     }
   
-    // pause on hover/focus/touch
-    const pause = () => (paused = true);
-    const play = () => (paused = false);
+    // Interactions pause it (prevents fighting)
+    viewport.addEventListener("mouseenter", () => pause(999999));
+    viewport.addEventListener("mouseleave", () => pause(700));
+    viewport.addEventListener("touchstart", () => pause(999999), { passive: true });
+    viewport.addEventListener("touchend", () => pause(1200), { passive: true });
   
-    viewport.addEventListener("mouseenter", pause);
-    viewport.addEventListener("mouseleave", play);
-    viewport.addEventListener("focusin", pause);
-    viewport.addEventListener("focusout", play);
-  
-    viewport.addEventListener("touchstart", pause, { passive: true });
-    viewport.addEventListener("touchend", () => setTimeout(play, 1200), { passive: true });
-  
-    // user scroll = pause briefly
-    let userTimer = null;
-    viewport.addEventListener("scroll", () => {
-      paused = true;
-      clearTimeout(userTimer);
-      userTimer = setTimeout(() => (paused = false), 1200);
-    }, { passive: true });
-  
-    // start
-    cancelAnimationFrame(rafId);
-    tick();
-  })();
-  // Type Rating aircraft switcher: spawn from left on every click
-(() => {
-  const img = document.getElementById("aircraftImg");
-  const note = document.getElementById("aircraftNote");
-  const tabs = document.querySelectorAll(".airTab");
-  if (!img || !note || tabs.length === 0) return;
-
-  const data = {
-    airbus: {
-      src: "assets/type-airbus.png",
-      alt: "Airbus aircraft",
-      note: "Airbus A320 family — one of the most common airline fleets."
-    },
-    boeing: {
-      src: "assets/type-boeing.png",
-      alt: "Boeing aircraft",
-      note: "Boeing 737 family — widely used for short-to-medium haul routes."
-    },
-    atr: {
-      src: "assets/type-atr.png",
-      alt: "ATR aircraft",
-      note: "ATR turboprops — popular for regional routes and short sectors."
-    }
-  };
-
-  function setActive(key){
-    tabs.forEach(t => {
-      const on = t.dataset.aircraft === key;
-      t.classList.toggle("is-active", on);
-      t.setAttribute("aria-selected", String(on));
+    // Arrows: move by one card smoothly
+    leftBtn?.addEventListener("click", () => {
+      const step = cardStepPx();
+      tweenTo(x + step, 520); // move right visually
     });
-
-    const next = data[key];
-    if (!next) return;
-
-    // Change image + restart animation
-    img.classList.remove("is-enter"); // reset
-    // Force reflow so the animation restarts cleanly
-    void img.offsetWidth;
-
-    img.src = next.src;
-    img.alt = next.alt;
-    note.textContent = next.note;
-
-    img.classList.add("is-enter");
-  }
-
-  tabs.forEach(t => {
-    t.addEventListener("click", () => setActive(t.dataset.aircraft));
-  });
-})();
-(() => {
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyuNwjkBe03YF3aCzDfahiN9tv5FQ-1c6kJT1wpWZ8W4oj1eCgSGF50TtFBSeHHEcQHjw/exec";
-
-  const form = document.getElementById("brochureForm");
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const btn = form.querySelector('button[type="submit"]');
-    if (!btn) return;
-
-    const original = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = 'Sending… <span class="brochureBtn__dot">→</span>';
-
-    try {
-      const res = await fetch(SCRIPT_URL, { method: "POST", body: new FormData(form) });
-      await res.text();
-
-      btn.innerHTML = 'Sent ✅ <span class="brochureBtn__dot">→</span>';
-      form.reset();
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.innerHTML = original;
-      }, 2000);
-
-    } catch (err) {
-      console.error(err);
-      btn.disabled = false;
-      btn.innerHTML = original;
-      alert("Something broke. Try again.");
+    rightBtn?.addEventListener("click", () => {
+      const step = cardStepPx();
+      tweenTo(x - step, 520); // move left visually
+    });
+  
+    // Init
+    function start() {
+      ensureClone();
+      loopWidth = measureLoopWidth();
+      normalize();
+      apply();
+  
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(tick);
     }
+  
+    window.addEventListener("resize", () => {
+      pause(600);
+      last = 0;
+      loopWidth = measureLoopWidth();
+      normalize();
+      apply();
+    });
+  
+    start();
+  
+    // expose stop hook
+    window.__RETRIX_COURSES_STOP__ = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = null;
+    };
   });
-})();
-document.addEventListener("DOMContentLoaded", () => {
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyuNwjkBe03YF3aCzDfahiN9tv5FQ-1c6kJT1wpWZ8W4oj1eCgSGF50TtFBSeHHEcQHjw/exec";
-
-  const form = document.getElementById("brochureForm");
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const btn = form.querySelector('button[type="submit"]');
-    if (!btn) return;
-
-    const original = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = 'Sending… <span class="brochureBtn__dot">→</span>';
-
-    try {
-      const res = await fetch(SCRIPT_URL, {
-        method: "POST",
-        body: new FormData(form),
-      });
-
-      // If Apps Script isn’t truly public, you’ll often get HTML back here.
-      const text = await res.text();
-
-      if (!res.ok) throw new Error(text || "Request failed");
-
-      btn.innerHTML = 'Sent ✅ <span class="brochureBtn__dot">→</span>';
-      form.reset();
-
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.innerHTML = original;
-      }, 2000);
-
-    } catch (err) {
-      console.error("BROCHURE ERROR:", err);
-      btn.disabled = false;
-      btn.innerHTML = original;
-      alert("Submission failed. Check console for details.");
-    }
-  });
-});
