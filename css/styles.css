@@ -22,7 +22,7 @@
 
   --topbarH: 38px;
   --navRowH: 97px;   /* tweak if logo row height changes */
-  --routeH: 07px;
+  --routeH: 45px;
 }
 main{
   margin-top: calc(-1 * (var(--navRowH) + var(--routeH)));
@@ -2778,7 +2778,6 @@ transition: transform 0.12s linear;
   z-index: 0;
   filter: saturate(1.05) contrast(1.05);
 }
-
 .contactHero__overlay{
   position: absolute;
   inset: 0;
@@ -3686,3 +3685,21 @@ transition: transform 0.12s linear;
       font-size: 13px;
     }
   }
+  /* CONTACT HERO video: keep on mobile, make it behave */
+.contactHero{
+  position: relative;
+  overflow: hidden;
+}
+
+.contactHero__video{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* if mobile struggles, keep video visible but ensure the hero has a height */
+@media (max-width: 768px){
+  .contactHero{ min-height: 520px; }   /* tweak */
+}
