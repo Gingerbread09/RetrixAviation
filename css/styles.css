@@ -5,11 +5,7 @@
   font-style: normal;
   font-display: swap;
 }
-:root{
-  --topbarH: 38px;
-  --navRowH: 90px;      /* navinner */
-  --routeH: 40px;       /* dashed flight strip */
-}
+
 :root{
   --navy:#0b1220;
   --navy2:#101c34;
@@ -22,7 +18,7 @@
 
   --topbarH: 38px;
   --navRowH: 97px;   /* tweak if logo row height changes */
-  --routeH: 45px;
+  --routeH:  35px;
 }
 main{
   margin-top: calc(-1 * (var(--navRowH) + var(--routeH)));
@@ -2846,7 +2842,8 @@ transition: transform 0.12s linear;
 .contactHero__sub{
   margin: 0 0 18px;
   max-width: 62ch;
-  color: #1e2e5b;
+  color: #ffffff;
+  font-size: larger;
   line-height: 1.7;
 }
 
