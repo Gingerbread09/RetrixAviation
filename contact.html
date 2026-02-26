@@ -1,18 +1,349 @@
 <!doctype html>
 <html lang="en">
+<body id="top">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — Retrix Aviation</title>
+  <title>Contact - Retrix Aviation</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
-  <section style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px;">
-    <div>
-      <h1 style="font-size: 42px; margin-bottom: 16px;">Coming Soon</h1>
-      <p style="font-size: 16px; opacity: .7;">This section is under development. Check back shortly.</p>
-      <a href="index.html" style="display:inline-block;margin-top:20px;text-decoration:none;font-weight:600;">← Back to Home</a>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="topbar">
+    <div class="topbar__marquee">
+      <div class="topbar__msg">
+        <span>Admissions Open</span>
+        <span class="dot">•</span>
+        <span>DGCA Ground Classes Open</span>
+        <span class="dot">•</span>
+        <a href="#brochure" class="topbar__link">Book your slot</a>
+      </div>
     </div>
-  </section>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navwrap" role="navigation" aria-label="Primary">
+    <div class="navinner">
+
+      <!-- LOGO -->
+      <a class="brand" href="index.html" aria-label="Retrix Home">
+        <img class="brand__logo" src="assets/logo.svg" alt="Retrix Pilot Training & Aviation Academy logo" />
+      </a>
+
+      <!-- MOBILE BURGER -->
+      <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- NAV -->
+      <nav class="nav" aria-label="Primary navigation">
+        <ul class="menu" id="menu">
+          <li><a class="link" href="dgca.html">DGCA Ground School</a></li>
+
+          <li class="dd">
+            <button class="link dd__btn" type="button" aria-haspopup="true" aria-expanded="false">
+              Courses <span class="caret">▾</span>
+            </button>
+            <div class="dd__menu" role="menu">
+              <a href="index.html#cpl">CPL (Admissions Open)</a>
+            </div>
+          </li>
+
+          <li><a class="link" href="become-a-pilot.html">Become a Pilot</a></li>
+          <li><a class="link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- ROUTE STRIP -->
+    <div class="route" aria-hidden="true">
+      <div class="route__line"></div>
+      <div class="route__plane" id="plane" aria-hidden="true">
+        <img src="assets/plane.png" alt="" />
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE -->
+  <main id="contact">
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section class="contact">
+
+      <!-- HERO -->
+      <div class="contactHero">
+        <video class="contactHero__video" autoplay muted loop playsinline preload="metadata">
+          <source src="assets/pilot-hero.mp4" type="video/mp4" />
+        </video>
+
+        <div class="contactHero__overlay" aria-hidden="true"></div>
+
+        <div class="contactHero__inner">
+          <p class="contactHero__eyebrow">CONTACT US</p>
+          <h1 class="contactHero__title">Let’s get you cockpit-ready.</h1>
+          <p class="contactHero__sub">
+            Tell us what you’re aiming for: DGCA ground, simulator, or a full pathway,
+            and we’ll send the right brochure + next steps.
+          </p>
+          <a class="contactHero__cta" href="#brochure">Apply Now →</a>
+        </div>
+      </div>
+
+      <!-- INNER -->
+      <div class="contact__inner">
+
+        <!-- CONTACT CARDS -->
+        <div class="contactGrid" aria-label="Contact information">
+
+          <article class="contactCard">
+            <div class="contactCard__icon" aria-hidden="true">
+              <img src="assets/call.png" alt="Phone icon">
+            </div>
+            <h3 class="contactCard__title">Phone</h3>
+            <p class="contactCard__text">
+              <a href="tel:+918606737320">+91 8606737320</a>
+            </p>
+            <p class="contactCard__hint">Call / WhatsApp</p>
+          </article>
+
+          <article class="contactCard">
+            <div class="contactCard__icon" aria-hidden="true">
+              <img src="assets/send.png" alt="Email icon">
+            </div>
+            <h3 class="contactCard__title">Email</h3>
+            <p class="contactCard__text">
+              <a href="mailto:fly@retrixaviation.com">fly@retrixaviation.com</a>
+            </p>
+            <p class="contactCard__hint">Fast replies</p>
+          </article>
+
+          <article class="contactCard">
+            <div class="contactCard__icon" aria-hidden="true">
+              <img src="assets/time.png" alt="Clock icon">
+            </div>
+            <h3 class="contactCard__title">Hours</h3>
+            <p class="contactCard__text">
+              Mon–Sat: 9:00 AM – 7:00 PM<br>
+              Sunday: By appointment
+            </p>
+            <p class="contactCard__hint">IST</p>
+          </article>
+
+          <article class="contactCard">
+            <div class="contactCard__icon" aria-hidden="true">
+              <img src="assets/location.png" alt="Location icon">
+            </div>
+            <h3 class="contactCard__title">Address</h3>
+            <p class="contactCard__text">
+              Retrix Pilot Training & Aviation Academy<br>
+              Door No: 3289, First Floor, Asariparambu Road,<br>
+              Near ST George Church, Edappally, Kochi - 682024
+            </p>
+            <p class="contactCard__hint">
+              <a href="https://www.google.com/maps?q=3289%20First%20Floor%20Asariparambu%20Road%20Edappally%20Kochi%20682024"
+                 target="_blank" rel="noopener">
+                Open in Maps
+              </a>
+            </p>
+          </article>
+
+        </div>
+
+        <!-- BROCHURE -->
+        <div class="brochure" id="brochure">
+          <div class="brochure__head">
+            <p class="brochure__eyebrow">BROCHURE</p>
+            <h2 class="brochure__title">Request your brochure</h2>
+            <p class="brochure__sub">
+              Fill this out and we’ll send you the course details + eligibility checklist.
+            </p>
+          </div>
+
+          <form class="brochureForm"
+                id="brochureForm"
+                method="POST"
+                action="https://script.google.com/macros/s/AKfycby6jOldX3WVeE7a5tWMeOfRywQtMIeJr8--0dF_v7qo41WhMETxobZWo9e8syg2QnLO/exec">
+
+            <div class="brochureForm__grid">
+
+              <label class="field">
+                <span class="field__label">Full name</span>
+                <input class="field__input" type="text" name="name" placeholder="Your name" required>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Phone number</span>
+                <input class="field__input" type="tel" name="phone" placeholder="+91…" required>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Email address</span>
+                <input class="field__input" type="email" name="email" placeholder="you@example.com" required>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Zip / PIN code</span>
+                <input class="field__input" type="text" name="zipcode" placeholder="000000" required>
+              </label>
+
+              <label class="field">
+                <span class="field__label">12th Physics + Math?</span>
+                <select class="field__input" name="pcm" required>
+                  <option value="" selected disabled>Select</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Not sure</option>
+                </select>
+              </label>
+
+              <label class="field field--full">
+                <span class="field__label">Course you’re interested in</span>
+                <select class="field__input" name="course" required>
+                  <option value="" selected disabled>Select a course</option>
+                  <option>DGCA Ground School</option>
+                  <option>Simulator Training</option>
+                  <option>Commercial Pilot Pathway</option>
+                  <option>Type Rating Guidance</option>
+                  <option>ATPL Prep Track</option>
+                  <option>Viva + Interview Prep</option>
+                  <option>Brush-Up / Backlog Clear</option>
+                </select>
+              </label>
+
+              <label class="field field--full">
+                <span class="field__label">Message (optional)</span>
+                <textarea class="field__input field__textarea"
+                          name="message" rows="4"
+                          placeholder="Anything we should know?"></textarea>
+              </label>
+
+            </div>
+
+            <div class="brochureForm__actions">
+              <button class="brochureBtn" type="submit" id="brochureBtn">
+                Apply Now <span class="brochureBtn__dot">→</span>
+              </button>
+
+              <p class="brochureForm__note" id="brochureStatus" style="display:none;">
+                Thank you for your submission. We will get back to you soon.
+              </p>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= LOCATION MAP ================= -->
+    <section class="locationMap">
+      <div class="locationMap__inner">
+        <h2 class="locationMap__title">Visit Our Academy</h2>
+        <p class="locationMap__sub">
+          Retrix Pilot Training and Aviation Academy - Cochin, Kerala
+        </p>
+
+        <div class="mapWrap">
+          <iframe
+            src="https://www.google.com/maps?q=3289%20First%20Floor%20Asariparambu%20Road%20Edappally%20Kochi%20682024&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="gwFooter" id="gwFooter">
+    <img
+      src="assets/footer-plane.png"
+      alt=""
+      class="gwFooter__plane"
+      id="gwFooterPlane"
+      aria-hidden="true"
+    />
+
+    <div class="gwFooter__inner">
+      <div class="gwFooter__brand">
+        <img class="gwFooter__logo" src="assets/logo.svg" alt="Retrix Pilot Training & Aviation Academy" />
+
+        <p class="gwFooter__desc">
+          Your trusted partner in DGCA Ground School, simulator familiarization, and pilot pathway guidance.
+          Clear structure, real mentorship - built for cockpit-ready careers.
+        </p>
+
+        <div class="gwFooter__socials" aria-label="Social links">
+          <a href="#" class="gwSocial" aria-label="Instagram">◎</a>
+          <a href="#" class="gwSocial" aria-label="Twitter">𝕏</a>
+          <a href="#" class="gwSocial" aria-label="Facebook">f</a>
+        </div>
+      </div>
+
+      <div class="gwFooter__cols">
+        <div class="gwCol">
+          <h4>Courses</h4>
+          <a href="#courses">DGCA Ground Classes</a>
+          <a href="#simulator">Simulator Familiarization</a>
+          <a href="#pilot-path">PPL Pathway</a>
+          <a href="#cpl">CPL Roadmap (Admissions)</a>
+          <a href="#type-rating">Type Rating</a>
+        </div>
+
+        <div class="gwCol">
+          <h4>Student Hub</h4>
+          <a href="https://pariksha.dgca.gov.in/home" target="_blank" rel="noopener">DGCA Exam Portal (Pariksha)</a>
+          <a href="https://www.dgca.gov.in/" target="_blank" rel="noopener">DGCA Main Site</a>
+          <a href="contact.html">Admissions Contact</a>
+        </div>
+      </div>
+
+      <div class="gwFooter__right">
+        <div class="gwHours">
+          <div class="gwHours__col">
+            <p class="gwHours__label">Monday–Saturday:</p>
+            <p class="gwHours__time">09:00 AM – 5:00 PM</p>
+          </div>
+        </div>
+
+        <div class="gwContact">
+          <div class="gwRow">
+            <span class="gwDot" aria-hidden="true">⌁</span>
+            <p>
+              Retrix Pilot Training and Aviation Academy.<br/>
+              Door No: 3289, First Floor, Asariparambu Road,<br/>
+              Near ST George Church, Edappally, Kochi - 682024.
+            </p>
+          </div>
+
+          <div class="gwRow">
+            <span class="gwDot" aria-hidden="true">✆</span>
+            <p>+91 8606737320</p>
+          </div>
+
+          <div class="gwRow">
+            <span class="gwDot" aria-hidden="true">✉</span>
+            <p>fly@retrixaviation.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gwFooter__bottom">
+      <div class="gwFooter__bottomInner">
+        <span>© 2026 Retrix Aviation Pvt. Ltd.</span>
+        <a href="#" class="gwFooter__policy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+
 </body>
 </html>
