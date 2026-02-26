@@ -540,3 +540,19 @@
       }
     });
   });
+  /* =========================
+   FORCE AUTOPLAY (mobile iOS)
+   ========================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const v = document.querySelector(".contactHero__video");
+  if (!v) return;
+
+  v.muted = true;          // required for autoplay
+  v.playsInline = true;    // iOS hint
+  const tryPlay = () => v.play().catch(() => {});
+
+  tryPlay();
+  // if iOS blocks until user interacts, this makes it start on first tap/scroll
+  window.addEventListener("touchstart", tryPlay, { once: true, passive: true });
+  window.addEventListener("scroll", tryPlay, { once: true, passive: true });
+});
