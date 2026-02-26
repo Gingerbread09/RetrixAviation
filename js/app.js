@@ -310,7 +310,7 @@
     viewport.scrollLeft = 0;
   
     // ------- CONFIG -------
-    const SPEED_PX_PER_SEC = 140; // bump to 160/180 for faster
+    const SPEED_PX_PER_SEC = 90; // bump to 160/180 for faster
     const GAP_FALLBACK = 16;
   
     let raf = null;
@@ -445,4 +445,98 @@
       if (raf) cancelAnimationFrame(raf);
       raf = null;
     };
+  });
+
+  /* =========================
+   GW FOOTER PLANE — smooth scroll drift (FIX)
+   ========================= */
+(() => {
+  const plane = document.getElementById("gwFooterPlane");
+  const footer = document.getElementById("gwFooter");
+
+  if (!plane || !footer) {
+    console.warn("Footer plane not found. Need #gwFooter and #gwFooterPlane.");
+    return;
+  }
+
+  const clamp = (n, min, max) => Math.min(max, Math.max(min, n));
+
+  let raf = null;
+
+  function update() {
+    raf = null;
+
+    const r = footer.getBoundingClientRect();
+    const vh = window.innerHeight || 800;
+
+    // progress 0..1 as footer enters viewport
+    const p = clamp((vh - r.top) / (vh + r.height * 0.35), 0, 1);
+
+    // small premium drift (NOT full screen fly)
+    const x = -20 + p * 120;  // move right a bit
+    const y =  10 + p * 24;   // move slightly down
+    const rot = -2 + p * 2;   // tiny rotate
+
+    // IMPORTANT: use translate3d so it stays smooth
+    plane.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${rot}deg)`;
+  }
+
+  function onScroll() {
+    if (raf) return;
+    raf = requestAnimationFrame(update);
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  window.addEventListener("load", onScroll);
+
+  // run once immediately
+  update();
+})();
+
+/* =========================
+   BROCHURE FORM (single send, dynamic UI)
+   ========================= */
+   document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("brochureForm");
+    const btn = document.getElementById("brochureBtn");
+    const status = document.getElementById("brochureStatus");
+    if (!form || !btn || !status) return;
+  
+    let sending = false;
+  
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (sending) return;          // prevents double-click spam
+      sending = true;
+  
+      const originalHTML = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = "Sending…";
+  
+      try {
+        await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          mode: "no-cors"
+        });
+  
+        form.reset();
+        status.style.display = "block";
+        btn.innerHTML = "Sent";
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = originalHTML;
+          status.style.display = "none";
+          sending = false;
+        }, 1800);
+  
+      } catch (err) {
+        console.error(err);
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+        sending = false;
+        alert("Submission failed. Try again.");
+      }
+    });
   });

@@ -142,7 +142,7 @@ button, input, select, textarea { font-family: inherit; }
   box-shadow: inset 0 0 0 1px rgba(214,168,42,.22);
 }
 
-.caret{ color: var(--muted); font-size: 12px; }
+.caret{ color: #071a2e; font-size: 12px; }
 
 /* Dropdown */
 .dd{ position:relative; }
@@ -295,6 +295,7 @@ button, input, select, textarea { font-family: inherit; }
     background-position: center bottom;
     background-repeat: no-repeat;
 }
+.pilotCard__title2{ color:#f0c55a; }
 
 /* smooth blend into next section */
 .heroTakeoff::before{
@@ -3442,4 +3443,163 @@ transition: transform 0.12s linear;
 /* Add breathing room above hours */
 .gwHours{
   margin-bottom: 24px;
+}
+/* =========================
+   DESKTOP NAV: Center Logo + Left/Right Links
+   (NO HTML changes needed)
+   ========================= */
+   @media (min-width: 1025px){
+
+    /* keep your navinner as the positioning container */
+    .navinner{
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+  
+    /* NAV stretches full width */
+    .nav{
+      width: 100%;
+    }
+  
+    /* Center the logo absolutely */
+    .brand{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      z-index: 5;
+    }
+  
+    /* Reserve space so menu items don't collide with logo */
+    .menu{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 180px;   /* <-- adjust if your logo is wider */
+      margin: 0;
+    }
+  
+    /* Push RIGHT side items away using auto gap between item 2 and 3 */
+    .menu > li:nth-child(2){
+      margin-right: auto;
+    }
+  
+    /* prevent wrapping */
+    .menu > li{
+      white-space: nowrap;
+    }
+  
+    /* optional: keep everything on one line no matter what */
+    .navinner{
+      min-height: 86px;  /* adjust based on your logo height */
+    }
+  }
+/* =========================
+   GLASS NAV BUTTONS
+   ========================= */
+
+   @media (min-width: 981px){
+
+    .link{
+      padding: 10px 18px;
+      border-radius: 14px;
+  
+      background: rgba(6,18,32,0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+  
+      border: 1px solid rgba(255,255,255,0.25);
+  
+      transition: all .25s ease;
+    }
+  
+    .link:hover{
+      background: rgba(255,255,255,0.28);
+      border-color: rgba(255,255,255,0.4);
+      transform: translateY(-2px);
+    }
+  
+  }
+  /* =========================
+   PREMIUM NAV BUTTONS (DESKTOP)
+   ========================= */
+@media (min-width: 981px){
+
+  /* distribute evenly */
+  .menu{
+    display: flex;
+    justify-content: center;
+    gap: 36px;          /* more breathing room */
+    padding: 0;
+  }
+
+  /* individual glass buttons */
+  .link{
+    padding: 10px 22px;
+    border-radius: 96px;
+
+    background: rgba(251, 217, 148, 0.724);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    color: #0b1c2d;     /* deeper navy text */
+    font-weight: 500;
+
+    transition: all .25s ease;
+  }
+
+  .link:hover{
+    background: rgba(240,197,90,0.25);   /* subtle golden glow */
+    border-color: rgba(240,197,90,0.55);
+    transform: translateY(-3px);
+  }
+
+}
+@media (min-width: 981px){
+  .link{
+    padding: 9px 18px;
+    border-radius: 14px; /* slightly less round */
+    background: rgba(240,197,90,.22);
+    border: 1px solid rgba(240,197,90,.35);
+    box-shadow: 0 10px 22px rgba(0,0,0,.12);
+  }
+  .link:hover{
+    background: rgba(240,197,90,.30);
+    border-color: rgba(240,197,90,.55);
+    transform: translateY(-2px);
+  }
+}
+.navwrap{
+  background: rgba(255,255,255,.40);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.brand__logo{ height: 82px; } /* was 100px */
+.navinner{ padding: 6px 18px; }
+.dd__menu{
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.35);
+}
+.dd__menu a{
+  color: rgba(8,24,44,.92);
+}
+.dd__menu a:hover{
+  background: rgba(240,197,90,.20);
+}
+.heroSub{
+  max-width: 38ch;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(12px);
+}
+.heroText h1{
+  letter-spacing: -0.02em;
 }

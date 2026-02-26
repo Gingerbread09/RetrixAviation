@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — Retrix Aviation</title>
+  <title>Contact - Retrix Aviation</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
@@ -23,43 +23,41 @@
   </div>
 
   <!-- NAVBAR -->
-  <header class="navwrap">
-    <div class="nav-clouds" aria-hidden="true"></div>
-
+  <header class="navwrap" role="navigation" aria-label="Primary">
     <div class="navinner">
-      <a class="brand" href="index.html#top">
-        <img class="brand__logo" src="assets/logo.svg" alt="Horizon" />
+
+      <!-- LOGO -->
+      <a class="brand" href="#top" aria-label="Retrix Home">
+        <img class="brand__logo" src="assets/logo.svg" alt="Retrix Pilot Training & Aviation Academy logo" />
       </a>
 
-      <button class="burger" aria-label="Open menu" aria-expanded="false">
+      <!-- MOBILE BURGER -->
+      <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
         <span></span><span></span><span></span>
       </button>
 
+      <!-- NAV -->
       <nav class="nav" aria-label="Primary navigation">
         <ul class="menu" id="menu">
-          <li><a class="link" href="index.html#dgca">DGCA Ground School</a></li>
-          <li><a class="link" href="index.html#sim">In-house Simulator</a></li>
-          <li><a class="link" href="courses.html">Courses</a></li>
+          <li><a class="link" href="dgca.html">DGCA Ground School</a></li>
 
           <li class="dd">
-            <button class="link dd__btn" type="button" aria-expanded="false">
-              Pilot Training <span class="caret">▾</span>
+            <button class="link dd__btn" type="button" aria-haspopup="true" aria-expanded="false">
+              Courses <span class="caret">▾</span>
             </button>
             <div class="dd__menu" role="menu">
-              <a href="index.html#type-rating" role="menuitem">Type Rating</a>
-              <a href="index.html#atr" role="menuitem">ATR</a>
-              <a href="index.html#boeing" role="menuitem">Boeing</a>
+              <a href="#cpl" role="menuitem">CPL (Admissions Open)</a>
             </div>
           </li>
 
-          <li><a class="link" href="index.html#become-pilot">Become a Pilot</a></li>
-          <li><a class="link is-active" href="contact.html#contact">Contact Us</a></li>
+          <li><a class="link" href="become-a-pilot.html">Become a Pilot</a></li>
+          <li><a class="link" href="contact.html">Contact Us</a></li>
         </ul>
       </nav>
     </div>
 
     <!-- ROUTE STRIP -->
-    <div class="route">
+    <div class="route" aria-hidden="true">
       <div class="route__line"></div>
       <div class="route__plane" id="plane" aria-hidden="true">
         <img src="assets/plane.png" alt="" />
@@ -162,10 +160,10 @@
             </p>
           </div>
 
-          <form class="brochureForm" id="brochureForm"
+          <form class="brochureForm"
+                id="brochureForm"
                 method="POST"
-                action="https://script.google.com/macros/s/AKfycbyuNwjkBe03YF3aCzDfahiN9tv5FQ-1c6kJT1wpWZ8W4oj1eCgSGF50TtFBSeHHEcQHjw/exec"
-                target="hidden_iframe">
+                action="https://script.google.com/macros/s/AKfycby6jOldX3WVeE7a5tWMeOfRywQtMIeJr8--0dF_v7qo41WhMETxobZWo9e8syg2QnLO/exec">
 
             <div class="brochureForm__grid">
 
@@ -177,6 +175,11 @@
               <label class="field">
                 <span class="field__label">Phone number</span>
                 <input class="field__input" type="tel" name="phone" placeholder="+91…" required>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Email address</span>
+                <input class="field__input" type="email" name="email" placeholder="you@example.com" required>
               </label>
 
               <label class="field">
@@ -221,12 +224,13 @@
               <button class="brochureBtn" type="submit" id="brochureBtn">
                 Apply Now <span class="brochureBtn__dot">→</span>
               </button>
-              <p class="brochureForm__note" id="brochureStatus" style="display:none;">Sent ✅</p>
+
+              <p class="brochureForm__note" id="brochureStatus" style="display:none;">
+                Thank you for your submission. We will get back to you soon.
+              </p>
             </div>
 
           </form>
-
-          <iframe name="hidden_iframe" style="display:none;"></iframe>
         </div>
 
       </div>
@@ -267,11 +271,11 @@
 
     <div class="gwFooter__inner">
       <div class="gwFooter__brand">
-        <img class="gwFooter__logo" src="assets/logo.svg" alt="Horizon" />
+        <img class="gwFooter__logo" src="assets/logo.svg" alt="Retrix Pilot Training & Aviation Academy" />
 
         <p class="gwFooter__desc">
-          Your trusted partner in DGCA CPL Ground School and flight training.
-          Clear structure, real mentorship — built for cockpit-ready careers.
+          Your trusted partner in DGCA Ground School, simulator familiarization, and pilot pathway guidance.
+          Clear structure, real mentorship - built for cockpit-ready careers.
         </p>
 
         <div class="gwFooter__socials" aria-label="Social links">
@@ -284,58 +288,47 @@
       <div class="gwFooter__cols">
         <div class="gwCol">
           <h4>Courses</h4>
-          <a href="#">DGCA Ground Classes</a>
-          <a href="#">Simulator Sessions</a>
-          <a href="#">Private Pilot License (PPL)</a>
-          <a href="#">Night Rating</a>
-          <a href="#">Instrument Rating (IR)</a>
-          <a href="#">Multi-Engine Rating</a>
-          <a href="#">Commercial Pilot License</a>
-          <a href="#">Flight Instructor Rating</a>
-          <a href="#">Diploma in Aviation</a>
-          <a href="#">Type Rating</a>
+          <a href="#courses">DGCA Ground Classes</a>
+          <a href="#simulator">Simulator Familiarization</a>
+          <a href="#pilot-path">PPL Pathway</a>
+          <a href="#cpl">CPL Roadmap (Admissions)</a>
+          <a href="#type-rating">Type Rating</a>
         </div>
 
         <div class="gwCol">
-          <h4>DGCA Links</h4>
-          <a href="#">DGCA</a>
-          <a href="#">DGCA Exam Portal</a>
-          <a href="#">DGCA Exam Syllabus</a>
-          <a href="#">Pilot Notice Board</a>
-          <a href="#">DGCA Approved Aircrafts</a>
-          <a href="#">DGCA CPL Requirements</a>
-          <a href="#">Class 1 Medical</a>
-          <a href="#">Class 2 Medical</a>
+          <h4>Student Hub</h4>
+          <a href="https://pariksha.dgca.gov.in/home" target="_blank" rel="noopener">DGCA Exam Portal (Pariksha)</a>
+          <a href="https://www.dgca.gov.in/" target="_blank" rel="noopener">DGCA Main Site</a>
+          <a href="contact.html">Admissions Contact</a>
         </div>
       </div>
 
       <div class="gwFooter__right">
         <div class="gwHours">
           <div class="gwHours__col">
-            <p class="gwHours__label">Monday–Friday:</p>
-            <p class="gwHours__time">10:30am–6:30pm</p>
-          </div>
-          <div class="gwHours__divider"></div>
-          <div class="gwHours__col">
-            <p class="gwHours__label">Saturday:</p>
-            <p class="gwHours__time">10:30am–2:00pm</p>
+            <p class="gwHours__label">Monday–Saturday:</p>
+            <p class="gwHours__time">09:00 AM – 5:00 PM</p>
           </div>
         </div>
 
         <div class="gwContact">
           <div class="gwRow">
             <span class="gwDot" aria-hidden="true">⌁</span>
-            <p>1st Floor, 9/6A, Devki Nandan Marg, Tilak Nagar, New Delhi 110018</p>
+            <p>
+              Retrix Pilot Training and Aviation Academy.<br/>
+              Door No: 3289, First Floor, Asariparambu Road,<br/>
+              Near ST George Church, Edappally, Kochi - 682024.
+            </p>
           </div>
 
           <div class="gwRow">
             <span class="gwDot" aria-hidden="true">✆</span>
-            <p>+91 7000000000<br/>+91 8000000000</p>
+            <p>+91 8606737320</p>
           </div>
 
           <div class="gwRow">
             <span class="gwDot" aria-hidden="true">✉</span>
-            <p>info@horizonaviation.in<br/>admissions@horizonaviation.in</p>
+            <p>fly@retrixaviation.com</p>
           </div>
         </div>
       </div>
@@ -343,33 +336,13 @@
 
     <div class="gwFooter__bottom">
       <div class="gwFooter__bottomInner">
-        <span>Copyright 2026 Horizon Aviation Pvt. Ltd.</span>
+        <span>© 2026 Retrix Aviation Pvt. Ltd.</span>
         <a href="#" class="gwFooter__policy">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
   <script src="js/app.js"></script>
-
-  <!-- brochure success UI -->
-  <script>
-    (() => {
-      const form = document.getElementById("brochureForm");
-      const status = document.getElementById("brochureStatus");
-      const btn = document.getElementById("brochureBtn");
-      if (!form) return;
-
-      form.addEventListener("submit", () => {
-        if (btn) btn.disabled = true;
-
-        setTimeout(() => {
-          form.reset();
-          if (status) status.style.display = "block";
-          if (btn) btn.disabled = false;
-        }, 700);
-      });
-    })();
-  </script>
 
 </body>
 </html>
