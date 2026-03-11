@@ -2,22 +2,1012 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DGCA Ground School | Horizon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#061220" />
 
-  <!-- Global (your fonts + base vars live here) -->
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Page CSS -->
+  <title>Retrix Pilot Training & Aviation Academy | CPL • PPL • IR • DGCA Ground School • Simulator</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Retrix Pilot Training & Aviation Academy offers DGCA Ground School, RTR prep, basic simulator familiarization, and structured training guidance for PPL, CPL, and IR. Focused admissions and mentoring to help you move from ground to cockpit." />
+  <meta name="robots" content="index,follow" />
+  <meta name="keywords" content="DGCA ground school, DGCA classes, pilot training India, commercial pilot license, CPL, private pilot license, PPL, instrument rating IR, aviation meteorology, air regulation, air navigation, aircraft technical general, RTR radio telephony, simulator training, type rating guidance, pilot roadmap, DGCA syllabus, DGCA exam portal" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Retrix Pilot Training & Aviation Academy | CPL • PPL • IR • DGCA Ground School" />
+  <meta property="og:description" content="CPL Batch Admissions Open. DGCA Ground School, RTR prep, simulator familiarization, and a clear roadmap for PPL, CPL, and IR." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-cover.jpg" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+
+  <!-- Fonts -->
+  <link rel="preload" href="assets/fonts/ZalandoSansExpanded-Regular.ttf" as="font" type="font/ttf" crossorigin />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="dgca.css" />
+
+  <!-- JSON-LD: Organization + Website -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Retrix Pilot Training & Aviation Academy",
+    "url":"https://retrixaviation.com/",
+    "logo":"assets/logo.png",
+    "sameAs":["https://instagram.com/yourhandle","https://facebook.com/yourpage"],
+    "contactPoint":[{
+      "@type":"ContactPoint",
+      "telephone":"+91-8606737320",
+      "contactType":"Admissions",
+      "areaServed":"IN",
+      "availableLanguage":["en","hi"]
+    }]
+  }
+  </script>
+
+  <!-- JSON-LD: Course Collection -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"Pilot Training Courses",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"DGCA Ground School (Air Navigation, Meteorology, Air Regulation, Technical General)","url":"https://yourdomain.com/#courses"},
+      {"@type":"ListItem","position":2,"name":"RTR (Radio Telephony) Exam Prep","url":"https://yourdomain.com/#courses"},
+      {"@type":"ListItem","position":3,"name":"Basic Simulator Familiarization","url":"https://yourdomain.com/#simulator"},
+      {"@type":"ListItem","position":4,"name":"CPL Training Roadmap","url":"https://yourdomain.com/#cpl"},
+      {"@type":"ListItem","position":5,"name":"PPL & IR Training Guidance","url":"https://yourdomain.com/#pilot-path"}
+    ]
+  }
+  </script>
 </head>
 
-<body>
-  <section style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px;">
-    <div>
-      <h1 style="font-size: 42px; margin-bottom: 16px;">Coming Soon</h1>
-      <p style="font-size: 16px; opacity: .7;">This section is under development. Check back shortly.</p>
-      <a href="index.html" style="display:inline-block;margin-top:20px;text-decoration:none;font-weight:600;">← Back to Home</a>
+<body class="page-dgca">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="topbar" role="banner">
+    <div class="topbar__marquee" aria-label="Announcements">
+      <div class="topbar__msg">
+        <span>Commercial Pilot Training Batch Admissions Open</span>
+        <span class="dot">•</span>
+        <span>DGCA Ground School</span>
+        <span class="dot">•</span>
+        <a href="contact.html" class="topbar__link">Book your slot</a>
+      </div>
     </div>
-  </section>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navwrap" role="navigation" aria-label="Primary">
+    <div class="navinner">
+
+      <!-- LOGO -->
+      <a class="brand" href="index.html" aria-label="Retrix Home">
+        <img class="brand__logo" src="assets/logo.svg" alt="Retrix Pilot Training & Aviation Academy logo" />
+      </a>
+
+      <!-- MOBILE BURGER -->
+      <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- NAV -->
+      <nav class="nav" aria-label="Primary navigation">
+        <ul class="menu" id="menu">
+          <li>
+            <a class="link" href="index.html">Home</a>
+          </li>
+          <li><a class="link" href="dgca.html">DGCA Ground School</a></li>
+
+          <li class="dd">
+            <button class="link dd__btn" type="button" aria-haspopup="true" aria-expanded="false">
+              Courses <span class="caret">▾</span>
+            </button>
+            <div class="dd__menu" role="menu">
+              <a href="index.html#cpl">CPL (Admissions Open)</a>
+            </div>
+          </li>
+
+          <li><a class="link" href="become-a-pilot.html">Become a Pilot</a></li>
+          <li><a class="link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <!-- ROUTE STRIP -->
+    <div class="route" aria-hidden="true">
+      <div class="route__line"></div>
+      <div class="route__plane" id="plane" aria-hidden="true">
+        <img src="assets/plane.png" alt="" />
+      </div>
+    </div>
+  </header>
+
+  <main class="dgcaPage" id="top">
+
+    <!-- =======================
+         MODERN HERO
+         ======================= -->
+    <section class="section section--topHero">
+      <div class="wrap topHero">
+        <div class="topHero__copy" data-reveal>
+          <span class="kicker">DGCA GROUND SCHOOL</span>
+          <h1 class="topHero__title">
+            Get exam-ready with a clean plan, real mentorship, and cockpit-level confidence.
+          </h1>
+
+          <div class="topHero__actions">
+            <a class="btn btn--solid" href="contact.html#enroll">Enroll Now <span class="btnArrow" aria-hidden="true">›</span></a>
+            <a class="btn btn--outline" href="#syllabus">View Syllabus <span class="btnArrow" aria-hidden="true">›</span></a>
+          </div>
+
+          <div class="topHero__mini">
+            <div class="miniChip">Online + Offline</div>
+            <div class="miniChip">Limited seats per batch</div>
+            <div class="miniChip">DGCA + eGCA support</div>
+          </div>
+        </div>
+
+        <div class="topHero__visual" data-reveal>
+          <div class="glassCard">
+            <div class="glassCard__bg"></div>
+            <div class="glassCard__content">
+              <div class="glassTitle">Next Batch</div>
+              <div class="glassBig">April 2026</div>
+              <div class="glassSub">Seats: Limited (16 per batch)</div>
+              <div class="glassDivider"></div>
+              <div class="glassRow">
+                <span class="dot"></span>
+                <span>Ground school + strategy + mocks</span>
+              </div>
+              <div class="glassRow">
+                <span class="dot"></span>
+                <span>Process help for Computer Number</span>
+              </div>
+              <div class="glassRow">
+                <span class="dot"></span>
+                <span>Optional simulator orientation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="floatBadge" aria-hidden="true">
+            <span>DGCA READY</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scrollHint" aria-hidden="true">
+        <span class="scrollDot"></span>
+      </div>
+    </section>
+
+    <!-- =======================
+         COURSE OVERVIEW
+         ======================= -->
+    <section class="section section--hero">
+      <div class="wrap heroGrid">
+
+        <div class="heroTop">
+          <span class="kicker">COURSE OVERVIEW</span>
+        </div>
+
+        <div class="heroTitle">
+          <h2 class="h1">
+            Retrix’ DGCA Ground School provide aspiring pilots with essential knowledge and confidence to excel in their DGCA Pilot Exam.
+          </h2>
+        </div>
+
+        <div class="heroCard" data-reveal>
+
+          <div class="heroCard__media boxParallax" data-parallax>
+            <img src="assets/dgca-typo.webp" alt="DGCA classroom session" />
+          </div>
+
+          <div class="heroCard__content">
+            <p class="p">
+              We combine comprehensive group ground classes and one-on-one tuition sessions — so you learn every subject in depth,
+              and get personalised help wherever you need it. Your journey to the skies deserves this level of support.
+            </p>
+
+            <div class="pillRow">
+              <span class="pill">
+                <span class="pillDot" aria-hidden="true"></span>
+                ONLINE &amp; OFFLINE BATCHES AVAILABLE
+              </span>
+            </div>
+
+            <div class="btnRow">
+              <a class="btn btn--outline" href="contact.html#enroll">
+                ENROLL NOW <span class="btnArrow" aria-hidden="true">›</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================
+         THEORY SUBJECTS
+         ======================= -->
+    <section class="section">
+      <div class="wrap center">
+        <span class="kicker kicker--center">THEORY SUBJECTS</span>
+        <h2 class="h2">DGCA Ground School Subject</h2>
+
+        <div class="subjectRow" data-reveal>
+
+          <button class="subjectCard" type="button" data-toast="Air Navigation">
+            <span class="subjectIcon">
+              <img src="assets/air-navigation.png" alt="Air Navigation icon" />
+            </span>
+            <span class="subjectName">Air Navigation</span>
+          </button>
+
+          <button class="subjectCard" type="button" data-toast="Air Regulation">
+            <span class="subjectIcon">
+              <img src="assets/regulations.png" alt="Air Regulation icon" />
+            </span>
+            <span class="subjectName">Air Regulation</span>
+          </button>
+
+          <button class="subjectCard" type="button" data-toast="Aviation Meteorology">
+            <span class="subjectIcon">
+              <img src="assets/anemometer.png" alt="Meteorology icon" />
+            </span>
+            <span class="subjectName">Aviation Meteorology</span>
+          </button>
+
+          <button class="subjectCard" type="button" data-toast="Technical Specific">
+            <span class="subjectIcon">
+              <img src="assets/book.png" alt="Technical Specific icon" />
+            </span>
+            <span class="subjectName">Technical Specific</span>
+          </button>
+
+          <button class="subjectCard" type="button" data-toast="Aircraft Technical General">
+            <span class="subjectIcon">
+              <img src="assets/maintenance.png" alt="Aircraft Technical icon" />
+            </span>
+            <span class="subjectName">Aircraft Technical General</span>
+          </button>
+
+          <button class="subjectCard" type="button" data-toast="Radio Telephony (RTR)">
+            <span class="subjectIcon">
+              <img src="assets/telephony.png" alt="Radio Telephony icon" />
+            </span>
+            <span class="subjectName">Radio Telephony</span>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         WHAT YOU GET
+         ======================= -->
+    <section class="section section--soft">
+      <div class="wrap center">
+        <span class="kicker kicker--center">PACKAGE INCLUSIONS</span>
+        <h2 class="h2">What You Get</h2>
+
+        <div class="grid4" data-reveal>
+
+          <div class="infoCard">
+            <div class="infoIcon">
+              <img src="assets/P1.png" alt="Study kit and books icon" />
+            </div>
+            <div class="infoTitle">Study Kit & Books</div>
+            <div class="infoSub">Complete study kit and books</div>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">
+              <img src="assets/P3.png" alt="C172 simulator checklist icon" />
+            </div>
+            <div class="infoTitle">C172 Simulator Checklist</div>
+            <div class="infoSub">Printed checklist for our C172 G1000 sim</div>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">
+              <img src="assets/P4.png" alt="DGCA test series icon" />
+            </div>
+            <div class="infoTitle">DGCA Test Series</div>
+            <div class="infoSub">Test series & chapter-wise Question Banks</div>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">
+              <img src="assets/P5.png" alt="DGCA and eGCA support icon" />
+            </div>
+            <div class="infoTitle">DGCA & eGCA Support</div>
+            <div class="infoSub">Computer number, medicals & eGCA account</div>
+          </div>
+
+          <div class="infoCard">
+            <div class="infoIcon">
+              <img src="assets/P6.png" alt="Completion certificate icon" />
+            </div>
+            <div class="infoTitle">Completion Certificate</div>
+            <div class="infoSub">Ground & Simulator completion certificate</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         SYLLABUS
+         ======================= -->
+    <section class="section" id="syllabus">
+      <div class="wrap">
+        <h2 class="h2 center">Subject Syllabus</h2>
+
+        <div class="tabs" data-reveal>
+          <div class="tabBar" role="tablist" aria-label="Syllabus tabs">
+            <button class="tab is-active" role="tab" aria-selected="true" data-tab="met">Air Meteorology</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="nav">Air Navigation</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="reg">Air Regulations</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="tech">Technical General</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="rtr">RTR</button>
+          </div>
+
+          <!-- AIR METEOROLOGY -->
+          <div class="tabPanel is-active" role="tabpanel" data-panel="met">
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="Air Meteorology syllabus">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Atmosphere</td><td>13</td><td>Thunderstorm</td></tr>
+                  <tr><td>2</td><td>Atmospheric Pressure</td><td>14</td><td>Air Masses Fronts and Western Disturbances</td></tr>
+                  <tr><td>3</td><td>Temperature</td><td>15</td><td>Jet Streams</td></tr>
+                  <tr><td>4</td><td>Air Density</td><td>16</td><td>Clear Air Turbulence</td></tr>
+                  <tr><td>5</td><td>Humidity</td><td>17</td><td>Mountain Waves</td></tr>
+                  <tr><td>6</td><td>Winds</td><td>18</td><td>Tropical Systems</td></tr>
+                  <tr><td>7</td><td>Visibility and Fog</td><td>19</td><td>Climatology of India</td></tr>
+                  <tr><td>8</td><td>Vertical Motion and Clouds</td><td>20</td><td>General Circulation</td></tr>
+                  <tr><td>9</td><td>Stability and Instability of Atmosphere</td><td>21</td><td>Meteorological Services for Aviation</td></tr>
+                  <tr><td>10</td><td>Optical Phenomena</td><td>24</td><td>Station Model</td></tr>
+                  <tr><td>11</td><td>Precipitation</td><td>25</td><td>Aerodrome Met Reports and Codes of METAR, SPECI and TREND</td></tr>
+                  <tr><td>12</td><td>Ice Accretion</td><td>26</td><td>Aviation Weather Forecasts (Codes of TAF, ARFOR, ROFOR)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- AIR NAVIGATION -->
+          <div class="tabPanel" role="tabpanel" data-panel="nav">
+            <h3 class="syllabusSub">General Navigation</h3>
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="General Navigation syllabus">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>The Solar System</td><td>9</td><td>Dead Reckoning Navigation (DR)</td></tr>
+                  <tr><td>2</td><td>The Earth</td><td>10</td><td>Measurement of DR Elements Pressure</td></tr>
+                  <tr><td>3</td><td>Projections</td><td>11</td><td>Measurement / Determination of Temperature</td></tr>
+                  <tr><td>4</td><td>Convergency</td><td>12</td><td>Measurement of Elements</td></tr>
+                  <tr><td>5</td><td>Time</td><td>13</td><td>In-flight Navigation</td></tr>
+                  <tr><td>6</td><td>Compass and Directions</td><td>14</td><td>Mass and Balance - Aero Planes</td></tr>
+                  <tr><td>7</td><td>Distances on Earth Surface</td><td>15</td><td>Performance</td></tr>
+                  <tr><td>8</td><td>Magnetism and Compasses</td><td>16</td><td>Flight Planning and Monitoring - Aero Planes</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="syllabusSub">Aircraft Instruments</h3>
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="Aircraft Instruments syllabus">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Air Data Systems (Pressure Instruments)</td><td>6</td><td>Inertial Navigation</td></tr>
+                  <tr><td>2</td><td>Altimeter</td><td>7</td><td>Altitude Alert Systems</td></tr>
+                  <tr><td>3</td><td>Air Speed Indicator (ASI)</td><td>8</td><td>Power Plant and System Monitoring Instruments</td></tr>
+                  <tr><td>4</td><td>Vertical Speed Indicator (VSI)</td><td>9</td><td>Basics of Electronic Displays</td></tr>
+                  <tr><td>5</td><td>Gyroscope</td><td></td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="syllabusSub">Radio Navigation</h3>
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="Radio Navigation syllabus">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Basic Radio Theory</td><td>6</td><td>Holding, Radial Intercept, Bearing to Plot</td></tr>
+                  <tr><td>2</td><td>ADF / NDB</td><td>7</td><td>ILS (Instrument Landing System)</td></tr>
+                  <tr><td>3</td><td>Track and Drift Questions</td><td>8</td><td>Radar</td></tr>
+                  <tr><td>4</td><td>Very High Frequency Omni Direction Radio Range (VOR)</td><td>9</td><td>Global Navigation Satellite Systems (GNSS)</td></tr>
+                  <tr><td>5</td><td>VOR/RMI/ADF Related Questions</td><td>10</td><td>Summary of Navigation Aids and Instruments</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- AIR REGULATIONS -->
+          <div class="tabPanel" role="tabpanel" data-panel="reg">
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="Air Regulations syllabus">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Classification of Airspace</td><td>15</td><td>Instruments Flight Procedures</td></tr>
+                  <tr><td>2</td><td>Civil Aviation Organisation and Aeronautical Information Service in India</td><td>16</td><td>Marshalling Signals</td></tr>
+                  <tr><td>3</td><td>Indian Aircraft Act 1934</td><td>17</td><td>Emergency, Radio Communication Failure & Contingency Procedures</td></tr>
+                  <tr><td>4</td><td>Indian Aircraft Rules 1937</td><td>18</td><td>Interception of Civil Aircraft</td></tr>
+                  <tr><td>5</td><td>Visual Meteorological Conditions (VMC) and Visual Flight Rules (VFR)</td><td>19</td><td>Visual Signals from Ground to Ground/Air</td></tr>
+                  <tr><td>6</td><td>Instruments Meteorological Conditions (IMC) and Instruments Flight Rules (IFR) and Special VFR</td><td>20</td><td>Operation of Transponder</td></tr>
+                  <tr><td>7</td><td>Aerodrome Markings, Signs and Lighting</td><td>21</td><td>General Rules of Air</td></tr>
+                  <tr><td>8</td><td>Designators of ATS Routes and Its Use in Voice Communications</td><td>22</td><td>Lights to be Displayed on Aircraft</td></tr>
+                  <tr><td>9</td><td>Altimeter Setting Procedures</td><td>23</td><td>Aircraft Registration and Markings</td></tr>
+                  <tr><td>10</td><td>ICAO Flight Plan</td><td>24</td><td>Runway Conditions and Braking Action</td></tr>
+                  <tr><td>11</td><td>Holding Patterns</td><td>25</td><td>Performance Based Navigation System</td></tr>
+                  <tr><td>12</td><td>Separation Minimas and Wake Turbulence</td><td>26</td><td>Air Defence Clearance</td></tr>
+                  <tr><td>13</td><td>Reduced Vertical Separation Minima (RVSM) and SLOP</td><td>27</td><td>The Aircraft Public Health Rules, 1954</td></tr>
+                  <tr><td>14</td><td>Search and Rescue Services (SAR)</td><td>28</td><td>Carriage of Minimum Fuel and Oxygen On-Board</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TECHNICAL GENERAL -->
+          <div class="tabPanel" role="tabpanel" data-panel="tech">
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="Technical General syllabus">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Introduction to Technical General</td><td>18</td><td>Instrumentation - Automatic Flight Control</td></tr>
+                  <tr><td>2</td><td>Powerplant - Piston Engines</td><td>19</td><td>Instrumentation - Power Plant & System Monitoring Instruments</td></tr>
+                  <tr><td>3</td><td>Powerplant - Gas Turbines</td><td>20</td><td>Principles of Flight - Overview and Definitions</td></tr>
+                  <tr><td>4</td><td>Landing Gear</td><td>21</td><td>Principles of Flight - Basic Aerodynamic Theory</td></tr>
+                  <tr><td>5</td><td>Flight Controls</td><td>22</td><td>Principles of Flight - Subsonic Airflow</td></tr>
+                  <tr><td>6</td><td>Hydraulics</td><td>23</td><td>Principles of Flight - Lift</td></tr>
+                  <tr><td>7</td><td>Air Systems & Air Conditioning</td><td>24</td><td>Principles of Flight - Drag</td></tr>
+                  <tr><td>8</td><td>Anti-Icing & De-Icing</td><td>25</td><td>Principles of Flight - Stalling</td></tr>
+                  <tr><td>9</td><td>Fuel Systems</td><td>26</td><td>Principles of Flight - High Lift Devices</td></tr>
+                  <tr><td>10</td><td>Emergency Equipment</td><td>27</td><td>Principles of Flight - Airframe Contamination</td></tr>
+                  <tr><td>11</td><td>Electrics - Electronics Direct Current</td><td>28</td><td>Principles of Flight - Stability and Control</td></tr>
+                  <tr><td>12</td><td>Electrics - Electronics Alternating Current</td><td>29</td><td>Principles of Flight - Controls</td></tr>
+                  <tr><td>13</td><td>Airframes & Systems</td><td>30</td><td>Principles of Flight - Flight Mechanics</td></tr>
+                  <tr><td>14</td><td>Fuselage, Wings & Stabilising Surfaces</td><td>31</td><td>Principles of Flight - High Speed Flight</td></tr>
+                  <tr><td>15</td><td>Instrumentation - Flight Instruments</td><td>32</td><td>Principles of Flight - Limitations</td></tr>
+                  <tr><td>16</td><td>Instrumentation - Warning & Recording</td><td>33</td><td>Principles of Flight - Propellers</td></tr>
+                  <tr><td>17</td><td>Principles of Flight - The Atmosphere</td><td></td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- RTR -->
+          <div class="tabPanel" role="tabpanel" data-panel="rtr">
+            <h3 class="syllabusSub">Part 1</h3>
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="RTR Part 1 syllabus">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Introduction, RTR Exam Syllabus and Information on How to Crack RTR Exam</td><td>3</td><td>Aeronautical Services</td></tr>
+                  <tr><td>2</td><td>Organisations</td><td></td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="syllabusSub">Part 2 (Radio Telephony Procedures)</h3>
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="RTR Part 2 syllabus">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Glossary</td><td>8</td><td>Area Control</td></tr>
+                  <tr><td>2</td><td>General Operating Procedures</td><td>9</td><td>Distress and Urgency Procedures and Communications Failure Procedures</td></tr>
+                  <tr><td>3</td><td>General RT Phraseology</td><td>10</td><td>Transmission of Meteorological and Other Aerodrome Information</td></tr>
+                  <tr><td>4</td><td>Aerodrome Control of Aircraft Traffic</td><td>11</td><td>Miscellaneous Flight Handling Phraseology</td></tr>
+                  <tr><td>5</td><td>Aerodrome Control of Vehicular Traffic</td><td>12</td><td>HF Communications</td></tr>
+                  <tr><td>6</td><td>General ATS Surveillance Service Phraseology</td><td>13</td><td>Visual Signals, Runway/Taxiway Markings/Lightings</td></tr>
+                  <tr><td>7</td><td>Approach Control</td><td>14</td><td>Miscellaneous</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="syllabusSub">Part 3 (Principles and Practice)</h3>
+            <div class="tableWrap">
+              <table class="syllabusTable" aria-label="RTR Part 3 syllabus">
+                <thead>
+                  <tr>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                    <th>Sr. No.</th>
+                    <th>Topic Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td>Electricity and Magnetism</td><td>3</td><td>Aircraft Communication and Voice Systems</td></tr>
+                  <tr><td>2</td><td>Radio Theory</td><td>4</td><td>Aircraft Navigation Systems</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         DGCA FLYING REQUIREMENTS
+         ======================= -->
+    <section class="section section--reqStrip">
+      <div class="wrap reqStrip">
+        <div class="reqStrip__head" data-reveal>
+          <div>
+            <h2 class="reqStrip__title">DGCA</h2>
+            <div class="reqStrip__sub">Flying Requirements</div>
+          </div>
+          <p class="reqStrip__desc">
+            In order to be eligible for the DGCA CPL, it is extremely important to comply with the requirements.
+            You need to be aware of the civil aviation regulations, safety and procedures.
+          </p>
+        </div>
+
+        <div class="reqStrip__grid">
+
+          <div class="reqPill">
+            <div class="reqPill__text">
+              <div class="reqPill__title">100 hrs PIC</div>
+              <div class="reqPill__sub">Pilot-in-Command time</div>
+            </div>
+            <span class="reqPill__icon">
+              <img src="assets/R1.png" alt="" aria-hidden="true" />
+            </span>
+          </div>
+
+          <div class="reqPill">
+            <div class="reqPill__text">
+              <div class="reqPill__title">250 NM Check</div>
+              <div class="reqPill__sub">Navigation check flight</div>
+            </div>
+            <span class="reqPill__icon">
+              <img src="assets/R2.png" alt="" aria-hidden="true" />
+            </span>
+          </div>
+
+          <div class="reqPill">
+            <div class="reqPill__text">
+              <div class="reqPill__title">40 hrs Instrument</div>
+              <div class="reqPill__sub">Instrument flight training</div>
+            </div>
+            <span class="reqPill__icon">
+              <img src="assets/R3.png" alt="" aria-hidden="true" />
+            </span>
+          </div>
+
+          <div class="reqPill">
+            <div class="reqPill__text">
+              <div class="reqPill__title">50 hrs Cross Country</div>
+              <div class="reqPill__sub">Solo legs ≥100 NM</div>
+            </div>
+            <span class="reqPill__icon">
+              <img src="assets/R4.png" alt="" aria-hidden="true" />
+            </span>
+          </div>
+
+          <div class="reqPill">
+            <div class="reqPill__text">
+              <div class="reqPill__title">5 hrs Night PIC</div>
+              <div class="reqPill__sub">10 takeoffs & landings</div>
+            </div>
+            <span class="reqPill__icon">
+              <img src="assets/R5.png" alt="" aria-hidden="true" />
+            </span>
+          </div>
+
+          <div class="reqPill">
+            <div class="reqPill__text">
+              <div class="reqPill__title">120 NM Check</div>
+              <div class="reqPill__sub">Navigation evaluation</div>
+            </div>
+            <span class="reqPill__icon">
+              <img src="assets/R6.png" alt="" aria-hidden="true" />
+            </span>
+          </div>
+
+          <div class="reqPill">
+            <div class="reqPill__text">
+              <div class="reqPill__title">300 NM Check</div>
+              <div class="reqPill__sub">Long cross-country</div>
+            </div>
+            <span class="reqPill__icon">
+              <img src="assets/R7.png" alt="" aria-hidden="true" />
+            </span>
+          </div>
+
+          <div class="reqPill">
+            <div class="reqPill__text">
+              <div class="reqPill__title">Multi-Engine</div>
+              <div class="reqPill__sub">10 hrs DGCA / 15 hrs Airbus</div>
+            </div>
+            <span class="reqPill__icon">
+              <img src="assets/R8.png" alt="" aria-hidden="true" />
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         DGCA EXAM REQUIREMENTS
+         ======================= -->
+    <section class="section section--soft">
+      <div class="wrap">
+        <h2 class="h2">DGCA Exam Requirements</h2>
+
+        <div class="reqCard boxParallax" data-reveal data-parallax>
+          <div class="reqCard__bg">
+            <img src="assets/dgca-hero.jpeg" alt="" aria-hidden="true" />
+          </div>
+
+          <div class="reqCols">
+            <div class="reqCol">
+              <h3>Flight Training in India</h3>
+              <ul class="reqList">
+                <li>Navigation</li>
+                <li>Meteorology</li>
+                <li>Air Regulations</li>
+                <li>Technical General</li>
+                <li>Technical Specific</li>
+                <li>RTR</li>
+              </ul>
+            </div>
+
+            <div class="reqCol">
+              <h3>Flight Training Abroad</h3>
+              <div class="miniCols">
+                <div class="miniCol">
+                  <h4>Commonwealth countries - New Zealand, Canada etc</h4>
+                  <ul class="reqList">
+                    <li>Navigation</li>
+                    <li>Meteorology</li>
+                    <li>Air Regulations</li>
+                  </ul>
+                </div>
+
+                <div class="miniCol">
+                  <h4>Non Commonwealth countries - USA</h4>
+                  <ul class="reqList">
+                    <li>Navigation</li>
+                    <li>Meteorology</li>
+                    <li>Air Regulations</li>
+                    <li>RTR</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================
+         DGCA COMPUTER NUMBER PROCESS
+         ======================= -->
+    <section class="section">
+      <div class="wrap processGrid" data-reveal>
+        <div class="processMedia boxParallax" data-parallax>
+          <img src="assets/dgca-classroom.jpeg" alt="DGCA computer number screenshots" />
+        </div>
+
+        <div class="processCopy">
+          <h2 class="h2" style="text-align:left;margin:0 0 10px">DGCA Computer<br />Number Process</h2>
+          <p class="p">
+            To become a pilot, obtaining a DGCA Computer Number is essential. This unique ID is required for all DGCA exams,
+            enabling you to track your application status and exam results, and it’s crucial for your pilot license.
+          </p>
+          <p class="p">
+            The application involves filling out a form on the DGCA website and submitting the necessary documents.
+            We guide you through every step, so you don’t waste time guessing.
+          </p>
+
+          <a class="btn btn--solid" href="contact.html#dgca-help">
+            GET HELP NOW <span class="btnArrow" aria-hidden="true">›</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+         NEXT BATCH + PREREQS + LINKS
+         ======================= -->
+    <section class="section section--soft">
+      <div class="wrap">
+
+        <div class="batchRow" data-reveal>
+          <div class="stamp__inner" aria-hidden="true">
+            <svg class="stampTurbine" viewBox="0 0 160 160" aria-hidden="true">
+              <defs>
+                <radialGradient id="metalCore" cx="50%" cy="45%" r="60%">
+                  <stop offset="0%" stop-color="#f7f8fb"/>
+                  <stop offset="35%" stop-color="#cfd5df"/>
+                  <stop offset="68%" stop-color="#7f8998"/>
+                  <stop offset="100%" stop-color="#2b3442"/>
+                </radialGradient>
+          
+                <radialGradient id="metalRing" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stop-color="#eef1f5"/>
+                  <stop offset="30%" stop-color="#bcc4d0"/>
+                  <stop offset="65%" stop-color="#6e7888"/>
+                  <stop offset="100%" stop-color="#1d2430"/>
+                </radialGradient>
+          
+                <linearGradient id="bladeGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffe7a8"/>
+                  <stop offset="35%" stop-color="#f9ba44"/>
+                  <stop offset="70%" stop-color="#d9971b"/>
+                  <stop offset="100%" stop-color="#8d5f0a"/>
+                </linearGradient>
+          
+                <linearGradient id="bladeShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(255,255,255,.55)"/>
+                  <stop offset="100%" stop-color="rgba(0,0,0,.18)"/>
+                </linearGradient>
+          
+                <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="rgba(0,0,0,.22)"/>
+                </filter>
+          
+                <filter id="innerGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="rgba(255,255,255,.35)"/>
+                </filter>
+              </defs>
+          
+              <!-- outer metallic housing -->
+              <circle class="turbineRingOuter" cx="80" cy="80" r="62"/>
+              <circle class="turbineRingMid" cx="80" cy="80" r="52"/>
+          
+              <!-- subtle intake depth -->
+              <circle class="turbineIntakeShadow" cx="80" cy="80" r="45"/>
+          
+              <!-- blades -->
+              <g class="turbineBlades" filter="url(#softShadow)">
+                <path class="blade"
+                  d="M80 22
+                     C95 28 108 45 103 62
+                     C87 55 75 42 67 26
+                     C65 22 71 19 80 22Z"/>
+          
+                <path class="blade" d="M80 22 C95 28 108 45 103 62 C87 55 75 42 67 26 C65 22 71 19 80 22Z" transform="rotate(45 80 80)"/>
+                <path class="blade" d="M80 22 C95 28 108 45 103 62 C87 55 75 42 67 26 C65 22 71 19 80 22Z" transform="rotate(90 80 80)"/>
+                <path class="blade" d="M80 22 C95 28 108 45 103 62 C87 55 75 42 67 26 C65 22 71 19 80 22Z" transform="rotate(135 80 80)"/>
+                <path class="blade" d="M80 22 C95 28 108 45 103 62 C87 55 75 42 67 26 C65 22 71 19 80 22Z" transform="rotate(180 80 80)"/>
+                <path class="blade" d="M80 22 C95 28 108 45 103 62 C87 55 75 42 67 26 C65 22 71 19 80 22Z" transform="rotate(225 80 80)"/>
+                <path class="blade" d="M80 22 C95 28 108 45 103 62 C87 55 75 42 67 26 C65 22 71 19 80 22Z" transform="rotate(270 80 80)"/>
+                <path class="blade" d="M80 22 C95 28 108 45 103 62 C87 55 75 42 67 26 C65 22 71 19 80 22Z" transform="rotate(315 80 80)"/>
+              </g>
+          
+              <!-- center cone / spinner -->
+              <circle class="turbineCoreOuter" cx="80" cy="80" r="20"/>
+              <circle class="turbineCoreInner" cx="80" cy="80" r="11"/>
+          
+              <!-- center highlight -->
+              <ellipse class="turbineHighlight" cx="74" cy="72" rx="12" ry="7"/>
+            </svg>
+          </div>
+
+          <div class="batchCard boxParallax" data-parallax>
+            <div class="batchCard__bg">
+              <img src="assets/runway.jpeg" alt="" aria-hidden="true" />
+            </div>
+            <div class="batchCard__content">
+              <h3>Next Batch: April 2026</h3>
+              <p>Seats Available: Limited (16 per batch)</p>
+              <a class="btn btn--light" href="contact.html#reserve">
+                ENROLL EARLY TO RESERVE YOUR SLOT <span class="btnArrow" aria-hidden="true">›</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="h2 center" style="margin-top:34px">DGCA Prerequisite stages</h2>
+
+        <div class="grid3" data-reveal>
+
+          <div class="stageCard">
+            <div class="stageIcon">
+              <img src="assets/application.png" alt="DGCA computer number icon" />
+            </div>
+            <div class="stageTitle">DGCA Computer Number</div>
+            <div class="stageSub">Document prep, verification, shortfall handling.</div>
+          </div>
+
+          <div class="stageCard">
+            <div class="stageIcon">
+              <img src="assets/P5.png" alt="Pilot medical examinations icon" />
+            </div>
+            <div class="stageTitle">Pilot Medical Examinations</div>
+            <div class="stageSub">Class 1 / Class 2 process guidance & bookings.</div>
+          </div>
+
+          <div class="stageCard">
+            <div class="stageIcon">
+              <img src="assets/egca.png" alt="eGCA support icon" />
+            </div>
+            <div class="stageTitle">eGCA Support</div>
+            <div class="stageSub">Uploading, shortfall replies, tracking, end to end.</div>
+          </div>
+
+        </div>
+
+        <div class="linksCard" data-reveal>
+          <div class="linksLeft">
+            <h3>DGCA Important Links</h3>
+            <div class="logoStub" aria-hidden="true">DIRECTORATE GENERAL OF CIVIL AVIATION</div>
+          </div>
+
+          <div class="linksRight">
+            <div class="linkCol">
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/" target="_blank" rel="noopener">DGCA (Main Portal)</a>
+              <a class="miniLink" href="https://pariksha.dgca.gov.in/" target="_blank" rel="noopener">DGCA Exam Portal (Pariksha)</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?dynamicPage=examinationSyllabusReq%2F12%2F0%2FviewDynamicServicesReq" target="_blank" rel="noopener">DGCA Exam Syllabus</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?page=publicNotices" target="_blank" rel="noopener">Pilot Notice Board / Public Notices</a>
+            </div>
+
+            <div class="linkCol">
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?page=4334%2F4234%2Fservicename" target="_blank" rel="noopener">Medical (Class 1/2/3 Examiners)</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/" target="_blank" rel="noopener">DGCA CPL Requirements</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?page=4334%2F4234%2Fservicename" target="_blank" rel="noopener">Class 1 Medical</a>
+              <a class="miniLink" href="https://www.dgca.gov.in/digigov-portal/?page=4334%2F4234%2Fservicename" target="_blank" rel="noopener">Class 2 Medical</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+ <!-- FOOTER -->
+ <footer class="gwFooter" id="gwFooter">
+  <img src="assets/footer-plane.png" alt="" class="gwFooter__plane" id="gwFooterPlane" aria-hidden="true" />
+
+  <div class="gwFooter__inner">
+    <div class="gwFooter__brand">
+
+      <div class="gwFooter__brandBottom">
+        <img class="gwFooter__logo" src="assets/logo.svg" alt="Retrix Pilot Training & Aviation Academy" />
+    
+        <div class="gwFooter__socials" aria-label="Social links">
+          <a href="#" class="gwSocial" aria-label="Instagram">◎</a>
+          <a href="#" class="gwSocial" aria-label="Twitter">𝕏</a>
+          <a href="#" class="gwSocial" aria-label="Facebook">f</a>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="gwFooter__cols">
+      <div class="gwCol">
+        <h4>Courses</h4>
+        <a href="#courses">DGCA Ground Classes</a>
+        <a href="#courses">RTR (Radio Telephony)</a>
+        <a href="#simulator">Simulator Familiarization</a>
+        <a href="#pilot-path">PPL Pathway</a>
+        <a href="#cpl">CPL Roadmap (Admissions)</a>
+        <a href="#dgca-requirements">IR (Instrument Rating)</a>
+        <a href="#dgca-requirements">Multi-Engine</a>
+        <a href="#type-rating">Type Rating</a>
+        <a href="#resources">Interview & Viva Prep</a>
+      </div>
+
+      <div class="gwCol">
+        <h4>Student Hub</h4>
+        <a href="https://www.dgca.gov.in/digigov-portal/?dynamicPage=CivilAviationReqContent%2F6%2F256%2FviewDynamicRuleContLvl2%2Fhtml&amp;maincivilAviationRequirements%2F6%2F0%2FviewDynamicRulesReq=" target="_blank">DGCA Exam Syllabus (Official)</a>
+        <a href="https://pariksha.dgca.gov.in/home" target="_blank">DGCA Exam Portal (Pariksha)</a>
+        <a href="https://pariksha.dgca.gov.in/home" target="_blank">DGCA Computer Number / Flight Crew Exams</a>
+        <a href="https://www.dgca.gov.in/digigov-portal/jsp/dgca/homePage/egcaLoginIndex.jsp" target="_blank">eGCA Medical Portal (Class 1)</a>
+        <a href="https://www.dgca.gov.in/digigov-portal/?dynamicPage=aircraftRulesContent2Req%2F1%2F3055%2FviewDynamicRuleContLvl2&amp;mainaircraftRules1937%2F1%2F0%2FviewDynamicRulesReq=" target="_blank">DGCA Medical Requirements</a>
+        <a href="https://www.dgca.gov.in/digigov-portal/jsp/dgca/topHeader/aZIndex/AtoZindex.jsp" target="_blank">DGCA A-Z Index / Subjects</a>
+        <a href="https://www.dgca.gov.in/" target="_blank">DGCA Main Site</a>
+        <a href="contact.html">Admissions Contact</a>
+      </div>
+    </div>
+
+    <div class="gwFooter__right">
+      <div class="gwHours">
+        <div class="gwHours__col">
+          <p class="gwHours__label">Monday–Saturday: </p>
+          <p class="gwHours__time">09:00 AM – 5:00 PM</p>
+        </div>
+      </div>
+
+      <div class="gwContact">
+        <div class="gwRow">
+          <span class="gwDot" aria-hidden="true">⌁</span>
+          <p>
+            Retrix Pilot Training and Aviation Academy.<br/>
+            Door No: 3289, First Floor, Asariparambu Road,<br/>
+            Near ST George Church, Edappally, Kochi - 682024.
+          </p>
+        </div>
+        <div class="gwRow">
+          <span class="gwDot" aria-hidden="true">✆</span>
+          <p>+91 8606737320</p>
+        </div>
+        <div class="gwRow">
+          <span class="gwDot" aria-hidden="true">✉</span>
+          <p>fly@retrixaviation.com</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gwFooter__bottom">
+    <div class="gwFooter__bottomInner">
+      <span>© 2026 Retrix Aviation Pvt. Ltd.</span>
+      <a href="#" class="gwFooter__policy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+  <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+  <script src="site.js" defer></script>
+  <script src="dgca.js" defer></script>
 </body>
 </html>

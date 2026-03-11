@@ -25,6 +25,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
 
   <!-- JSON-LD: Organization + Website -->
   <script type="application/ld+json">
@@ -94,18 +95,17 @@
       <!-- NAV -->
       <nav class="nav" aria-label="Primary navigation">
         <ul class="menu" id="menu">
+          <li>
+            <a class="link" href="index.html">Home</a>
+          </li>
           <li><a class="link" href="dgca.html">DGCA Ground School</a></li>
 
-
-          <!-- IMPORTANT: Courses should open CPL + Type Rating as option -->
-          <!-- If you want to keep courses.html, keep it. But per your ask, clicking Courses should open CPL + Type Rating options -->
           <li class="dd">
             <button class="link dd__btn" type="button" aria-haspopup="true" aria-expanded="false">
               Courses <span class="caret">▾</span>
             </button>
             <div class="dd__menu" role="menu">
-              <a href="#cpl" role="menuitem">CPL (Admissions Open)</a>
-
+              <a href="index.html#cpl">CPL (Admissions Open)</a>
             </div>
           </li>
 
@@ -140,8 +140,7 @@
 
         </p>
         <div class="heroBtns">
-          <a class="btn primary" href="#book">Book your slot</a>
-          <a class="btn ghost" href="#cpl">CPL Admissions</a>
+          <a class="btn primary" href="contact.html#brochure">Book your slot</a>
         </div>
       </div>
 
@@ -653,6 +652,7 @@
   </footer>
 
   <!-- JS -->
+
   <script src="js/app.js"></script>
 </body>
 </html>

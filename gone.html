@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DGCA Ground School | Horizon</title>
+
+  <!-- Global (your fonts + base vars live here) -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="dgca.css" />
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="topbar" role="banner">
+    <div class="topbar__marquee" aria-label="Announcements">
+      <div class="topbar__msg">
+        <span>Commercial Pilot Training Batch Admissions Open</span>
+        <span class="dot">•</span>
+        <span>DGCA Ground School</span>
+        <span class="dot">•</span>
+        <a href="contact.html" class="topbar__link">Book your slot</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navwrap" role="navigation" aria-label="Primary">
+    <div class="navinner">
+
+      <!-- LOGO -->
+      <a class="brand" href="index.html" aria-label="Retrix Home">
+        <img class="brand__logo" src="assets/logo.svg" alt="Retrix Pilot Training & Aviation Academy logo" />
+      </a>
+
+      <!-- MOBILE BURGER -->
+      <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- NAV -->
+      <nav class="nav" aria-label="Primary navigation">
+        <ul class="menu" id="menu">
+          <li><a class="link" href="dgca.html">DGCA Ground School</a></li>
+
+          <li class="dd">
+            <button class="link dd__btn" type="button" aria-haspopup="true" aria-expanded="false">
+              Courses <span class="caret">▾</span>
+            </button>
+            <div class="dd__menu" role="menu">
+              <a href="index.html#cpl">CPL (Admissions Open)</a>
+            </div>
+          </li>
+
+          <li><a class="link" href="become-a-pilot.html">Become a Pilot</a></li>
+          <li><a class="link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- ROUTE STRIP -->
+    <div class="route" aria-hidden="true">
+      <div class="route__line"></div>
+      <div class="route__plane" id="plane" aria-hidden="true">
+        <img src="assets/plane.png" alt="" />
+      </div>
+    </div>
+  </header>
+</html>
