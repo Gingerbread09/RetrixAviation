@@ -1,0 +1,102 @@
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ROOT */
+:root {
+  --bg: #061220;
+  --text: #e9eefc;
+  --muted: #a8b3cf;
+  --gold: #d6a82a;
+}
+
+/* BODY */
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* LAYOUT */
+.medical {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 18px 80px;
+}
+
+/* HERO */
+.medical-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.medical-hero h1 {
+  font-size: clamp(28px, 5vw, 44px);
+  margin-bottom: 10px;
+}
+
+.medical-hero p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* CONTENT */
+.medical-content h2 {
+  margin-top: 40px;
+  font-size: 24px;
+}
+
+.medical-content h3 {
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--gold);
+}
+
+.medical-content p {
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+.medical-content ul {
+  margin-top: 10px;
+  padding-left: 18px;
+}
+
+.medical-content li {
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+/* CTA */
+.cta {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f0c55a, var(--gold));
+  color: #071a2e;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .medical {
+    padding: 30px 16px 60px;
+  }
+
+  .medical-content h2 {
+    font-size: 20px;
+  }
+}
