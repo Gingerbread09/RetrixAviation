@@ -1,172 +1,242 @@
 /* =========================
    NAVBAR / TOPBAR / ROUTE
+   CLEAN VERSION
    ========================= */
 
-/* TOPBAR */
-.topbar{
-    width:100%;
-    background: linear-gradient(90deg, #0b1c2d, #0f2a44);
-    color:#fff;
-    overflow:hidden;
-    position: sticky;
+   :root{
+    --topbarH: 38px;
+    --navRowH: 86px;
+    --routeH: 35px;
+  }
+  
+  /* =========================
+     PAGE OFFSET
+     ========================= */
+  
+  main{
+    margin-top: 0;
+    padding-top: calc(var(--topbarH) + var(--navRowH) + var(--routeH));
+  }
+  
+  /* =========================
+     TOPBAR
+     ========================= */
+  
+  .topbar{
+    width: 100%;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 9999;
+  
+    background: linear-gradient(90deg, #0b1c2d, #0f2a44);
+    color: #fff;
+    overflow: hidden;
     border-bottom: 1px solid rgba(255,255,255,.06);
   }
   
   .topbar__marquee{
     position: relative;
     height: var(--topbarH);
-    display:flex;
-    align-items:center;
-    padding-top: env(safe-area-inset-top);
+    display: flex;
+    align-items: center;
   }
   
   .topbar__msg{
     position: absolute;
     left: 0;
+  
     display: inline-flex;
     align-items: center;
     gap: 10px;
+  
     white-space: nowrap;
-    padding: 10px 14px;
-    line-height: 1.25;
+    line-height: 1.2;
+    padding: 0 14px;
+  
     transform: translateX(-110%);
     animation: marqueeLTR 20s linear infinite;
   }
   
-  .topbar .dot{ opacity:.6; }
+  .topbar .dot{
+    opacity: .6;
+  }
   
   .topbar__link{
-    color:#f0c55a;
-    font-weight:800;
-    text-decoration:none;
+    color: #f0c55a;
+    font-weight: 800;
+    text-decoration: none;
   }
   
-  .topbar__link:hover{ text-decoration: underline; }
+  .topbar__link:hover{
+    text-decoration: underline;
+  }
   
   @keyframes marqueeLTR{
-    0%   { transform: translateX(-110%); }
-    100% { transform: translateX(110vw); }
-  }
-  
-  @media (max-width: 768px){
-    .topbar__msg{
-      padding: 12px 12px;
-      font-size: 13px;
+    0%{
+      transform: translateX(-110%);
+    }
+    100%{
+      transform: translateX(110vw);
     }
   }
   
-  /* FIXED NAVBAR */
+  /* =========================
+     NAVBAR
+     ========================= */
+  
   .navwrap{
     position: fixed;
     top: var(--topbarH);
     left: 0;
     right: 0;
+  
     z-index: 2000;
   
     background: rgba(255,255,255,.40);
+  
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
   
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    overflow: visible;
+    border-bottom: 1px solid rgba(255,255,255,.08);
   }
   
   .navinner{
     max-width: 1200px;
     margin: 0 auto;
+  
+    min-height: var(--navRowH);
+  
     padding: 6px 18px;
-    display:flex;
-    align-items:center;
+  
+    display: flex;
+    align-items: center;
     gap: 16px;
+  
     position: relative;
-    z-index: 2;
   }
   
   .brand{
-    display:flex;
-    align-items:center;
-    text-decoration:none;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
   }
   
   .brand__logo{
     height: 82px;
-    width:auto;
-    display:block;
+    width: auto;
+    display: block;
   }
+  
+  /* =========================
+     NAV LINKS
+     ========================= */
   
   .nav{
     margin-left: auto;
-    display:flex;
-    align-items:center;
+    display: flex;
+    align-items: center;
   }
   
   .menu{
-    list-style:none;
-    margin:0;
-    padding:0;
-    display:flex;
-    align-items:center;
-    gap: 14px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  
+    display: flex;
+    align-items: center;
+    gap: 18px;
   }
   
   .link{
-    color: var(--navy);
-    font-size: 14px;
-    text-decoration:none;
-    padding: 10px 10px;
-    border-radius: 12px;
-    display:inline-flex;
-    align-items:center;
+    display: inline-flex;
+    align-items: center;
     gap: 6px;
-    background: transparent;
-    border:none;
-    cursor:pointer;
+  
     white-space: nowrap;
+    text-decoration: none;
+  
+    padding: 9px 18px;
+  
+    border-radius: 14px;
+  
+    color: #0b1c2d;
+    font-size: 14px;
+    font-weight: 500;
+  
+    background: rgba(240,197,90,.22);
+    border: 1px solid rgba(240,197,90,.35);
+  
+    box-shadow: 0 10px 22px rgba(0,0,0,.12);
+  
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  
+    transition: .25s ease;
   }
   
-  .link:hover{ background: rgba(255,255,255,.06); }
+  .link:hover{
+    background: rgba(240,197,90,.30);
+    border-color: rgba(240,197,90,.55);
+  
+    transform: translateY(-2px);
+  }
   
   .link.is-active{
-    background: rgba(214,168,42,.12);
-    box-shadow: inset 0 0 0 1px rgba(214,168,42,.22);
+    background: rgba(214,168,42,.28);
+    border: 1px solid rgba(214,168,42,.48);
   }
   
   .caret{
-    color: #071a2e;
     font-size: 12px;
+    color: #071a2e;
   }
   
-  /* DROPDOWN */
+  /* =========================
+     DROPDOWN
+     ========================= */
+  
   .dd{
     position: relative;
-    z-index: 2500;
   }
   
   .dd__menu{
-    position:absolute;
-    top: 46px;
-    left: 0;
-    min-width: 220px;
-    padding: 8px;
-    display:none;
-    z-index: 9999;
+    position: absolute;
   
-    background: rgba(255,255,255,.82);
+    top: 52px;
+    left: 0;
+  
+    min-width: 220px;
+  
+    padding: 8px;
+  
+    display: none;
+  
+    background: rgba(255,255,255,.88);
+  
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+  
     border: 1px solid rgba(255,255,255,.35);
+  
     border-radius: 14px;
-    box-shadow: var(--shadow);
+  
+    box-shadow: 0 16px 40px rgba(0,0,0,.18);
+  
+    z-index: 9999;
   }
   
   .dd__menu a{
-    display:block;
+    display: block;
+  
     padding: 10px 10px;
+  
     border-radius: 12px;
+  
     color: rgba(8,24,44,.92);
-    text-decoration:none;
+  
+    text-decoration: none;
     font-size: 13px;
   }
   
@@ -175,714 +245,143 @@
   }
   
   .dd:hover .dd__menu{
-    display:block;
+    display: block;
   }
   
-  /* BURGER */
-  .burger{
-    display:none;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    border: 1px solid var(--stroke);
-    background: rgba(255,255,255,.03);
-    cursor:pointer;
-    margin-left: auto;
-  }
+  /* =========================
+     ROUTE STRIP
+     ========================= */
   
-  .burger span{
-    display:block;
-    width: 18px;
-    height: 2px;
-    background: #18153b;
-    margin: 6px auto;
-    border-radius: 999px;
-  }
-  
-  /* ROUTE STRIP */
   .route{
     position: relative;
+  
     width: 100%;
     height: var(--routeH);
+  
     overflow: visible;
     background: transparent;
-    z-index: 1;
   }
   
   .route__line{
     position: absolute;
+  
     top: 46%;
     left: 0;
     right: 0;
+  
     height: 2px;
+  
     transform: translateY(-50%);
+  
     background: repeating-linear-gradient(
       90deg,
-      rgba(3, 22, 60, 0.85) 0 10px,
+      rgba(3,22,60,.85) 0 10px,
       rgba(255,255,255,0) 10px 18px
     );
-    animation: runwayGlow 2.8s ease-in-out infinite;
-  }
-  
-  @keyframes runwayGlow{
-    0%,100%{
-      opacity:.75;
-      box-shadow:
-        0 0 6px rgba(255,255,255,.35),
-        0 0 12px rgba(255,255,255,.2);
-    }
-    50%{
-      opacity:1;
-      box-shadow:
-        0 0 8px rgba(255,255,255,.5),
-        0 0 16px rgba(255,255,255,.3);
-    }
   }
   
   .route__plane{
     --x: 18px;
     --rot: 0deg;
+  
     position: absolute;
+  
     top: 46%;
     left: 0;
-    transform: translateX(var(--x)) translateY(-50%) rotate(var(--rot));
-    transform-origin: center;
+  
+    transform:
+      translateX(var(--x))
+      translateY(-50%)
+      rotate(var(--rot));
+  
     transition: transform .45s cubic-bezier(.2,.9,.2,1);
-    will-change: transform;
   }
   
   .route__plane img{
     height: 30px;
     width: auto;
     display: block;
+  
     filter:
       drop-shadow(0 0 4px rgba(240,197,90,.6))
       drop-shadow(0 0 8px rgba(240,197,90,.35));
   }
   
-  /* MOBILE NAV */
-  @media (max-width: 980px){
-    .burger{ display:block; }
+  /* =========================
+     BURGER
+     ========================= */
   
-    .nav{
-      display:none;
-      width:100%;
-    }
+  .burger{
+    display: none;
   
-    .nav.is-open{
-      display:block;
-    }
+    width: 44px;
+    height: 44px;
   
-    .navinner{
-      flex-wrap: wrap;
-      align-items: center;
-    }
+    margin-left: auto;
   
-    .brand{ flex: 0 0 auto; }
-    .burger{ flex: 0 0 auto; }
+    border-radius: 12px;
   
-    .menu{
-      flex-direction: column;
-      align-items: stretch;
-      gap: 8px;
-      padding-top: 10px;
-    }
+    border: 1px solid rgba(255,255,255,.15);
   
-    .link{
-      justify-content: space-between;
-      width: 100%;
-    }
+    background: rgba(255,255,255,.08);
+  
+    cursor: pointer;
   }
   
-  /* DESKTOP CENTERED LOGO + LEFT/RIGHT LINKS */
+  .burger span{
+    display: block;
+  
+    width: 18px;
+    height: 2px;
+  
+    margin: 6px auto;
+  
+    border-radius: 999px;
+  
+    background: #18153b;
+  }
+  
+  /* =========================
+     DESKTOP CENTERED LOGO
+     ========================= */
+  
   @media (min-width: 1025px){
-    .navinner{
-      position: relative;
-      display: flex;
-      align-items: center;
-      min-height: 86px;
-    }
   
     .nav{
       width: 100%;
+      margin-left: 0;
     }
   
     .brand{
       position: absolute;
+  
       left: 50%;
       transform: translateX(-50%);
-      margin: 0;
+  
       z-index: 5;
     }
   
     .menu{
       width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 18px;
+  
+      justify-content: flex-start;
+  
       padding: 0 180px;
-      margin: 0;
     }
   
     .menu > li:nth-child(2){
       margin-right: auto;
     }
-  
-    .menu > li{
-      white-space: nowrap;
-    }
   }
   
-  /* DESKTOP PREMIUM NAV BUTTONS */
-  @media (min-width: 981px){
-    .menu{
-      display: flex;
-      justify-content: center;
-      gap: 36px;
-      padding: 0;
-    }
+  /* =========================
+     MOBILE
+     ========================= */
   
-    .link{
-      padding: 9px 18px;
-      border-radius: 14px;
-      background: rgba(240,197,90,.22);
-      border: 1px solid rgba(240,197,90,.35);
-      box-shadow: 0 10px 22px rgba(0,0,0,.12);
-      color: #0b1c2d;
-      font-weight: 500;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      transition: all .25s ease;
-    }
-  
-    .link:hover{
-      background: rgba(240,197,90,.30);
-      border-color: rgba(240,197,90,.55);
-      transform: translateY(-2px);
-    }
-  }
-  /* ========================================
-   FINAL NAV + TOPBAR LOCKUP
-   paste at VERY END of styles.css
-   ======================================== */
-
-/* heights */
-:root{
-  --topbarH: 38px;
-  --navRowH: 86px;
-  --routeH: 35px;
-}
-
-/* make banner sit cleanly on top */
-.topbar{
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  margin: 0;
-  border-bottom: none; /* removes the gap line between banner and nav */
-}
-
-.topbar__marquee{
-  height: var(--topbarH);
-  display: flex;
-  align-items: center;
-  padding-top: 0;
-}
-
-.topbar__msg{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  line-height: 1.2;
-  padding: 0 14px;
-}
-
-/* nav sticks directly under banner */
-.navwrap{
-  position: fixed;
-  top: var(--topbarH);
-  left: 0;
-  right: 0;
-  z-index: 2000;
-  margin: 0;
-
-  background: rgba(255,255,255,.40);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  border-top: none;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
-/* tighter nav row so it visually hugs the banner */
-.navinner{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4px 18px;
-  min-height: var(--navRowH);
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-
-.brand__logo{
-  height: 82px;
-  width: auto;
-  display: block;
-}
-
-/* route strip should sit flush under nav */
-.route{
-  margin-top: 0;
-  height: var(--routeH);
-}
-
-/* page offset for fixed nav stack */
-main{
-  margin-top: 0;
-  padding-top: calc(var(--topbarH) + var(--navRowH) + var(--routeH));
-}
-
-/* =========================
-   CENTERED DESKTOP NAV
-   ========================= */
-@media (min-width: 1025px){
-  .navinner{
-    position: relative;
-    min-height: var(--navRowH);
-  }
-
-  .nav{
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .brand{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-
-  .menu{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 18px;
-    padding: 0 180px;
-    margin: 0;
-    list-style: none;
-  }
-
-  .menu > li:nth-child(2){
-    margin-right: auto;
-  }
-
-  .menu > li{
-    white-space: nowrap;
-  }
-}
-
-/* =========================
-   MATCHING NAV BUTTONS
-   ========================= */
-.link{
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-  text-decoration: none;
-  cursor: pointer;
-
-  padding: 9px 18px;
-  border-radius: 14px;
-
-  color: #0b1c2d;
-  font-size: 14px;
-  font-weight: 500;
-
-  background: rgba(240,197,90,.22);
-  border: 1px solid rgba(240,197,90,.35);
-  box-shadow: 0 10px 22px rgba(0,0,0,.12);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  transition: background .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
-}
-
-.link:hover{
-  background: rgba(240,197,90,.30);
-  border-color: rgba(240,197,90,.55);
-  transform: translateY(-2px);
-}
-
-.link.is-active{
-  background: rgba(214,168,42,.28);
-  border: 1px solid rgba(214,168,42,.48);
-  box-shadow:
-    inset 0 0 0 1px rgba(214,168,42,.16),
-    0 10px 22px rgba(0,0,0,.12);
-}
-
-.caret{
-  color: #071a2e;
-  font-size: 12px;
-}
-
-/* dropdown matches buttons */
-.dd{
-  position: relative;
-  z-index: 2500;
-}
-
-.dd__menu{
-  position: absolute;
-  top: 46px;
-  left: 0;
-  min-width: 220px;
-  padding: 8px;
-  display: none;
-  z-index: 9999;
-
-  background: rgba(255,255,255,.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,.35);
-  border-radius: 14px;
-  box-shadow: 0 16px 40px rgba(0,0,0,.18);
-}
-
-.dd__menu a{
-  display: block;
-  padding: 10px 10px;
-  border-radius: 12px;
-  color: rgba(8,24,44,.92);
-  text-decoration: none;
-  font-size: 13px;
-}
-
-.dd__menu a:hover{
-  background: rgba(240,197,90,.20);
-}
-
-.dd:hover .dd__menu{
-  display: block;
-}
-
-/* =========================
-   MOBILE / TABLET
-   ========================= */
-.burger{
-  display: none;
-}
-
-@media (max-width: 1024px){
-  .burger{
-    display: block;
-    width: 44px;
-    height: 44px;
-    margin-left: auto;
-    border-radius: 12px;
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,.15);
-    background: rgba(255,255,255,.08);
-  }
-
-  .burger span{
-    display: block;
-    width: 18px;
-    height: 2px;
-    margin: 6px auto;
-    border-radius: 999px;
-    background: #18153b;
-  }
-
-  .nav{
-    display: none;
-    width: 100%;
-  }
-
-  .nav.is-open{
-    display: block;
-  }
-
-  .brand{
-    position: static;
-    transform: none;
-  }
-
-  .navinner{
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .menu{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px;
-    margin: 0;
-    padding: 10px 0 0;
-    list-style: none;
-  }
-
-  .link{
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-
-@media (max-width: 768px){
-  .topbar__msg{
-    font-size: 13px;
-    padding: 0 12px;
-  }
-}
-/* =========================================
-   FINAL NAVBAR LOCKUP — USE THIS LAST
-   ========================================= */
-
-   :root{
-    --topbarH: 38px;
-    --navRowH: 94px;
-    --routeH: 35px;
-  }
-  
-  /* only one page offset system */
-  main{
-    margin-top: 0 !important;
-    padding-top: calc(var(--topbarH) + var(--navRowH) + var(--routeH)) !important;
-  }
-  
-  /* ===== TOPBAR ===== */
-  .topbar{
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    margin: 0;
-    border-bottom: none !important;
-  }
-  
-  .topbar__marquee{
-    height: var(--topbarH);
-    display: flex;
-    align-items: center;
-    padding-top: 0 !important;
-  }
-  
-  .topbar__msg{
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    line-height: 1.2;
-    padding: 0 14px;
-  }
-  
-  /* ===== NAV WRAP ===== */
-  .navwrap{
-    position: fixed !important;
-    top: var(--topbarH) !important;
-    left: 0;
-    right: 0;
-    z-index: 2000;
-    margin: 0;
-    overflow: visible;
-  
-    background: rgba(255,255,255,.40);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-  
-    border-top: none !important;
-    border-bottom: 1px solid rgba(255,255,255,.08);
-  }
-  
-  .navinner{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 6px 18px !important;
-    min-height: var(--navRowH) !important;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .brand{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  .brand__logo{
-    height: 82px !important;
-    width: auto;
-    display: block;
-  }
-  
-  /* ===== ROUTE ===== */
-  .route{
-    position: relative;
-    width: 100%;
-    height: var(--routeH);
-    margin-top: 0 !important;
-    overflow: visible;
-    background: transparent;
-    z-index: 1;
-  }
-  
-  /* ===== BUTTONS ===== */
-  .link{
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-    text-decoration: none;
-    cursor: pointer;
-  
-    padding: 9px 18px !important;
-    border-radius: 14px !important;
-  
-    color: #0b1c2d !important;
-    font-size: 14px;
-    font-weight: 500;
-  
-    background: rgba(240,197,90,.22) !important;
-    border: 1px solid rgba(240,197,90,.35) !important;
-    box-shadow: 0 10px 22px rgba(0,0,0,.12);
-  
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  
-    transition: background .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
-  }
-  
-  .link:hover{
-    background: rgba(240,197,90,.30) !important;
-    border-color: rgba(240,197,90,.55) !important;
-    transform: translateY(-2px);
-  }
-  
-  .link.is-active{
-    background: rgba(214,168,42,.28) !important;
-    border: 1px solid rgba(214,168,42,.48) !important;
-    box-shadow:
-      inset 0 0 0 1px rgba(214,168,42,.16),
-      0 10px 22px rgba(0,0,0,.12);
-  }
-  
-  .caret{
-    color: #071a2e;
-    font-size: 12px;
-  }
-  
-  /* ===== DROPDOWN ===== */
-  .dd{
-    position: relative;
-    z-index: 2500;
-  }
-  
-  .dd__menu{
-    position: absolute;
-    top: 46px;
-    left: 0;
-    min-width: 220px;
-    padding: 8px;
-    display: none;
-    z-index: 9999;
-  
-    background: rgba(255,255,255,.82) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,.35) !important;
-    border-radius: 14px;
-    box-shadow: var(--shadow);
-  }
-  
-  .dd__menu a{
-    display: block;
-    padding: 10px 10px;
-    border-radius: 12px;
-    color: rgba(8,24,44,.92) !important;
-    text-decoration: none;
-    font-size: 13px;
-  }
-  
-  .dd__menu a:hover{
-    background: rgba(240,197,90,.20) !important;
-  }
-  
-  .dd:hover .dd__menu{
-    display: block;
-  }
-  
-  /* ===== DESKTOP CENTERED NAV ===== */
-  @media (min-width: 1025px){
-    .nav{
-      width: 100%;
-      margin-left: 0 !important;
-      display: flex;
-      align-items: center;
-    }
-  
-    .brand{
-      position: absolute !important;
-      left: 50%;
-      transform: translateX(-50%) !important;
-      margin: 0;
-      z-index: 5;
-    }
-  
-    .menu{
-      width: 100% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: flex-start !important;
-      gap: 18px !important;
-      padding: 0 180px !important;
-      margin: 0 !important;
-      list-style: none;
-    }
-  
-    .menu > li:nth-child(2){
-      margin-right: auto !important;
-    }
-  
-    .menu > li{
-      white-space: nowrap;
-    }
-  }
-  
-  /* ===== MOBILE / TABLET ===== */
   @media (max-width: 1024px){
+  
     .burger{
       display: block;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.03);
-      cursor: pointer;
-      margin-left: auto;
-    }
-  
-    .burger span{
-      display: block;
-      width: 18px;
-      height: 2px;
-      background: #18153b;
-      margin: 6px auto;
-      border-radius: 999px;
     }
   
     .nav{
@@ -895,26 +394,23 @@ main{
     }
   
     .brand{
-      position: static !important;
-      left: auto !important;
-      transform: none !important;
-      flex: 0 0 auto;
+      position: static;
+      transform: none;
     }
   
     .navinner{
       flex-wrap: wrap;
-      align-items: center;
     }
   
     .menu{
-      width: 100% !important;
-      display: flex;
+      width: 100%;
+  
       flex-direction: column;
       align-items: stretch;
+  
       gap: 8px;
-      padding: 10px 0 0 !important;
-      margin: 0;
-      list-style: none;
+  
+      padding-top: 10px;
     }
   
     .link{
@@ -924,8 +420,13 @@ main{
   }
   
   @media (max-width: 768px){
+  
     .topbar__msg{
-      padding: 0 12px;
       font-size: 13px;
+      padding: 0 12px;
+    }
+  
+    .brand__logo{
+      height: 64px;
     }
   }
