@@ -3496,58 +3496,7 @@ transition: transform 0.12s linear;
 .gwHours{
   margin-bottom: 24px;
 }
-/* =========================
-   DESKTOP NAV: Center Logo + Left/Right Links
-   (NO HTML changes needed)
-   ========================= */
-   @media (min-width: 1025px){
 
-    /* keep your navinner as the positioning container */
-    .navinner{
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-  
-    /* NAV stretches full width */
-    .nav{
-      width: 100%;
-    }
-  
-    /* Center the logo absolutely */
-    .brand{
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      margin: 0;
-      z-index: 5;
-    }
-  
-    /* Reserve space so menu items don't collide with logo */
-    .menu{
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 0 180px;   /* <-- adjust if your logo is wider */
-      margin: 0;
-    }
-  
-    /* Push RIGHT side items away using auto gap between item 2 and 3 */
-    .menu > li:nth-child(2){
-      margin-right: auto;
-    }
-  
-    /* prevent wrapping */
-    .menu > li{
-      white-space: nowrap;
-    }
-  
-    /* optional: keep everything on one line no matter what */
-    .navinner{
-      min-height: 86px;  /* adjust based on your logo height */
-    }
-  }
 /* =========================
    GLASS NAV BUTTONS
    ========================= */
@@ -3700,48 +3649,7 @@ transition: transform 0.12s linear;
 @media (max-width: 768px){
   .contactHero{ min-height: 520px; }   /* tweak */
 }
-/* =========================
-   DESKTOP NAV LAYOUT
-   Logo left — buttons right
-   ========================= */
 
-@media (min-width: 1025px){
-
-  .navinner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-
-  /* logo left */
-  .brand{
-    margin-right:24px;
-  }
-
-  /* nav container */
-  .nav{
-    margin-left:auto;
-  }
-
-  /* menu row */
-  .menu{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    margin:0;
-    padding:0;
-    list-style:none;
-  }
-
-  /* equal button sizing */
-  .link{
-    padding:10px 18px;
-    min-height:44px;
-    display:flex;
-    align-items:center;
-  }
-
-}
 /* =========================
    MOBILE NAV OPEN STATE
    ========================= */
@@ -3752,5 +3660,37 @@ transition: transform 0.12s linear;
   
     body.nav-open{
       overflow: hidden;
+    }
+  }
+
+  @media (min-width:1025px){
+
+    .navinner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+  
+    /* logo stays left */
+    .brand{
+      position:static !important;
+      transform:none !important;
+      margin:0;
+      flex-shrink:0;
+    }
+  
+    /* nav goes right */
+    .nav{
+      margin-left:auto;
+    }
+  
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      margin:0;
+      padding:0;
+      list-style:none;
     }
   }
