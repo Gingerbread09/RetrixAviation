@@ -160,32 +160,49 @@ main{
 .caret{ color: #071a2e; font-size: 12px; }
 
 /* Dropdown */
-.dd{ position:relative; }
-.dd__menu{
-  position:absolute;
-  top: 46px;
+.dd {
+  position: relative;
+}
+
+.dd__menu {
+  position: absolute;
+  top: calc(100% - 2px); /* slight overlap prevents hover gap */
   left: 0;
   min-width: 220px;
   padding: 8px;
-  background: rgba(16,28,52,.98);
-  border: 1px solid var(--stroke);
+
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255,255,255,.35);
   border-radius: 14px;
   box-shadow: var(--shadow);
-  display:none;
+
+  display: none;
   z-index: 9999;
 }
 
-.dd__menu a{
-  display:block;
-  padding: 10px 10px;
-  border-radius: 12px;
-  color: var(--text);
-  text-decoration:none;
-  font-size: 13px;
+.dd:hover .dd__menu,
+.dd:focus-within .dd__menu {
+  display: block;
 }
-.dd__menu a:hover{ background: rgba(255,255,255,.06); }
-.dd:hover .dd__menu{ display:block; }
 
+.dd__menu a {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 12px;
+
+  color: rgba(8,24,44,.92);
+  text-decoration: none;
+  font-size: 13px;
+
+  transition: background .2s ease;
+}
+
+.dd__menu a:hover {
+  background: rgba(240,197,90,.20);
+}
 /* MOBILE NAV */
 .burger{
   display:none;
@@ -3577,18 +3594,7 @@ transition: transform 0.12s linear;
 
 .brand__logo{ height: 82px; } /* was 100px */
 .navinner{ padding: 6px 18px; }
-.dd__menu{
-  background: rgba(255,255,255,.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,.35);
-}
-.dd__menu a{
-  color: rgba(8,24,44,.92);
-}
-.dd__menu a:hover{
-  background: rgba(240,197,90,.20);
-}
+
 .heroSub{
   max-width: 38ch;
   padding: 14px 16px;
