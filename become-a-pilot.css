@@ -1,250 +1,99 @@
 /* =========================
-   ROOT SAFETY (prevents sticky chaos)
-   ========================= */
-   :root{
-    --topbarH: 0px;     /* if your global styles.css doesn't define it */
-    --routeH: 26px;
-  }
+   RETRIX FONT
+========================= */
+
+@font-face {
+  font-family: "HorizonFont";
+  src: url("../assets/fonts/ZalandoSansExpanded-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+:root{
+  --topbarH: 25px;     /* if your global styles.css doesn't define it */
+  --routeH: 26px;
+}
+/* =========================
+   GLOBAL FONT SETTINGS
+========================= */
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"HorizonFont", sans-serif;
+  color:#111;
+  background:#fff;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family:"HorizonFont", sans-serif;
+  font-weight:normal;
+  letter-spacing:-0.03em;
+}
+
+/* Links & Buttons */
+
+a,
+button{
+  font-family:"HorizonFont", sans-serif;
+}
+
+/* Cabin Crew Hero */
+
+
+.heroKicker{
+  font-family:"HorizonFont", sans-serif;
+  letter-spacing:.04em;
+}
+
+/* Section Titles */
+
+.moduleTitle,
+.foundationTitle,
+.perks__title,
+.sectionHeading h2,
+.careerOutcomes__head h2,
+.eligibilityBox h2{
+  font-family:"HorizonFont", sans-serif;
+  letter-spacing:-0.04em;
+}
+
+/* Cards */
+
+.careerTile h3,
+.moduleCard h3,
+.perkCard__title,
+.careerCard h3{
+  font-family:"HorizonFont", sans-serif;
+}
   
-  /* =========================
-     NAVBAR (KEEP ONE VERSION ONLY)
-     ========================= */
-  .navwrap{
-    position: sticky;
-    top: 0;
-    z-index: 2000;
-    background: rgba(8, 24, 44, 0.55);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    overflow: visible; /* ✅ dropdown won’t get clipped */
-  }
-  
-  .navinner{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 14px 18px;
-    display:flex;
-    align-items:center;
-    gap: 16px;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .brand{
-    display:flex;
-    align-items:center;
-    text-decoration:none;
-    flex: 0 0 auto;
-  }
-  .brand__logo{
-    height: 69px;
-    width:auto;
-    display:block;
-  }
-  
-  .nav{
-    margin-left: auto;
-    display:flex;
-    align-items:center;
-  }
-  
-  .menu{
-    list-style:none;
-    margin:0;
-    padding:0;
-    display:flex;
-    align-items:center;
-    gap: 14px;
-  }
-  
-  .link{
-    color: var(--text);
-    font-size: 14px;
-    text-decoration:none;
-    padding: 10px 10px;
-    border-radius: 12px;
-    display:inline-flex;
-    align-items:center;
-    gap: 6px;
-    background: transparent;
-    border:none;
-    cursor:pointer;
-    white-space: nowrap;
-    line-height: 1;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .link:hover{ background: rgba(255,255,255,.06); }
-  
-  .link.is-active{
-    background: rgba(214,168,42,.12);
-    box-shadow: inset 0 0 0 1px rgba(214,168,42,.22);
-  }
-  
-  .caret{ color: var(--muted); font-size: 12px; }
-  
-  /* Dropdown */
-  .dd{ position:relative; }
-  .dd__btn{
-    appearance: none;
-    -webkit-appearance: none;
-    font: inherit;
-    line-height: 1;
-  }
-  
-  .dd__menu{
-    position:absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    min-width: 220px;
-    padding: 8px;
-    background: rgba(16,28,52,.98);
-    border: 1px solid var(--stroke);
-    border-radius: 14px;
-    box-shadow: var(--shadow);
-    display:none;
-    z-index: 9999;
-  }
-  
-  .dd__menu a{
-    display:block;
-    padding: 10px 10px;
-    border-radius: 12px;
-    color: var(--text);
-    text-decoration:none;
-    font-size: 13px;
-  }
-  .dd__menu a:hover{ background: rgba(255,255,255,.06); }
-  
-  /* desktop hover open */
-  @media (hover:hover){
-    .dd:hover .dd__menu{ display:block; }
-  }
-  /* keyboard open */
-  .dd:focus-within .dd__menu{ display:block; }
-  
-  /* Burger */
-  .burger{
-    display:none;
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    border: 1px solid var(--stroke);
-    background: rgba(255,255,255,.03);
-    cursor:pointer;
-    margin-left: auto;
-    flex: 0 0 auto;
-  }
-  .burger span{
-    display:block;
-    width: 18px;
-    height: 2px;
-    background: var(--text);
-    margin: 6px auto;
-    border-radius: 999px;
-  }
-  
-  /* Mobile: nav becomes dropdown panel */
-  @media (max-width: 980px){
-    .burger{ display:block; }
-  
-    .nav{
-      display:none;
-      width: 100%;
-      order: 3;
-    }
-    .nav.is-open{ display:block; }
-  
-    .navinner{ flex-wrap: wrap; }
-  
-    .menu{
-      flex-direction: column;
-      align-items: stretch;
-      gap: 8px;
-      padding: 12px;
-      margin-top: 10px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(16,28,52,.90);
-      border-radius: 16px;
-    }
-  
-    .link{
-      width: 100%;
-      justify-content: space-between;
-    }
-  
-    /* Mobile dropdown becomes inline */
-    .dd__menu{
-      position: static;
-      display: none;
-      min-width: 100%;
-      margin-top: 6px;
-      border-radius: 14px;
-    }
-    .dd.is-open .dd__menu{ display:block; }
-  }
-  
-  /* =========================
-     ROUTE STRIP
-     ========================= */
-  .route{
-    position: relative;
-    width: 100%;
-    height: var(--routeH);
-    overflow: visible;
-    background: transparent;
-    z-index: 2;
-  }
-  
-  .route__line{
-    position: absolute;
-    top: 46%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    transform: translateY(-50%);
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,.85) 0 10px,
-      rgba(255,255,255,0) 10px 18px
-    );
-    animation: runwayGlow 2.8s ease-in-out infinite;
-  }
-  
-  @keyframes runwayGlow{
-    0%,100%{
-      opacity:.75;
-      box-shadow:
-        0 0 6px rgba(255,255,255,.35),
-        0 0 12px rgba(255,255,255,.2);
-    }
-    50%{
-      opacity:1;
-      box-shadow:
-        0 0 8px rgba(255,255,255,.5),
-        0 0 16px rgba(255,255,255,.3);
-    }
-  }
-  
-  .route__plane{
-    --x: 18px;
-    --rot: 90deg;
-    position: absolute;
-    top: 46%;
-    left: 0;
-    transform: translateX(var(--x)) translateY(-50%) rotate(var(--rot));
-    transform-origin: center;
-    transition: transform .45s cubic-bezier(.2,.9,.2,1);
-    will-change: transform;
-  }
-  .route__plane img{
-    height: 30px;
-    width: auto;
-    display: block;
-    filter:
-      drop-shadow(0 0 4px rgba(240,197,90,.6))
-      drop-shadow(0 0 8px rgba(240,197,90,.35));
-  }
-  
+/* =========================
+   STICKY HEADER
+========================= */
+.siteHeader{
+  position:relative;
+  z-index:9999;
+}
+
+.navwrap{
+  position:fixed;
+  top:25px; /* height of announcement bar */
+  left:0;
+  right:0;
+  z-index:9999;
+  background:#5479ab26;
+}
   /* =========================
      PAGE BASE (IMPORTANT FIX)
      ========================= */
@@ -277,7 +126,7 @@
   
   /* ✅ put video BEHIND EVERYTHING */
   .pilotHero__video{
-    position: fixed;
+    position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
@@ -315,9 +164,10 @@
     color: rgba(240,197,90,.92);
   }
   
+
   .pilotHero__title{
     margin: 0 0 10px;
-    font-size: clamp(34px, 4.2vw, 62px);
+    font-size: clamp(32px, 6vw, 62px);
     line-height: 1.05;
   }
   
@@ -330,6 +180,7 @@
   
   /* Progress card */
   .pilotHero__progress{
+    width: 100%;
     max-width: 720px;
     margin: 18px auto 0;
     padding: 14px 14px 16px;
@@ -522,11 +373,22 @@
     opacity: .85;
   }
   
-  /* Responsive grid */
-  @media (min-width: 900px){
-    .stepsGrid{ grid-template-columns: 1fr 1fr; }
+  @media (min-width:1200px){
+    .stepsGrid{
+      grid-template-columns:1fr 1fr;
+    }
   }
+  @media (max-width:768px){
+    .pilotCta__actions{
+      flex-direction:column;
+      align-items:center;
+    }
   
+    .ctaBtn{
+      width:100%;
+      max-width:340px;
+    }
+  }
   /* =========================
      CTA (glass over video)
      ========================= */
@@ -579,7 +441,17 @@
     box-shadow: none;
   }
   .ctaBtn--ghost:hover{ border-color: rgba(240,197,90,.22); }
+  @media (max-width:768px){
+    .pilotCta__actions{
+      flex-direction:column;
+      align-items:center;
+    }
   
+    .ctaBtn{
+      width:100%;
+      max-width:340px;
+    }
+  }
   /* =========================
      FOOTER (keep your exact GetWings-style footer)
      ========================= */
@@ -781,4 +653,13 @@
     }
     .gwHours__divider{ display: none; }
   }
+  @media (max-width:1100px){
+    .gwFooter__inner{
+      grid-template-columns:1fr;
+      gap:32px;
+    }
   
+    .gwFooter__cols{
+      grid-template-columns:1fr 1fr;
+    }
+  }
